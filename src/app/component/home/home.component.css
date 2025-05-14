@@ -1,8 +1,8 @@
 /* General */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* fuente más moderna */
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #222;
   margin: 0;
   padding: 0;
   display: flex;
@@ -12,13 +12,13 @@ body {
 
 /* Header */
 header {
-  background-color: #000;
-  padding: 20px 0;
+  background-color: #1a1a1a;
+  padding: 25px 0;
   text-align: center;
 }
 
 .header-image img {
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
   object-fit: contain;
   margin: 0 auto;
@@ -27,13 +27,16 @@ header {
 
 /* Banner Section */
 .banner {
-  background-color: #0074d9;
-  color: #fff;
+  background-color: #004466;
+  color: #f9f9f9;
   padding: 60px 20px;
   text-align: center;
   border-radius: 0 0 15px 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 68, 102, 0.4);
   margin-bottom: 50px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .banner h2 {
@@ -41,35 +44,38 @@ header {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .banner p {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 30px;
   font-weight: 500;
 }
 
 .banner button {
-  background-color: #9b4de0;
+  background-color: #0077b6;
   color: #fff;
   padding: 14px 40px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1.15rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 119, 182, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .banner button:hover {
-  background-color: #7a38bb;
+  background-color: #005f87;
+  box-shadow: 0 5px 15px rgba(0, 95, 135, 0.7);
 }
 
 /* Section Titles */
 h2 {
   font-size: 2.25rem;
   margin-bottom: 25px;
-  color: #222;
+  color: #00334d;
   font-weight: 700;
   text-align: center;
 }
@@ -81,21 +87,25 @@ h2 {
   gap: 15px;
   flex-wrap: wrap;
   margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .price-range button {
-  background-color: #9b4de0;
+  background-color: #0077b6;
   color: white;
-  border: none;
+  border: 1px solid #005f87;
   padding: 12px 28px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .price-range button:hover {
-  background-color: #7a38bb;
+  background-color: #005f87;
+  border-color: #004d66;
 }
 
 /* Grid containers */
@@ -103,9 +113,9 @@ h2 {
 .artist-items,
 .style-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 30px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto 70px auto;
 }
 
@@ -114,19 +124,21 @@ h2 {
 .artist,
 .style {
   background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  border: 1px solid #d1d9e6;
 }
 
 .item:hover,
 .artist:hover,
 .style:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #0077b6;
 }
 
 .item img,
@@ -135,7 +147,8 @@ h2 {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-bottom: 3px solid #9b4de0;
+  border-bottom: 4px solid #0077b6;
+  border-radius: 0 0 12px 12px;
 }
 
 .item h3,
@@ -144,40 +157,41 @@ h2 {
   margin: 15px 0 10px;
   font-size: 1.3rem;
   font-weight: 700;
-  color: #5a2ea6;
+  color: #004466;
 }
 
 .item p,
 .artist p,
 .style p {
   font-size: 1rem;
-  color: #555;
+  color: #444;
   padding: 0 15px 20px;
   line-height: 1.4;
 }
 
 /* Footer */
 footer#footer {
-  background-color: #111;
-  color: #ddd;
+  background-color: #1a1a1a;
+  color: #ccc;
   padding: 40px 20px;
   text-align: center;
   font-size: 0.95rem;
   margin-top: auto;
+  border-top: 3px solid #0077b6;
 }
 
 footer#footer h2 {
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 700;
-  color: #9b4de0;
+  color: #0077b6;
 }
 
 footer#footer p {
   max-width: 700px;
   margin: 0 auto 10px auto;
   line-height: 1.5;
-  color: #ccc;
+  color: #bbb;
 }
 
 /* Responsive tweaks */
