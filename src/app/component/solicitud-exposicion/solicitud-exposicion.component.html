@@ -1,0 +1,6 @@
+<form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+  <input formControlName="artistaId" placeholder="ID Artista" type="number" required>
+  <input formControlName="comentarios" placeholder="Comentarios">
+  <input formControlName="obraIds" placeholder="IDs de obras (ej: 1,2,3)" (change)="onObraIdsChange($event)">
+  <button type="submit" [disabled]="solicitudForm.invalid">Enviar Solicitud</button>
+</form>
