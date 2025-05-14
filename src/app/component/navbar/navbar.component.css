@@ -1,0 +1,46 @@
+/* Barra de navegación */
+.navbar {
+    background-color: #000 !important; /* Fondo negro */
+}
+
+.navbar .navbar-brand {
+    color: white; /* Texto blanco en el nombre de la marca */
+}
+
+.navbar .nav-link {
+    color: white; /* Texto blanco en los enlaces */
+}
+
+.navbar .navbar-toggler-icon {
+    background-color: white; /* Icono de la hamburguesa blanco */
+}
+
+
+.navbar .nav-link:hover {
+  color: #f1f1f1; /* Cambio de color al pasar el ratón por encima */
+}
+
+.navbar-toggler-icon {
+  background-color: white; /* Cambiar color del icono de la hamburguesa a blanco */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #f1f1f1; /* Letras más claras para el enlace activo */
+}
+
+.navbar-nav .nav-item.disabled .nav-link {
+  color: #888; /* Letras deshabilitadas en gris */
+}
+
+/* Estilo para el dropdown (opcional) */
+.navbar .dropdown-menu {
+  background-color: #000; /* Fondo negro para el menú desplegable */
+}
+
+.navbar .dropdown-item {
+  color: white; /* Letras blancas en el dropdown */
+}
+
+.navbar .dropdown-item:hover {
+  color: #f1f1f1; /* Letras claras al pasar el ratón */
+}

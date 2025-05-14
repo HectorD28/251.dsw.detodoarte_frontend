@@ -1,0 +1,44 @@
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Mi cuenta</h2>
+    <a routerLink="/home">Página principal</a> <!-- Usar routerLink para navegar dentro de Angular -->
+    <a routerLink="/mis-compras">Mis compras</a> <!-- Asegúrate de tener una ruta configurada para mis compras -->
+    <a routerLink="/mensajes">Mensajes</a>
+    <a routerLink="/favoritos">Favoritos</a>
+    <a routerLink="/configuracion">Configuración</a>
+    <div class="privado">Presentación: Privado</div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>Bienvenido RICHARD JOUSE</h1>
+
+    <div class="section">
+      <label for="como-nos-entero">¿Cómo se enteró de nosotros?</label>
+      <select id="como-nos-entero" class="select-box">
+        <option value="seleccionar">Seleccionar</option>
+      </select>
+      <button class="btn">Enviar</button>
+    </div>
+
+    <div class="section favorites">
+      <div class="card">
+        <h3>Mis favoritos</h3>
+        <p>¡Comienza a coleccionar arte y crea tus colecciones virtuales!</p>
+      </div>
+      <div class="card">
+        <h3>Artistas seguido</h3>
+        <p>¡Comienza a seguir a tus artistas favoritos!</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Para ir más lejos</p>
+      <ul>
+        <li><a routerLink="/recomendar">Recomiéndanos a tus amigos y gane dinero!</a></li>
+        <li><a routerLink="/vender">Vender en ArtMajeur</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
