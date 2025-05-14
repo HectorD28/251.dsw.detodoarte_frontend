@@ -71,7 +71,7 @@ export class RegistrarPersonaComponent {
           Validators.minLength(3),
           Validators.maxLength(50),
         ]),
-      contasena: new FormControl('',
+      contrasena: new FormControl('',
         [Validators.required,
           Validators.minLength(8),
           Validators.maxLength(50),
