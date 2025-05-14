@@ -8,5 +8,5 @@ export interface IPersonaResponse {
     sexo: string; // mapeado a direccion_residencia
     telefono: string; // mapeado a sexo
     correo_electronico: string; // mapeado a telefono
-
+    contrasena: string; // mapeado a correo_electronico
 }
