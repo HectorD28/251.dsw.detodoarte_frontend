@@ -23,16 +23,7 @@ header .logo h1 {
     font-size: 24px;
 }
 
-.header-image {
-    flex-grow: 1;
-    text-align: center;
-}
 
-.header-image img {
-    width: 100%;
-    max-height: 100px;
-    object-fit: cover;
-}
 
 
 header .search-bar input {
