@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -117,10 +121,55 @@ h2 {
     margin-top: 10px;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
+#footer {
+  background-color: #000;  /* Fondo oscuro para el footer */
+  color: white;  /* Texto blanco para buen contraste */
+  padding: 40px 20px;  /* Espaciado alrededor del contenido */
+  text-align: center;  /* Alineación centrada del texto */
+  font-family: Arial, sans-serif;  /* Fuente legible */
+  margin-top: 40px;  /* Espacio arriba del footer */
+}
+
+.footer-content h2 {
+  font-size: 24px;  /* Título más grande */
+  margin-bottom: 20px;  /* Espacio debajo del título */
+  color: #ffffff;  /* Color dorado para destacar el título */
+}
+
+.footer-content p {
+  font-size: 16px;  /* Tamaño de fuente cómodo para leer */
+  margin-bottom: 10px;  /* Espacio debajo de cada párrafo */
+  line-height: 1.6;  /* Espaciado entre líneas */
+}
+
+footer p {
+  font-size: 14px;  /* Tamaño de fuente más pequeño para los derechos reservados */
+  margin-top: 20px;  /* Espacio arriba del texto de derechos reservados */
+}
+
+footer a {
+  color: #ffffff;  /* Enlaces en color dorado */
+  text-decoration: none;  /* Sin subrayado en los enlaces */
+}
+
+footer a:hover {
+  text-decoration: underline;  /* Subrayado al pasar el ratón */
+}
+
+@media (max-width: 768px) {
+  #footer {
+    padding: 30px 10px;  /* Menos padding en pantallas pequeñas */
+  }
+
+  .footer-content h2 {
+    font-size: 20px;  /* Reducir tamaño de título en pantallas pequeñas */
+  }
+
+  .footer-content p {
+    font-size: 14px;  /* Reducir tamaño de párrafos en pantallas pequeñas */
+  }
+
+  footer p {
+    font-size: 12px;  /* Reducir el tamaño del texto de derechos reservados en pantallas pequeñas */
+  }
 }

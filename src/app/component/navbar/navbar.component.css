@@ -44,3 +44,16 @@
 .navbar .dropdown-item:hover {
   color: #f1f1f1; /* Letras claras al pasar el ratón */
 }
+/* Estilo para el menú desplegable */
+.nav-item.dropdown .dropdown-menu {
+  min-width: 200px; /* Ajusta el ancho del dropdown */
+}
+
+.nav-item.dropdown .dropdown-item {
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.nav-item.dropdown .dropdown-item:hover {
+  background-color: #f1f1f1; /* Efecto hover */
+}

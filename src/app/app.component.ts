@@ -11,5 +11,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 })
 export class AppComponent {
   title = '251.dsw.detodoarte_frontend';
+
+  
+
 }
 
