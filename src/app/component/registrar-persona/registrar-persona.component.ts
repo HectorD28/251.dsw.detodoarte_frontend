@@ -71,6 +71,11 @@ export class RegistrarPersonaComponent {
           Validators.minLength(3),
           Validators.maxLength(50),
         ]),
+      contasena: new FormControl('',
+        [Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(50),
+        ]),
     });
   }
 
@@ -107,6 +112,8 @@ export class RegistrarPersonaComponent {
     this.personaForm.get('telefono')?.value;
     this.personaRequest.correo_electronico=
     this.personaForm.get('correo_electronico')?.value;
+    this.personaRequest.contrasena=
+    this.personaForm.get('contrasena')?.value;
 }
 
 registrarPersona() : void{
@@ -226,6 +233,7 @@ insertarPersona(): void {
           sexo: personaResponse.sexo,
           telefono: personaResponse.telefono,
           correo_electronico: personaResponse.correo_electronico,
+          contrasena: personaResponse.contrasena,
           
         });
         this.isEdited = true;

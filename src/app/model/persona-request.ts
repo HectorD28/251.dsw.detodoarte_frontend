@@ -8,5 +8,6 @@
         sexo: string;
         telefono: string;
         correo_electronico: string;
+        contrasena: string;
         
     }
