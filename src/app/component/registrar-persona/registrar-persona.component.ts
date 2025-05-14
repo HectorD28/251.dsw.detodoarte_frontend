@@ -178,11 +178,9 @@ insertarPersona(): void {
             text: '¡Se registraron exitosamente los datos del usuario!',
           });
 
-          // Verificar si la categoría es artista
           if (this.personaForm.get('categoria')?.value === 'artista') {
-            // Preparar el objeto artistaRequest
             this.artistaRequest = {
-              id_artista: 0, // o null si tu backend lo autogenera
+              id_artista: 0, 
               persona_id: result.persona_id
             };            
             this.artistaService.registrarArtista(this.artistaRequest).subscribe(

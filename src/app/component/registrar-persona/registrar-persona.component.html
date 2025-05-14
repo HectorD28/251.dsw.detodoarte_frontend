@@ -2,7 +2,6 @@
   <div class="register-box">
     <h2>Crear una cuenta</h2>
 
-    <!-- Formulario de registro utilizando formGroup -->
     <form class="form-group" [formGroup]="personaForm">
       
 
@@ -16,37 +15,31 @@
         </select>
       </div>
 
-      <!-- Campo para DNI -->
       <div class="input-group">
         <label for="dni">DNI</label>
         <input type="text" id="dni" formControlName="dni" placeholder="Ingresa tu DNI" required>
       </div>
 
-      <!-- Campo para Nombre Completo -->
       <div class="input-group">
         <label for="nombre_completo">Nombre Completo</label>
         <input type="text" id="nombre_completo" formControlName="nombre_completo" placeholder="Ingresa tu nombre completo" required>
       </div>
 
-      <!-- Campo para Apellido Paterno -->
       <div class="input-group">
         <label for="apellido_paterno">Apellido Paterno</label>
         <input type="text" id="apellido_paterno" formControlName="apellido_paterno" placeholder="Ingresa tu apellido paterno" required>
       </div>
 
-      <!-- Campo para Apellido Materno -->
       <div class="input-group">
         <label for="apellido_materno">Apellido Materno</label>
         <input type="text" id="apellido_materno" formControlName="apellido_materno" placeholder="Ingresa tu apellido materno" required>
       </div>
 
-      <!-- Campo para Dirección de Residencia -->
       <div class="input-group">
         <label for="direccion_residencia">Dirección de Residencia</label>
         <input type="text" id="direccion_residencia" formControlName="direccion_residencia" placeholder="Ingresa tu dirección de residencia" required>
       </div>
 
-      <!-- Campo para Sexo -->
       <div class="input-group">
         <label for="sexo">Sexo</label>
         <select id="sexo" formControlName="sexo" required>
@@ -56,13 +49,11 @@
         </select>
       </div>
 
-      <!-- Campo para Teléfono -->
       <div class="input-group">
         <label for="telefono">Teléfono</label>
         <input type="tel" id="telefono" formControlName="telefono" placeholder="Ingresa tu teléfono" required>
       </div>
 
-      <!-- Campo para Correo Electrónico -->
       <div class="input-group">
         <label for="correo_electronico">Correo Electrónico</label>
         <input type="email" id="correo_electronico" formControlName="correo_electronico" placeholder="Ingresa tu correo electrónico" required>
@@ -83,7 +74,6 @@
           </button>
     </form>
 
-    <!-- Enlaces -->
     <div class="links">
       <p>¿Ya tienes una cuenta? <a routerLink="/login">Iniciar sesión</a></p>
     </div>
