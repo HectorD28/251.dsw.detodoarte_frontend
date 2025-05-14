@@ -1,6 +1,22 @@
-<form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
-  <input formControlName="artistaId" placeholder="ID Artista" type="number" required>
-  <input formControlName="comentarios" placeholder="Comentarios">
-  <input formControlName="obraIds" placeholder="IDs de obras (ej: 1,2,3)" (change)="onObraIdsChange($event)">
-  <button type="submit" [disabled]="solicitudForm.invalid">Enviar Solicitud</button>
-</form>
+<div class="register-container">
+  <div class="register-box">
+    <h2>Solicitar Exposición</h2>
+    <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="artistaId">ID Artista</label>
+        <input type="number" id="artistaId" formControlName="artistaId" placeholder="ID del artista" required>
+      </div>
+      <div class="input-group">
+        <label for="comentarios">Comentarios</label>
+        <input type="text" id="comentarios" formControlName="comentarios" placeholder="Comentarios (opcional)">
+      </div>
+      <div class="input-group">
+        <label for="obraIds">IDs de obras</label>
+        <input type="text" id="obraIds" placeholder="Ej: 5,6,7" (change)="onObraIdsChange($event)">
+      </div>
+      <button type="submit" class="register-btn" [disabled]="solicitudForm.invalid">
+        Enviar Solicitud
+      </button>
+    </form>
+  </div>
+</div>
