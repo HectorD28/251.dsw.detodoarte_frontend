@@ -1,7 +1,9 @@
+import { ArtistaService } from './../../service/artista.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPersonaResponse } from '../../model/persona-response';
 import { PersonaService } from '../../service/persona.service';
+import { IArtistaResponse } from '../../model/artista-response';
 import {
   FormControl,
   FormGroup,
@@ -11,6 +13,7 @@ import {
 import Swal from 'sweetalert2';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { IPersonaRequest } from '../../model/persona-request';
+import { IArtistaRequest } from '../../model/artista-request';
 
 
 
@@ -23,13 +26,30 @@ import { IPersonaRequest } from '../../model/persona-request';
 export class RegistrarPersonaComponent {
   personaArray: IPersonaResponse[] = [];
   personaRequest: IPersonaRequest = {} as IPersonaRequest;
+  artistaArray: IArtistaResponse[] = [];
+  artistaRequest: IArtistaRequest = {} as IArtistaRequest;
   personaForm: FormGroup;
+  artistaForm: FormGroup;
   page: number = 1;
   isEdited:boolean = false;
   constructor(
     private personaService: PersonaService,
+    private artistaService: ArtistaService,
   ) {
+
+    this.artistaForm = new FormGroup({
+      categoria: new FormControl('',[Validators.required,]),
+      id_artista: new FormControl(''),
+
+      persona_id: new FormControl(''),
+
+    });
+
     this.personaForm = new FormGroup({
+      
+      categoria: new FormControl('',[Validators.required,]),
+        
+      id_artista: new FormControl(''),
       persona_id: new FormControl(''),
       dni: new FormControl('', 
         [Validators.required,
@@ -112,16 +132,110 @@ export class RegistrarPersonaComponent {
     this.personaForm.get('telefono')?.value;
     this.personaRequest.correo_electronico=
     this.personaForm.get('correo_electronico')?.value;
-    this,this.personaRequest.contrasena=
+    this.personaRequest.contrasena=
     this.personaForm.get('contrasena')?.value;
+}
+
+  setArtistaRequest() :void{
+    this.artistaRequest.id_artista=
+    this.personaForm.get('id_artista')?.value;
+    
+    this.artistaRequest.persona_id=
+    this.personaForm.get('persona_id')?.value; 
 }
 
 registrarPersona() : void{
   this.setPersonaRequest();
+  this.setArtistaRequest();
   if(this.isEdited) {
     this.actualizarPersona();
   }else this.insertarPersona();
 }
+
+
+insertarPersona(): void {
+    this.setPersonaRequest();
+    console.log('personaRequest', this.personaRequest);
+    console.log('artistaRequest', this.artistaRequest);
+
+
+    Swal.fire({
+    title: '¿Está seguro de registrar los datos del usuario?',
+    showCancelButton: true,
+    cancelButtonText: 'No',
+    confirmButtonText: 'Sí',
+    focusCancel: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.personaService.registrarPersona(this.personaRequest).subscribe(
+        (result: any) => {
+          // Aquí ya tienes la persona registrada, result debería contener persona_id
+          this.ngOnInit();
+          Swal.close();
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrar Usuario',
+            text: '¡Se registraron exitosamente los datos del usuario!',
+          });
+
+          // Verificar si la categoría es artista
+          if (this.personaForm.get('categoria')?.value === 'artista') {
+            // Preparar el objeto artistaRequest
+            this.artistaRequest = {
+              id_artista: 0, // o null si tu backend lo autogenera
+              persona_id: result.persona_id
+            };            
+            this.artistaService.registrarArtista(this.artistaRequest).subscribe(
+              (res) => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Artista Registrado',
+                  text: 'La persona también fue registrada como artista exitosamente.',
+                });
+              },
+              (error) => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'No se pudo registrar como artista.',
+                });
+              }
+            );
+          }
+        },
+        (err: any) => {
+          Swal.close();
+          Swal.fire({
+            icon: 'error',
+            title: 'Advertencia',
+            text: '¡Error al registrar el usuario!',
+          });
+        }
+      );
+    }
+  });
+  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 actualizarPersona() : void{
   this.personaService
@@ -147,39 +261,13 @@ actualizarPersona() : void{
 }
 
 
-insertarPersona(): void {
-    this.setPersonaRequest();
-    console.log('personaRequest', this.personaRequest);
-    Swal.fire({
-      title: 'Esta seguro de registrar los datos del usuario?',
-      showCancelButton: true,
-      cancelButtonText: 'No',
-      confirmButtonText: 'Si',
-      focusCancel: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.personaService.registrarPersona(this.personaRequest).subscribe(
-          (result: any) => {
-            this.ngOnInit();
-            Swal.close();
-            Swal.fire({
-              icon: 'success',
-              title: 'Registrar Usuario....',
-              text: '!Se registro exitosamente los datos del usuario!',
-            });
-          },
-          (err: any) => {
-            Swal.close();
-            Swal.fire({
-              icon: 'error',
-              title: 'Advertencia....',
-              text: '!Error al registrar el usuario!',
-            });
-          } //cierre del error
-        ); //cierre del subscribe
-      }
-    });
-  } 
+
+
+
+
+
+
+
 
   eliminarPersona(personaResponse: IPersonaResponse): void {
     this.personaRequest.persona_id = personaResponse.persona_id;
