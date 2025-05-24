@@ -1,0 +1,68 @@
+<div class="container">
+  <h2>{{ isEdited ? 'Editar Obra' : 'Subir Nueva Obra' }}</h2>
+
+  <form [formGroup]="obraForm" (ngSubmit)="guardarObra()" novalidate>
+
+    <div class="input-group">
+      <label for="titulo">Título *</label>
+      <input id="titulo" type="text" formControlName="titulo" placeholder="Ingresa el título" required />
+      <div *ngIf="obraForm.get('titulo')?.invalid && obraForm.get('titulo')?.touched" class="error-message">
+        El título es obligatorio.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="fecha_realizacion">Fecha de realización *</label>
+      <input id="fecha_realizacion" type="date" formControlName="fecha_realizacion" required />
+      <div *ngIf="obraForm.get('fecha_realizacion')?.invalid && obraForm.get('fecha_realizacion')?.touched" class="error-message">
+        La fecha es obligatoria y debe ser válida.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="dimensiones">Dimensiones *</label>
+      <input id="dimensiones" type="text" formControlName="dimensiones" placeholder="Ejemplo: 30x40 cm" required />
+      <div *ngIf="obraForm.get('dimensiones')?.invalid && obraForm.get('dimensiones')?.touched" class="error-message">
+        Las dimensiones son obligatorias.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="id_tecnica">Técnica *</label>
+      <select id="id_tecnica" formControlName="id_tecnica" required>
+        <option value="">-- Seleccione técnica --</option>
+        <option *ngFor="let tecnica of tecnicas" [value]="tecnica.id">{{ tecnica.nombre }}</option>
+      </select>
+      <div *ngIf="obraForm.get('id_tecnica')?.invalid && obraForm.get('id_tecnica')?.touched" class="error-message">
+        Debes seleccionar una técnica.
+      </div>
+    </div>
+
+    
+    <div class="input-group">
+      <label for="id_artista">Artista *</label>
+      <select id="id_artista" formControlName="id_artista" required>
+        <option value="">-- Seleccione artista --</option>
+        <option *ngFor="let artista of artistas" [value]="artista.id_artista">{{ artista.persona_id}}</option>
+      </select>
+      <div *ngIf="obraForm.get('id_artista')?.invalid && obraForm.get('id_artista')?.touched" class="error-message">
+        Debes seleccionar un artista.
+      </div>
+    </div>
+    
+
+    <div class="input-group">
+      <label for="imagen">Imagen de la obra *</label>
+      <input id="imagen" type="file" (change)="seleccionarArchivo($event)" accept="image/png, image/jpeg" required />
+      <div *ngIf="imagenError" class="error-message">{{ imagenError }}</div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="obraForm.invalid || loading">
+        {{ isEdited ? 'Actualizar Obra' : 'Subir Obra' }}
+      </button>
+      <button type="button" (click)="limpiarFormulario()" [disabled]="loading">Limpiar</button>
+    </div>
+
+  </form>
+</div>

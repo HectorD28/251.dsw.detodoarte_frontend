@@ -1,9 +1,11 @@
-import { ArtistaService } from './../../service/artista.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPersonaResponse } from '../../model/persona-response';
+import { IPersonaRequest } from '../../model/persona-request';
 import { PersonaService } from '../../service/persona.service';
 import { IArtistaResponse } from '../../model/artista-response';
+import { IArtistaRequest } from '../../model/artista-request';
+import { ArtistaService } from './../../service/artista.service';
 import {
   FormControl,
   FormGroup,
@@ -12,8 +14,6 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { IPersonaRequest } from '../../model/persona-request';
-import { IArtistaRequest } from '../../model/artista-request';
 
 
 

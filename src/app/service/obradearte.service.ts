@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IObraDeArteRequest } from '../model/obradearte-request';
@@ -15,14 +15,6 @@ export class ObraDeArteService {
     return this.http.get<IObraDeArteResponse[]>(`${BASE_URL}/obras/obtener`);
   }
 
-  obtenerObraPorId(id: number): Observable<IObraDeArteResponse> {
-    return this.http.get<IObraDeArteResponse>(`${BASE_URL}/obras/${id}`);
-  }
-
-  obtenerObrasPorArtista(idArtista: number): Observable<IObraDeArteResponse[]> {
-    return this.http.get<IObraDeArteResponse[]>(`${BASE_URL}/obras/artista/${idArtista}`);
-  }
-
   registrarObra(obra: IObraDeArteRequest): Observable<IObraDeArteResponse> {
     return this.http.post<IObraDeArteResponse>(`${BASE_URL}/obras/crear`, obra);
   }
@@ -34,4 +26,25 @@ export class ObraDeArteService {
   actualizarObra(id: number, obra: IObraDeArteRequest): Observable<IObraDeArteResponse> {
     return this.http.put<IObraDeArteResponse>(`${BASE_URL}/obras/${id}`, obra);
   }
+
+  obtenerObraPorId(id: number): Observable<IObraDeArteResponse> {
+    return this.http.get<IObraDeArteResponse>(`${BASE_URL}/obras/${id}`);
+  }
+
+  obtenerObrasPorArtista(idArtista: number): Observable<IObraDeArteResponse[]> {
+    return this.http.get<IObraDeArteResponse[]>(`${BASE_URL}/obras/artista/${idArtista}`);
+  }
+
+  subirImagen(id: number, archivo: File): Observable<HttpEvent<any>> {
+    const formData = new FormData();
+    formData.append('file', archivo);
+
+    const req = new HttpRequest('POST', `${BASE_URL}/obras/${id}/imagen`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+
+    return this.http.request(req);
+  }
 }
+
