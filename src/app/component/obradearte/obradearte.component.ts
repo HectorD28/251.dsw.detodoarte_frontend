@@ -1,16 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ObraDeArteService } from '../../service/obradearte.service';
-import { TecnicaService} from '../../service/tecnica.service';
-import { ArtistaService} from '../../service/artista.service'; // Nuevo servicio para artistas
-import { IObraDeArteRequest } from '../../model/obradearte-request';
-import { IObraDeArteResponse } from '../../model/obradearte-response';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpEventType } from '@angular/common/http';
+
+import { ArtistaService} from '../../service/artista.service'; // Nuevo servicio para artistas
 import { IArtistaResponse } from '../../model/artista-response';
 import { ITecnicaResponse } from '../../model/tecnica-response';
+
+import { TecnicaService} from '../../service/tecnica.service';
+import { IObraDeArteRequest } from '../../model/obradearte-request';
+import { IObraDeArteResponse } from '../../model/obradearte-response';
+
+import { PersonaService} from '../../service/persona.service';
+import { IPersonaRequest } from '../../model/persona-request';
+import { IPersonaResponse } from '../../model/persona-response';
 
 @Component({
   selector: 'app-obradearte',
@@ -23,6 +29,7 @@ export class ObradearteComponent {
   obras: IObraDeArteResponse[] = [];
   tecnicas: ITecnicaResponse[] = [];
   artistas: IArtistaResponse[] = [];
+  persona: IPersonaResponse[] = [];
   isEdited = false;
   obraSeleccionada?: IObraDeArteResponse;
   archivoSeleccionado?: File;
@@ -32,7 +39,8 @@ export class ObradearteComponent {
   constructor(
     private obraService: ObraDeArteService,
     private tecnicaService: TecnicaService,
-    private artistaService: ArtistaService // Inyección de servicio artistas
+    private artistaService: ArtistaService,  // Inyección de servicio artistas
+    private personaService: PersonaService
   ) {
       this.obraForm = new FormGroup({
         titulo: new FormControl('', Validators.required),
@@ -65,14 +73,21 @@ export class ObradearteComponent {
   }
 
   cargarArtistas() {
-    this.artistaService.getArtista().subscribe({
-      next: (data) => {
-        this.artistas = data,
-        console.log('Artistas cargados:', this.artistas); // Para depurar
-      },
-      error: (err) => {
+    this.artistaService.obtenerTodas().subscribe({
+      next: data => this.artistas = data,
+      error: () => {
         this.artistas = [];
-        console.error('Error al cargar artistas', err);
+        console.error('Error al cargar artistas');
+      }
+    });
+  }
+
+  cargarPersonas() {
+    this.personaService.obtenerTodasPersonas().subscribe({
+      next: data => this.persona = data,
+      error: () => {
+        this.artistas = [];
+        console.error('Error al cargar artistas');
       }
     });
   }
@@ -173,8 +188,8 @@ export class ObradearteComponent {
       titulo: obra.titulo,
       fecha_realizacion: obra.fechaRealizacion,
       dimensiones: obra.dimensiones,
-      id_tecnica: obra.tecnicaId,
-      id_artista: obra.artistaId,
+      id_tecnica: obra.tecnicaId.id,
+      id_artista: obra.artistaId.idArtista,
       precio: obra.precio
     });
     this.archivoSeleccionado = undefined;

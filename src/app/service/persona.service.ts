@@ -13,8 +13,8 @@ import { IArtistaResponse } from '../model/artista-response';
 export class PersonaService {
 
   constructor(private http: HttpClient) { }
-  obtenerTodasPersonas(): Observable<IPersonaResponse> {
-    return this.http.get<IPersonaResponse>(`${BASE_URL}/personas`);
+  obtenerTodasPersonas(): Observable<IPersonaResponse[]> {
+    return this.http.get<IPersonaResponse[]>(`${BASE_URL}/personas`);
   }
 
   registrarPersona(persona: IPersonaRequest): Observable<IPersonaResponse> {

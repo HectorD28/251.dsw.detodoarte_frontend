@@ -43,7 +43,7 @@
       <label for="id_artista">Artista *</label>
       <select id="id_artista" formControlName="id_artista" required>
         <option value="">-- Seleccione artista --</option>
-        <option *ngFor="let artista of artistas" [value]="artista.id_artista">{{ artista.persona_id}}</option>
+          <option *ngFor="let artista of artistas" [value]="artista.idArtista">{{ artista.persona.nombreCompleto }}</option>
       </select>
       <div *ngIf="obraForm.get('id_artista')?.invalid && obraForm.get('id_artista')?.touched" class="error-message">
         Debes seleccionar un artista.

@@ -118,19 +118,19 @@ export class RegistrarPersonaComponent {
     this.personaForm.get('persona_id')?.value;
     this.personaRequest.dni=
     this.personaForm.get('dni')?.value;
-    this.personaRequest.nombre_completo=
+    this.personaRequest.nombreCompleto=
     this.personaForm.get('nombre_completo')?.value;
-    this.personaRequest.apellido_paterno=
+    this.personaRequest.apellidoPaterno=
     this.personaForm.get('apellido_paterno')?.value;
-    this.personaRequest.apellido_materno=
+    this.personaRequest.apellidoMaterno=
     this.personaForm.get('apellido_materno')?.value;
-    this.personaRequest.direccion_residencia=
+    this.personaRequest.direccion=
     this.personaForm.get('direccion_residencia')?.value;
     this.personaRequest.sexo=
     this.personaForm.get('sexo')?.value;
     this.personaRequest.telefono=
     this.personaForm.get('telefono')?.value;
-    this.personaRequest.correo_electronico=
+    this.personaRequest.correoElectronico=
     this.personaForm.get('correo_electronico')?.value;
     this.personaRequest.contrasena=
     this.personaForm.get('contrasena')?.value;
@@ -312,13 +312,13 @@ actualizarPersona() : void{
         this.personaForm.patchValue({
           persona_id: personaResponse.persona_id,
           dni: personaResponse.dni,
-          nombre_completo: personaResponse.nombre_completo,
-          apellido_paterno: personaResponse.apellido_paterno,
-          apellido_materno: personaResponse.apellido_materno,
-          direccion_residencia: personaResponse.direccion_residencia,
+          nombre_completo: personaResponse.nombreCompleto,
+          apellido_paterno: personaResponse.apellidoPaterno,
+          apellido_materno: personaResponse.apellidoMaterno,
+          direccion_residencia: personaResponse.direccion,
           sexo: personaResponse.sexo,
           telefono: personaResponse.telefono,
-          correo_electronico: personaResponse.correo_electronico,
+          correo_electronico: personaResponse.correoElectronico,
           contrasena: personaResponse.contrasena,
           
         });
