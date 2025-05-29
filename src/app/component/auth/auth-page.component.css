@@ -1,0 +1,131 @@
+/* Fondo con degradado suave */
+.relative.flex.h-full.w-full.flex-col.items-center.justify-center {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Caja blanca del formulario */
+.flex.w-1\/4.flex-col.items-center.justify-center.gap-3.rounded-lg.bg-white.p-8.shadow-2xl {
+  background: #ffffffdd; /* blanco semitransparente */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  width: 360px;
+  max-width: 95%;
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+}
+
+/* Sombra al pasar mouse */
+.flex.w-1\/4.flex-col.items-center.justify-center.gap-3.rounded-lg.bg-white.p-8.shadow-2xl:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del logo y título */
+.flex.h-full.w-full.flex-col.items-center.justify-center.gap-3 img {
+  width: 140px !important;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+/* Título principal */
+.flex.h-full.w-full.flex-col.items-center.justify-center.gap-3 h1 {
+  margin-top: 0.3rem;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+/* Estilo de los títulos de los campos */
+h1.cursor-default {
+  font-weight: 700;
+  color: #34495e;
+  user-select: none;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+/* Inputs */
+.input-style-1 {
+  padding: 0.75rem 1.2rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-style-1:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 12px rgba(41, 128, 185, 0.5);
+}
+
+/* Botón para mostrar/ocultar contraseña */
+button.absolute.inset-y-0.right-0.flex.items-center.px-3.text-gray-500 {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #7f8c8d;
+  transition: color 0.3s ease;
+  margin-top: 0.25rem;
+}
+
+button.absolute.inset-y-0.right-0.flex.items-center.px-3.text-gray-500:hover {
+  color: #2980b9;
+}
+
+/* Botón de enviar */
+.button-style-2 {
+  background: #2980b9;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 1.8rem;
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+.button-style-2:hover {
+  background: #1c5980;
+  box-shadow: 0 8px 20px rgba(28, 89, 128, 0.6);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+  .flex.w-1\/4.flex-col.items-center.justify-center.gap-3.rounded-lg.bg-white.p-8.shadow-2xl {
+    width: 90%;
+    padding: 1.8rem 2rem;
+  }
+
+  .flex.h-full.w-full.flex-col.items-center.justify-center.gap-3 img {
+    width: 110px !important;
+    height: 110px;
+  }
+
+  .flex.h-full.w-full.flex-col.items-center.justify-center.gap-3 h1 {
+    font-size: 1.4rem;
+  }
+
+  h1.cursor-default {
+    font-size: 1.1rem;
+  }
+}

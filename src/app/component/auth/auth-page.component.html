@@ -1,0 +1,64 @@
+<div
+  class="relative flex h-full w-full flex-col items-center justify-center"
+  *ngIf="!isLoading"
+>
+  <div
+    class="bg-image-1 absolute inset-0 -z-10 bg-[url('./img/slogan.jpg')] blur-sm"
+  ></div>
+
+  <div
+    class="flex w-1/4 flex-col items-center justify-center gap-3 rounded-lg bg-white p-8 shadow-2xl"
+  >
+    <div class="flex h-full w-full flex-col items-center justify-center gap-3">
+      <img
+        src="./img/slogan.jpg"
+        alt=""
+        class="w-1/3"
+      />
+      <h1 class="text-lg font-bold">De Todo Arte</h1>
+    </div>
+
+    <form
+      class="flex h-full w-full flex-col gap-5"
+      (ngSubmit)="onSignIn()"
+      [formGroup]="loginForm"
+    >
+      <div class="flex w-full flex-col gap-1">
+        <h1 class="cursor-default">Usuario</h1>
+        <input
+          class="input-style-1"
+          type="text"
+          placeholder="usuario"
+          formControlName="username"
+        />
+      </div>
+
+      <div class="flex w-full flex-col gap-2">
+        <h1 class="cursor-default">Contraseña</h1>
+        <div class="relative w-full">
+          <input
+            class="input-style-1 w-full"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Contraseña"
+            formControlName="contrasena"
+          />
+          <button
+            type="button"
+            class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500"
+            [pTooltip]="showPassword ? 'Ocultar' : 'Mostrar'"
+            tooltipPosition="top"
+            showDelay="1000"
+            (click)="showPassword = !showPassword"
+          >
+            <i *ngIf="showPassword" class="fa fa-eye-slash"></i>
+            <i *ngIf="!showPassword" class="fa fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="w-full pt-6">
+        <button class="button-style-2 w-full" type="submit">Ingresar</button>
+      </div>
+    </form>
+  </div>
+</div>
