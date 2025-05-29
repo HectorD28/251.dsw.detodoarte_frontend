@@ -30,6 +30,9 @@ export class AuthService {
 
   //Método encargado de limpiar todos los datos relacionados al Login
   logout() {
+    console.log('Logging out...', this.tokenService.getToken(),
+      this.roleService.getRole(), this.sidebarService.items);
+
     this.tokenService.clearToken();
     this.roleService.clearRole();
     this.sidebarService.clearItems();

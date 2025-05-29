@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { IPersonaResponse } from '../../model/persona-response';
 import { PersonaService } from '../../service/persona.service';
 
+import { RolesService } from '../../roles/roles.service';
+
+
 import {
   FormControl,
   FormGroup,
@@ -21,5 +24,13 @@ import { IPersonaRequest } from '../../model/persona-request';
   styleUrl: './perfil.component.css'
 })
 export class PerfilComponent {
+    public role : string | null = null;
+
+  constructor(private roleService: RolesService) {
+    //Obtiene el rol con el cual se inicio sesión
+    this.role = this.roleService.getRole();
+    console.log('PerfilComponent initialized with role:', this.role);
+  }
+  
 
 }

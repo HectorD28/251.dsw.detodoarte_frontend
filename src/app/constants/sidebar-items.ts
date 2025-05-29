@@ -9,10 +9,18 @@ export interface SidebarItem {
 //Opciones en común para los roles
 const COMMON_ITEMS: SidebarItem[] = [
   {
-    name: 'Inicio',
-    description: 'Dirige a la sección de inicio',
-    tooltip: 'Inicio',
+    name: 'Perfil',
+    description: 'Dirige al perfil del usuario',
+    tooltip: 'Perfil',
     icon: 'fas fa-home',
+    route: '/perfil',
+  },
+
+  {
+    name: 'Inicio',
+    description: 'Dirige a la página de inicio',
+    tooltip: 'Inicio',
+    icon: 'fa-solid fa-share',
     route: '/home',
   },
 ];
@@ -56,11 +64,11 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
     artista: [
       ...COMMON_ITEMS,
       {
-        name: 'Consultar Stock',
-        description: 'Sección para consultar los productos en farmacia',
-        tooltip: 'Stock',
+        name: 'Solcitar Exposición',
+        description: 'Sección para solicitar una exposición de arte',
+        tooltip: 'Exposición',
         icon: 'fa fa-medkit',
-        route: '/stock',
+        route: '/solicitud-exposicion',
       },
     ],
   };

@@ -59,7 +59,7 @@ export class AuthPageComponent {
       this.contrasena = this.loginForm.controls['contrasena'].value!.trim();
 
       console.log('Username:', this.username);
-      console.log('Contrasena:', this.contrasena);
+      
 
 
       this.loadingService.show();

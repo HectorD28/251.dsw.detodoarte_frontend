@@ -16,10 +16,10 @@ export class RolesService {
   }
 
   // Método para verificar si el rol es válido
-  isValidRole(role: string): boolean {
-    const roleFirstLetterCapitalize = this.firstLetterCapitalize(role);
-    return Object.values(ROLES).includes(roleFirstLetterCapitalize as Role);
-  }
+isValidRole(role: string): boolean {
+  const roleUpper = role.toUpperCase();
+  return Object.values(ROLES).some(r => r.toUpperCase() === roleUpper);
+}
 
   // Establece el rol del usuario como variable global
   setRole(role: string): void {
@@ -27,6 +27,9 @@ export class RolesService {
       const roleFirstLetterCapitalize = this.firstLetterCapitalize(role);
       localStorage.setItem(this.roleKey, roleFirstLetterCapitalize);
       this.role = roleFirstLetterCapitalize;
+    }
+    else {
+      console.error(`El rol "${role}" no es válido.`);
     }
   }
 

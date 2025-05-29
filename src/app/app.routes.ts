@@ -9,14 +9,37 @@ import { SolicitudExposicionComponent } from './component/solicitud-exposicion/s
 import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/trabaja-con-nosotros.component';
 import { ObradearteComponent } from './component/obradearte/obradearte.component';
 
+
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'registrar-persona',component:RegistrarPersonaComponent},
-    {path: 'perfil', component: PerfilComponent },
-    {path: 'solicitud-exposicion', component: SolicitudExposicionComponent},
-    {path: 'trabaja-con-nosotros', component: TrabajaConNosotrosComponent},
-    {path: 'obradearte', component: ObradearteComponent},
-    {path: 'auth', loadChildren: () => AuthModule, }
+    {path: '',
+     redirectTo: '/home', 
+     pathMatch: 'full'},
+
+    {path: 'home', 
+     component: HomeComponent},
+
+    {path: 'registrar-persona',
+     component:RegistrarPersonaComponent},
+
+    {
+        path: 'perfil', 
+        component: PerfilComponent,
+        canActivate: [authGuard],},
+
+    {
+        path: 'solicitud-exposicion', 
+        component: SolicitudExposicionComponent},
+
+    {
+        path: 'trabaja-con-nosotros', 
+        component: TrabajaConNosotrosComponent},
+    
+    {
+        path: 'obradearte', 
+        component: ObradearteComponent},
+    
+    {
+        path: 'auth', 
+        loadChildren: () => AuthModule, }
 ];
 

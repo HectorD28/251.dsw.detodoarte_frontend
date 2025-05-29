@@ -1,60 +1,105 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" [@fadeInDown]>
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">DeTodoArte</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand fw-bold" href="#">DeTodoArte</a>
+
+    <!-- Botón toggle aquí -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#footer" (click)="scrollToFooter()">Conocenos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Vender En DeTodoArte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Campañas Festivas!</a>
-        </li>
-      </ul>
+     
+          <!-- Menú izquierdo -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#footer" (click)="scrollToFooter()">Conócenos</a>
+          </li>
+        </ul>
 
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        
+        <!-- Menú derecho -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="/trabaja-con-nosotros">Trabaja con nosotros!</a>
+          </li>
 
-            <li class="nav-item">
-                 <a class="nav-link" href="/trabaja-con-nosotros">Trabaja con nosotros!</a>
-            </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Técnicas De Arte
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end bg-dark border-0 shadow-lg">
+              <li><a class="dropdown-item text-white" href="#">Pintura</a></li>
+              <li><a class="dropdown-item text-white" href="#">Escultura</a></li>
+              <li><a class="dropdown-item text-white" href="#">Fotografía</a></li>
+              <li><a class="dropdown-item text-white" href="#">Cerámica</a></li>
+              <li><a class="dropdown-item text-white" href="#">Dibujo</a></li>
+              <li><a class="dropdown-item text-white" href="#">Grabado</a></li>
+              <li><a class="dropdown-item text-white" href="#">Arquitectura</a></li>
+              <li><a class="dropdown-item text-white" href="#">Diseño Gráfico</a></li>
+              <li><a class="dropdown-item text-white" href="#">Escenografía</a></li>
+              <li><a class="dropdown-item text-white" href="#">Escultura en Madera</a></li>
+            </ul>
+          </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Técnicas De Arte
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Pintura</a></li>
-            <li><a class="dropdown-item" href="#">Escultura</a></li>
-            <li><a class="dropdown-item" href="#">Fotografía</a></li>
-            <li><a class="dropdown-item" href="#">Cerámica</a></li>
-            <li><a class="dropdown-item" href="#">Dibujo</a></li>
-            <li><a class="dropdown-item" href="#">Grabado</a></li>
-            <li><a class="dropdown-item" href="#">Arquitectura</a></li>
-            <li><a class="dropdown-item" href="#">Diseño Gráfico</a></li>
-            <li><a class="dropdown-item" href="#">Escenografía</a></li>
-            <li><a class="dropdown-item" href="#">Escultura en Madera</a></li>
-          </ul>
-        </li>
+          <!-- Sidebar Items Integrados -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Menú
+              <i class="fas fa-bars"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 220px;">
+              <!-- Sidebar Items list -->
+              <li *ngFor="let item of sideBarItems" class="mb-2">
+                <a
+                  class="dropdown-item d-flex align-items-center gap-3 rounded"
+                  href="javascript:void(0)"
+                  (click)="routeNavigate(item.route)"
+                  pTooltip="{{ item.tooltip }}"
+                  tooltipPosition="right"
+                >
+                  <i [class]="item.icon"></i>
+                  <span>{{ item.name }}</span>
+                </a>
+              </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/auth">Iniciar sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/obradearte">crear obra de arte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/registrar-persona">Registrarse</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mis compras</a>
-        </li>
-      </ul>
+              <li><hr class="dropdown-divider" /></li>
+
+              <!-- Logout Button -->
+              <li>
+                <button
+                  pButton
+                  label="Salir"
+                  icon="fas fa-sign-out-alt"
+                  class="w-100"
+                  severity="danger"
+                  text
+                  [outlined]="true"
+                  (click)="Logout($event)"
+                ></button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
     </div>
   </div>
 </nav>
