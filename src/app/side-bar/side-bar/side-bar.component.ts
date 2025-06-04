@@ -40,6 +40,12 @@ export class SideBarComponent {
     this.sideBarItems = this.sidebarService.items;
   }
 
+  ngOnInit(): void {
+    this.sideBarItems = this.sidebarService.items;
+    // Puedes agregar un log para depurar:
+    console.log('Sidebar items:', this.sideBarItems);
+  }
+  
   routeNavigate(route: string) {
     this.router.navigate([`/${route}`]);
   }
