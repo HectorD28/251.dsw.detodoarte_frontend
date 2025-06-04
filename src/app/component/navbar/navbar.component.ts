@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { SideBarService } from '../../side-bar/service/side-bar.service';
 import { AuthService } from './../../auth/auth.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,14 @@ import { DrawerModule } from 'primeng/drawer';
 import { Tooltip } from 'primeng/tooltip';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+
+import { CartComponent } from './../cart/cart.component';
+import { faCartArrowDown, faUser } from '@fortawesome/free-solid-svg-icons';
+import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CartService } from '../../service/cart/cart.service';
+import { ProductsListService } from '../../service/cart/products-list.service';
+
 
 import {
   trigger,
@@ -42,17 +50,39 @@ import {
 })
 
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   sideBarItems: any[] = [];
+
+  public totalItems: number = 0
+  public searchItem!: string;
+  public cartIcon = faCartArrowDown
+  public userIcon = faUser
+  public productList = new BehaviorSubject<any>([])
 
   constructor(
     private confirmationService: ConfirmationService,
     private router: Router,
     private sidebarService: SideBarService,
     private authService: AuthService,
+
+    public cartModal: MatDialog,
+    private cartService: CartService,
+    public productsListService: ProductsListService
   ) {
     this.sideBarItems = this.sidebarService.items;
+
+    this.cartService.getProduct().subscribe(res => {
+    this.totalItems = res.length
+    })
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  openCart(){
+    this.cartModal.open(CartComponent)
   }
 
   routeNavigate(route: string) {

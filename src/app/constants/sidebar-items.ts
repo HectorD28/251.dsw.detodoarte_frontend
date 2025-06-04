@@ -23,6 +23,14 @@ const COMMON_ITEMS: SidebarItem[] = [
     icon: 'fa-solid fa-share',
     route: '/home',
   },
+  
+  {
+    name:'prueba',
+    description: 'Prueba de item',
+    tooltip: 'Prueba',
+    icon: 'fa fa-bell',
+    route: '/prueba',
+  },
 ];
 
 //Opciones especificas por el rol (veterinario, recepcionista, farmaceutico)

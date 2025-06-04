@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 class="text-success" mat-dialog-title>Meu Carrinho </h1>
+  <hr>
+
+  <div mat-dialog-content>
+    <ng-container>
+      <table class="table-responsive" >
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th colspan="2">Quantidade</th>
+            <th>Total</th>
+            <th>Remover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="img-fluid img-thumbnail" width="100" height="100" src="assets/images/product1.jpg" alt="Produto 1"></td>
+            <td>Produto 1</td>
+            <td>R$ 50,00</td>
+            <td>2</td>
+            <td>
+              <button type="button" class="btn"></button>
+              <button type="button" class="btn"></button>
+            </td>
+            <td>R$ 100,00</td>
+            <td><button class="btn btn-sm btn-danger"></button></td>
+          </tr>
+          <tr>
+            <td colspan="5"></td>
+            <td><strong class="btn btn-sm btn-outline-secondary">Total: R$ 100,00</strong></td>
+            <td><button class="btn btn-sm btn-danger">Limpar Carrinho</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <!-- When the cart is empty -->
+    <ng-container>
+      <div class="emptyCart d-flex flex-column align-items-center">
+        <img width="200" class="imgEmptyCart" src="assets/images/empty_cart.png" alt="Carrinho vazio">
+        <h3>Seu Carrinho está vazio!</h3>
+        <a class="btn btn-sm btn-success" href="/">Voltar para Loja</a>
+      </div>
+    </ng-container>
+
+    <div mat-dialog-actions >
+      <button class="btn btn-sm btn-secondary" mat-button mat-dialog-close>Fechar</button>
+    </div>
+  </div>
+</div>
