@@ -1,0 +1,183 @@
+/* Estilo general del formulario */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilo para los campos de entrada */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+}
+
+.input-group input, .input-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: #004c99;
+}
+
+.links {
+  text-align: center;
+}
+
+.links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap
+}
+
+.table thead th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.tabla-centrada {
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+}
+
+.register-container {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start; /* Alinea ambos bloques arriba */
+}
+
+.register-box {
+  flex: 1;
+  min-width: 350px;
+  max-width: 450px;
+}
+
+.programadas-box {
+  flex: 1;
+  min-width: 350px;
+  max-width: 600px;
+  margin-top: 32px; 
+}
+
+.programadas-box .table {
+  font-size: 12px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.programadas-box .table th,
+.programadas-box .table td {
+  padding: 0.25rem 0.5rem;
+}
+
+.register-box h2 {
+  text-align: center;
+}
+
+.programadas-box .table {
+  font-size: 13px;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.center-content form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.tabla-centrada {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.solicitudes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.solicitudes-container h2 {
+  text-align: center;
+}
+
+.solicitudes-container form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.tabla-centrada {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

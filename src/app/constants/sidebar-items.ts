@@ -79,4 +79,16 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         route: '/solicitud-exposicion',
       },
     ],
+    administrador: [
+    ...COMMON_ITEMS,
+    // Puedes agregar más ítems exclusivos para administrador aquí
+    // Ejemplo:
+     {
+      name: 'Programar Exposición',
+      description: 'Sección para programar una exposición',
+      tooltip: 'Programar',
+      icon: 'fa fa-calendar-plus',
+      route: '/programar-exposicion',
+    }
+    ],
   };

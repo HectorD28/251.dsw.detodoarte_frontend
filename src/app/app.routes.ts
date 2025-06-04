@@ -8,6 +8,8 @@ import { PerfilComponent } from './component/perfil/perfil.component'; // Asegú
 import { SolicitudExposicionComponent } from './component/solicitud-exposicion/solicitud-exposicion.component';
 import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/trabaja-con-nosotros.component';
 import { ObradearteComponent } from './component/obradearte/obradearte.component';
+import { ProgramarExposicionComponent } from './component/programar-exposicion/programar-exposicion.component';
+
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
 
 export const routes: Routes = [
@@ -40,6 +42,9 @@ export const routes: Routes = [
     {
         path: 'obradearte', 
         component: ObradearteComponent},
+    { path: 'programar-exposicion', 
+        component: ProgramarExposicionComponent },
+
     
     {
         path: 'auth', 
