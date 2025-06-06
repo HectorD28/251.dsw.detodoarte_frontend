@@ -1,0 +1,87 @@
+<div class="solicitudes-container">
+  <div class="center-content">
+    <h2>Programar Exposición</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre de la exposición" required>
+      </div>
+      <div class="input-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" id="descripcion" formControlName="descripcion" placeholder="Descripción" required>
+      </div>
+      <div class="input-group">
+        <label for="fecha_inicio">Fecha Inicio</label>
+        <input type="date" id="fecha_inicio" formControlName="fecha_inicio" required>
+      </div>
+      <div class="input-group">
+        <label for="fecha_fin">Fecha Fin</label>
+        <input type="date" id="fecha_fin" formControlName="fecha_fin" required>
+      </div>
+      <div class="input-group">
+        <label for="tipo_exposicion">Tipo de Exposición</label>
+        <input type="text" id="tipo_exposicion" formControlName="tipo_exposicion" placeholder="Tipo" required>
+      </div>
+      <button type="submit" class="register-btn" [disabled]="form.invalid">
+        Programar Exposición
+      </button>
+    </form>
+
+    <div class="tabla-centrada">
+      <table class="table table-striped table-hover table-bordered">
+        <caption class="text-center" style="caption-side: top; font-weight: bold;">
+          Solicitudes de Exposición Disponibles
+        </caption>
+        <thead class="thead-dark">
+          <tr>
+            <th>ID Solicitud</th>
+            <th>Fecha Emisión</th>
+            <th>Estado</th>
+            <th>Comentarios</th>
+            <th>Artista</th>
+            <th>Fecha Recepción</th>
+            <th>Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let solicitud of solicitudes; let i = index">
+            <td>{{ solicitud.id_solicitud }}</td>
+            <td>{{ solicitud.fecha_emision_solicitud }}</td>
+            <td>{{ solicitud.estadoSolicitud }}</td>
+            <td>{{ solicitud.comentarios }}</td>
+            <td>{{ solicitud.artista?.persona?.nombreCompleto }}</td>
+            <td>{{ solicitud.fecha_recepcion_solicitud }}</td>
+            <td>
+              <input
+                type="radio"
+                formControlName="idSolicitudExposicion"
+                [value]="solicitud.id_solicitud"
+                required
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="programadas-box">
+    <h4 class="text-center">Exposiciones Programadas</h4>
+    <table class="table table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expo of exposicionesProgramadas">
+          <td>{{ expo.nombre }}</td>
+          <td>{{ expo.fecha_inicio }}</td>
+          <td>{{ expo.fecha_fin }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

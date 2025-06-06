@@ -32,9 +32,6 @@ export class PersonaService {
     return this.http.put<IPersonaResponse>(`${BASE_URL}/personas`, persona);
   }
 
-
-
-
   obtenerTodasArtistas(): Observable<IArtistaResponse> {
     return this.http.get<IArtistaResponse>(`${BASE_URL}/artistas`);
   }
