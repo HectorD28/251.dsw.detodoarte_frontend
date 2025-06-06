@@ -1,0 +1,233 @@
+/* Estilo general */
+.max-w-full {
+  max-width: 100%;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.font-sans {
+  font-family: 'Sans-serif';
+}
+
+.bg-gray-100 {
+  background-color: #f7fafc;
+}
+
+/* Encabezado */
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray-800 {
+  color: #2d3748;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+/* Sección principal */
+.bg-white {
+  background-color: #ffffff;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Fila para ID de Orden de Pago */
+.md\\:flex-row {
+  flex-direction: row;
+}
+
+
+.flex-col {
+  flex-direction: column;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-gray-700 {
+  color: #4a5568;
+}
+
+/* Input y Autocompletar */
+.w-full {
+  width: 100%;
+}
+
+.p-autocomplete input {
+  width: 100%;
+}
+
+.p-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+}
+
+.p-button[severity="danger"] {
+  background-color: #e53e3e;
+  color: #ffffff;
+}
+
+.p-button[severity="success"] {
+  background-color: #48bb78;
+  color: #ffffff;
+}
+
+.p-button[disabled] {
+  background-color: #cbd5e0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+/* Tabla */
+.p-table {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.p-table th {
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: bold;
+  background-color: #f3f4f6;
+}
+
+.p-table td {
+  padding: 0.75rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-table .p-paginator {
+  justify-content: center;
+}
+
+.p-table .p-paginator .p-paginator-pages {
+  margin-top: 1rem;
+}
+
+/* Confirmar pago */
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-green-600 {
+  color: #38a169;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+/* Modal Confirmación */
+.p-dialog {
+  width: 80vw;
+  height: auto;
+}
+
+.p-field {
+  margin-bottom: 1rem;
+}
+
+.columns-1 {
+  column-count: 1;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+/* Input de DNI */
+#dni {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+}
+
+.p-inputText {
+  width: 100%;
+}
+
+/* Botones de Confirmación */
+.p-button[icon="pi pi-check"] {
+  background-color: #38a169;
+  color: #ffffff;
+}
+
+.p-button[icon="pi pi-check"][disabled] {
+  background-color: #cbd5e0;
+  color: #a0aec0;
+}
+
+/* Mensajes de error */
+.dniError {
+  color: #e53e3e;
+  font-size: 0.875rem;
+}

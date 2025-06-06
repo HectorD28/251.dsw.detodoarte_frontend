@@ -1,4 +1,4 @@
-export interface SidebarItem {
+export interface NavbarItem {
   name: string;
   description: string;
   tooltip: string;
@@ -6,24 +6,7 @@ export interface SidebarItem {
   route: string;
 }
 
-//Opciones en común para los roles
-const COMMON_ITEMS: SidebarItem[] = [
-  {
-    name: 'Perfil',
-    description: 'Dirige al perfil del usuario',
-    tooltip: 'Perfil',
-    icon: 'fas fa-home',
-    route: '/perfil',
-  },
-
-  {
-    name: 'Inicio',
-    description: 'Dirige a la página de inicio',
-    tooltip: 'Inicio',
-    icon: 'fa-solid fa-share',
-    route: '/home',
-  },
-
+const COMMON_ITEMS: NavbarItem[] = [
   {
     name: 'Pruebas',
     description: 'Dirige a la sección de pruebas',
@@ -32,11 +15,9 @@ const COMMON_ITEMS: SidebarItem[] = [
     route: '/pruebas',
   },
   
-  
 ];
 
-//Opciones especificas por el rol (veterinario, recepcionista, farmaceutico)
-export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
+export const NAVBAR_ITEMS: { [role: string]: NavbarItem[] } = {
     especialista: [
       ...COMMON_ITEMS,
       {
@@ -47,19 +28,12 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         route: '/mascotas',
       },
       {
-        name: 'Pruebas',
-        description: 'Dirige a la sección de pruebas',
-        tooltip: 'Pruebas',
-        icon: 'fa-solid fa-flask',
-        route: '/pruebas',
+        name: 'Mantener Historias',
+        description: 'Dirige a la sección de Mantener historias',
+        tooltip: 'Historias',
+        icon: 'fas fa-file-alt',
+        route: '/historias',
       },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
     ],
     usuario: [
       ...COMMON_ITEMS,
@@ -76,14 +50,7 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         tooltip: 'Pagos',
         icon: 'fa fa-credit-card-alt',
         route: '/pagos',
-      },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
+      }
     ],
     artista: [
       ...COMMON_ITEMS,
@@ -94,12 +61,5 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa fa-medkit',
         route: '/solicitud-exposicion',
       },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
     ],
   };

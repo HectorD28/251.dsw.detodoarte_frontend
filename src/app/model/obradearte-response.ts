@@ -11,4 +11,5 @@ export interface IObraDeArteResponse {
   precio: number;
   cantidadVisualizaciones: number;
   rutaImagen: string;
+  stock: number;
 }

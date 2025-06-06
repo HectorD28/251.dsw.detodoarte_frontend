@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   iconMinus = faMinusSquare
   imgHeight = "80"
   imgWidth =" 80"
-  imgEmptyCart = '../../../assets/empty_cart.jpg'
+  imgEmptyCart = './img/empty_cart.jpg'
   imgEmptyCartW = "300"
 
   public cartTotal !: number;

@@ -1,3 +1,7 @@
+import { PagosPagesComponent } from './component/pagos/pagos-pages/pagos-pages.component';
+import { StockPageComponent } from './component/stock/stock-page/stock-page.component';
+import { OrdenPageComponent } from './component/orden-page/orden-page/orden-page.component';
+import { AgregarProductoComponent } from './component/agregar-producto/agregar-producto/agregar-producto.component';
 
 import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
@@ -9,6 +13,8 @@ import { SolicitudExposicionComponent } from './component/solicitud-exposicion/s
 import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/trabaja-con-nosotros.component';
 import { ObradearteComponent } from './component/obradearte/obradearte.component';
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
+
+
 
 export const routes: Routes = [
     {
@@ -47,8 +53,30 @@ export const routes: Routes = [
 
     {
         path: 'pruebas',
-        component: PruebasComponent,
-        canActivate: [authGuard],
-    }
+        component: PruebasComponent
+    },
+
+    {
+        path: 'stock-page',
+        component: StockPageComponent,
+    },
+
+    {
+        path: 'pagos-page',
+        component: PagosPagesComponent,
+    },
+
+    {
+        path: 'orden-page',
+        component: OrdenPageComponent,
+    },
+
+    {
+        path: 'agregar-producto',
+        component: AgregarProductoComponent,
+        
+    },
+
+    
 ];
 

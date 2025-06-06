@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { RolesService } from './../../roles/roles.service';
-import { LoadingService } from './../../loading-page/loading.service';
+import { LoadingService } from '../../service/loading-page/loading.service';
 import {
   FormControl,
   FormGroup,

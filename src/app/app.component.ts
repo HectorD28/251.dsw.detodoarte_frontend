@@ -15,7 +15,7 @@ import { filter } from 'rxjs/operators';
     CommonModule,
     NavbarComponent,
     ReactiveFormsModule,
-    SideBarComponent
+    SideBarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
@@ -37,7 +37,7 @@ export class AppComponent {
         this.showNavbar = currentUrl === '/home';
 
         // Mostrar sidebar SOLO en rutas de perfil y similares
-        const sidebarRoutes = ['/perfil', '/obradearte', '/solicitud-exposicion','/prueba'];
+        const sidebarRoutes = ['/perfil', '/obradearte', '/solicitud-exposicion','/pruebas'];
         this.showSidebar = sidebarRoutes.some((route) => currentUrl.startsWith(route));
       });
   }

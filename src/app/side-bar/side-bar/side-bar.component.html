@@ -1,6 +1,7 @@
 <aside
   class="group left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-sky-50 px-4 py-7 shadow-inner"
 >
+  <!-- Drawer -->
   <p-drawer [(visible)]="visible">
     <ng-template #header>
       <div class="flex items-center gap-4">
@@ -14,19 +15,22 @@
     </ng-template>
     <p-divider />
 
-    <div
-      *ngFor="let item of sideBarItems"
-      class="flex w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-full bg-white p-4 hover:bg-gray-50"
-      (click)="routeNavigate(item.route)"
-    >
-      <div class="flex w-full flex-row gap-5 px-5">
-        <span><i [class]="item.icon"></i></span>
-        <h1 class="font-bold">{{ item.name }}</h1>
+    <!-- Sidebar Items -->
+    <ng-container *ngIf="visible">
+      <div
+        *ngFor="let item of sideBarItems"
+        class="flex w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-full bg-white p-4 hover:bg-gray-50 transition-all duration-300 ease-in-out"
+        (click)="routeNavigate(item.route)"
+      >
+        <div class="flex w-full flex-row gap-5 px-5">
+          <span><i [class]="item.icon"></i></span>
+          <h1 class="font-bold">{{ item.name }}</h1>
+        </div>
+        <p class="flex w-full px-5 text-justify text-sm">
+          {{ item.description }}
+        </p>
       </div>
-      <p class="flex w-full px-5 text-justify text-sm">
-        {{ item.description }}
-      </p>
-    </div>
+    </ng-container>
 
     <ng-template #footer>
       <p-divider />
@@ -45,24 +49,34 @@
       </div>
     </ng-template>
   </p-drawer>
-  <p-button (click)="visible = true" icon="fa-solid fa-bars" />
 
+  <!-- Botón de menú (hamburguesa) -->
+  <p-button 
+    (click)="visible = !visible" 
+    icon="fa-solid fa-bars" 
+    class="fixed top-5 left-5 z-50 bg-black text-white p-3 rounded-full shadow-md hover:bg-gray-800 transition duration-300"
+  />
+
+  <!-- Contenido principal del sidebar -->
   <div
     class="flex h-full w-full flex-col items-center justify-start gap-2 py-14"
   >
-    <div
-      *ngFor="let item of sideBarItems"
-      class="flex w-full cursor-pointer flex-col items-center justify-center gap-5 rounded-full bg-white p-4 hover:bg-gray-50"
-      pTooltip="{{ item.tooltip }}"
-      tooltipPosition="right"
-      (click)="routeNavigate(item.route)"
-    >
-      <span><i [class]="item.icon"></i></span>
-    </div>
+    <ng-container *ngIf="visible">
+      <div
+        *ngFor="let item of sideBarItems"
+        class="flex w-full cursor-pointer flex-col items-center justify-center gap-5 rounded-full bg-white p-4 hover:bg-gray-50 transition-all duration-300 ease-in-out"
+        pTooltip="{{ item.tooltip }}"
+        tooltipPosition="right"
+        (click)="routeNavigate(item.route)"
+      >
+        <span><i [class]="item.icon"></i></span>
+      </div>
+    </ng-container>
   </div>
 
+  <!-- Opción de salir -->
   <div
-    class="flex w-full cursor-pointer items-center justify-center gap-5 rounded-full bg-white p-4 hover:bg-red-300"
+    class="flex w-full cursor-pointer items-center justify-center gap-5 rounded-full bg-white p-4 hover:bg-red-300 transition-all duration-300"
     pTooltip="Salir"
     tooltipPosition="right"
     (click)="Logout($event)"

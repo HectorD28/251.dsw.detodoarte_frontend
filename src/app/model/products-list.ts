@@ -3,4 +3,5 @@ export interface ProductsList {
   name: string;
   price: number;
   qnt: number;
+  stars: number;
 }
