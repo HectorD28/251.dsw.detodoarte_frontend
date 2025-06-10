@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPersonaResponse } from '../../model/persona-response';
 import { IPersonaRequest } from '../../model/persona-request';
-import { PersonaService } from '../../service/persona.service';
+import { PersonaService } from '../../service/ts/persona.service';
 import { IArtistaResponse } from '../../model/artista-response';
 import { IArtistaRequest } from '../../model/artista-request';
-import { ArtistaService } from './../../service/artista.service';
+import { ArtistaService } from '../../service/ts/artista.service';
 import {
   FormControl,
   FormGroup,

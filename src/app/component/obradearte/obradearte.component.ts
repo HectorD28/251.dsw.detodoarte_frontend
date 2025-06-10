@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ObraDeArteService } from '../../service/obradearte.service';
+import { ObraDeArteService } from '../../service/ts/obradearte.service';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpEventType } from '@angular/common/http';
 
-import { ArtistaService} from '../../service/artista.service'; // Nuevo servicio para artistas
+import { ArtistaService} from '../../service/ts/artista.service'; // Nuevo servicio para artistas
 import { IArtistaResponse } from '../../model/artista-response';
 import { ITecnicaResponse } from '../../model/tecnica-response';
 
-import { TecnicaService} from '../../service/tecnica.service';
+import { TecnicaService} from '../../service/ts/tecnica.service';
 import { IObraDeArteRequest } from '../../model/obradearte-request';
 import { IObraDeArteResponse } from '../../model/obradearte-response';
 
-import { PersonaService} from '../../service/persona.service';
+import { PersonaService} from '../../service/ts/persona.service';
 import { IPersonaRequest } from '../../model/persona-request';
 import { IPersonaResponse } from '../../model/persona-response';
 

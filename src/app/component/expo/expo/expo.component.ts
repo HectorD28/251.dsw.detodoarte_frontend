@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ObraDeArteService } from '../../../service/obradearte.service'; // Ajusta la ruta de importación según corresponda
+import { ObraDeArteService } from '../../../service/ts/obradearte.service'; // Ajusta la ruta de importación según corresponda
 import { IObraDeArteResponse } from '../../../model/obradearte-response';
 import Swal from 'sweetalert2'; // Importa SweetAlert2
 import { CommonModule } from '@angular/common';

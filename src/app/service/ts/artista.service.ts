@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IArtistaRequest } from '../model/artista-request';
-import { IArtistaResponse } from '../model/artista-response';
-import { BASE_URL } from '../utils/constants';
+import { IArtistaRequest } from '../../model/artista-request';
+import { IArtistaResponse } from '../../model/artista-response';
+import { BASE_URL } from '../../utils/constants';
 
 @Injectable({
   providedIn: 'root'

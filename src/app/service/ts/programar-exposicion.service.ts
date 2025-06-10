@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IExposicionRequest } from '../model/exposicion-request';
-import { IExposicionResponse } from '../model/exposicion-response';
-import { BASE_URL } from '../utils/constants';
+import { IExposicionRequest } from '../../model/exposicion-request';
+import { IExposicionResponse } from '../../model/exposicion-response';
+import { BASE_URL } from '../../utils/constants';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

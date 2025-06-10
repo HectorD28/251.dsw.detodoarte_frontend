@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BASE_URL } from '../utils/constants';
-import { ITecnicaRequest } from '../model/tecnica-request';
-import { ITecnicaResponse } from '../model/tecnica-response';
+import { BASE_URL } from '../../utils/constants';
+import { ITecnicaRequest } from '../../model/tecnica-request';
+import { ITecnicaResponse } from '../../model/tecnica-response';
 
 @Injectable({
   providedIn: 'root'

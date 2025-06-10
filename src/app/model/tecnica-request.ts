@@ -1,3 +1,3 @@
 export interface ITecnicaRequest {
-  nombre: string;
+  nombreTecnica: string;
 }

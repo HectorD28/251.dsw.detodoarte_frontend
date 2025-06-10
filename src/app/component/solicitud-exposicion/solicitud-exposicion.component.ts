@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
-import { SolicitudExposicionService } from '../../service/solicitud-exposicion.service';
+import { SolicitudExposicionService } from '../../service/ts/solicitud-exposicion.service';
 
 @Component({
   selector: 'app-solicitud-exposicion',

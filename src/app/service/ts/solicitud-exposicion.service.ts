@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BASE_URL } from '../utils/constants';
-import { ISolicitudExposicionResponse } from '../model/solicitud-exposicion-response';
+import { BASE_URL } from '../../utils/constants';
+import { ISolicitudExposicionResponse } from '../../model/solicitud-exposicion-response';
 
 @Injectable({ providedIn: 'root' })
 export class SolicitudExposicionService {

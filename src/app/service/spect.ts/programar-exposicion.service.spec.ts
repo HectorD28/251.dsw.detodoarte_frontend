@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProgramarExposicionService } from './programar-exposicion.service';
+import { ProgramarExposicionService } from '../ts/programar-exposicion.service';
 
 describe('ProgramarExposicionService', () => {
   let service: ProgramarExposicionService;

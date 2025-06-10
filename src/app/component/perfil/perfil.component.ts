@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IPersonaResponse } from '../../model/persona-response';
-import { PersonaService } from '../../service/persona.service';
+import { PersonaService } from '../../service/ts/persona.service';
 
 import { RolesService } from '../../roles/roles.service';
 

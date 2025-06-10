@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPersonaResponse } from '../model/persona-response';
-import { BASE_URL } from '../utils/constants';
+import { IPersonaResponse } from '../../model/persona-response';
+import { BASE_URL } from '../../utils/constants';
 import { Observable } from 'rxjs';
-import { IPersonaRequest } from '../model/persona-request';
-import { IArtistaRequest } from '../model/artista-request';
-import { IArtistaResponse } from '../model/artista-response';
+import { IPersonaRequest } from '../../model/persona-request';
+import { IArtistaRequest } from '../../model/artista-request';
+import { IArtistaResponse } from '../../model/artista-response';
 
 @Injectable({
   providedIn: 'root'

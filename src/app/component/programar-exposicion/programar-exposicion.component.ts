@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProgramarExposicionService } from '../../service/programar-exposicion.service';
+import { ProgramarExposicionService } from '../../service/ts/programar-exposicion.service';
 import { IExposicionRequest } from '../../model/exposicion-request';
 import { IExposicionResponse } from '../../model/exposicion-response';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { ISolicitudExposicionResponse } from '../../model/solicitud-exposicion-response';
-import { SolicitudExposicionService } from '../../service/solicitud-exposicion.service';
+import { SolicitudExposicionService } from '../../service/ts/solicitud-exposicion.service';
 
 @Component({
   selector: 'app-programar-exposicion',
