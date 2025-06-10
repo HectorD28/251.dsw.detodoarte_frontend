@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEspecialistaRequest } from '../model/especialista-request';
-import { IEspecialistaResponse } from '../model/especialista-response';
-import { BASE_URL } from '../utils/constants';
+import { IEspecialistaRequest } from '../../model/especialista-request';
+import { IEspecialistaResponse } from '../../model/especialista-response';
+import { BASE_URL } from '../../utils/constants';
 @Injectable({
   providedIn: 'root'
 })

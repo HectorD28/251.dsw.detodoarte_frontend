@@ -63,7 +63,7 @@ export class ObradearteComponent {
   }
 
   cargarTecnicas() {
-    this.tecnicaService.obtenerTodas().subscribe({
+    this.tecnicaService.obtenerTodasTecnicas().subscribe({
       next: data => this.tecnicas = data,
       error: () => {
         this.tecnicas = [];
@@ -73,7 +73,7 @@ export class ObradearteComponent {
   }
 
   cargarArtistas(): void{
-    this.artistaService.obtenerTodasArtistas().subscribe({
+    this.artistaService.obtenerTodosArtistas().subscribe({
       next: data => this.artistas = data,
       error: () => {
         this.artistas = [];

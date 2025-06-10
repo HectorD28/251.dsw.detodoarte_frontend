@@ -3,26 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { IPersonaResponse } from '../../model/persona-response';
 import { IPersonaRequest } from '../../model/persona-request';
-<<<<<<< HEAD
+
 import { PersonaService } from '../../service/ts/persona.service';
 import { IArtistaResponse } from '../../model/artista-response';
 import { IArtistaRequest } from '../../model/artista-request';
 import { ArtistaService } from '../../service/ts/artista.service';
-=======
-import { PersonaService } from '../../service/persona.service';
 
-import { IArtistaResponse } from '../../model/artista-response';
-import { IArtistaRequest } from '../../model/artista-request';
-import { ArtistaService } from './../../service/artista.service';
 
 import { IEspecialistaResponse } from '../../model/especialista-response';
 import { IEspecialistaRequest } from '../../model/especialista-request';
-import { EspecialistaService } from '../../service/especialista.service';
+import { EspecialistaService } from '../../service/ts/especialista.service';
 
 import { ITecnicaResponse } from './../../model/tecnica-response';
-import { TecnicaService } from '../../service/tecnica.service';
+import { TecnicaService } from '../../service/ts/tecnica.service';
 
->>>>>>> 64b91b739cd115b9f6f5c4c07c042aaf7993ef49
 import {
   FormControl,
   FormGroup,
@@ -198,7 +192,7 @@ export class RegistrarPersonaComponent {
 
 //PARA CARGAR LAS TENICAS QUE SE REGISTRAN
   cargarTecnicas(): void {
-    this.tecnicaService.obtenerTodas().subscribe({
+    this.tecnicaService.obtenerTodasTecnicas().subscribe({
       next: (data) => {
         this.tecnicaArray = data;
         console.log('Técnicas cargadas:', this.tecnicaArray);
@@ -267,7 +261,7 @@ insertarPersona(): void {
                       personaId: result.persona_id
                     } as IArtistaRequest;    
                             
-                    this.artistaService.registrarArtista(this.artistaRequest).subscribe(
+                    this.artistaService.crearArtista(this.artistaRequest).subscribe(
                       (res) => {
                         Swal.fire({
                           icon: 'success',
