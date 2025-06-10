@@ -72,8 +72,8 @@ export class ObradearteComponent {
     });
   }
 
-  cargarArtistas() {
-    this.artistaService.obtenerTodas().subscribe({
+  cargarArtistas(): void{
+    this.artistaService.obtenerTodasArtistas().subscribe({
       next: data => this.artistas = data,
       error: () => {
         this.artistas = [];
@@ -188,7 +188,7 @@ export class ObradearteComponent {
       titulo: obra.titulo,
       fecha_realizacion: obra.fechaRealizacion,
       dimensiones: obra.dimensiones,
-      id_tecnica: obra.tecnicaId.id,
+      id_tecnica: obra.tecnicaId.idTecnica,
       id_artista: obra.artistaId.idArtista,
       precio: obra.precio
     });

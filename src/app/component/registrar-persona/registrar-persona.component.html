@@ -2,19 +2,19 @@
   <div class="register-box">
     <h2>Crear una cuenta</h2>
 
-    <form class="form-group" [formGroup]="personaForm">
-      
+    <form class="form-group" [formGroup]="personaForm" (ngSubmit)="registrarPersona()">
 
+      <!-- Selección de categoría de usuario -->
       <div class="input-group">
         <label for="categoria">Categoría</label>
-        <select id="categoria" formControlName="categoria" required>
-          <option value="">Selecciona una categoría</option>
-          <option value="artista">Artista</option>
-          <option value="persona">Amante del Arte</option>
-          <option value="especialista">Epecialista</option>
+        <select id="categoria" placeholder="Ingrese su categoría" formControlName="rol" required (change)="onCategoryChange()">
+          <option value="ARTISTA">Artista</option>
+          <option value="PERSONA">Amante del Arte</option>
+          <option value="ESPECIALISTA">Especialista</option>
         </select>
       </div>
 
+      <!-- Campos comunes para todos los usuarios -->
       <div class="input-group">
         <label for="dni">DNI</label>
         <input type="text" id="dni" formControlName="dni" placeholder="Ingresa tu DNI" required>
@@ -59,19 +59,32 @@
         <input type="email" id="correo_electronico" formControlName="correo_electronico" placeholder="Ingresa tu correo electrónico" required>
       </div>
 
-    
       <div class="input-group">
         <label for="contrasena">Contraseña</label>
         <input type="password" id="contrasena" formControlName="contrasena" placeholder="Crea una contraseña" required>
       </div>
 
-      <button
-            type="submit"
-            class="register-btn"
-            (click)="registrarPersona()"
-          >
-            Crear una cuenta
-          </button>
+      <div class="input-group">
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" id="username" formControlName="username" placeholder="Ingresa tu nombre de usuario" required>
+      </div>
+
+      <!-- Campos adicionales para Especialista -->
+       <div *ngIf="isEspecialista">
+        <div class="input-group">
+          <label for="tecnicaId">Técnica (solo para Especialistas)</label>
+          <select id="tecnicaId" formControlName="tecnicaId" required>
+            <option *ngFor="let tecnica of tecnicaArray" [value]="tecnica.idTecnica">
+              {{ tecnica.nombreTecnica }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+      <button type="submit" class="register-btn">
+        Crear una cuenta
+      </button>
     </form>
 
     <div class="links">

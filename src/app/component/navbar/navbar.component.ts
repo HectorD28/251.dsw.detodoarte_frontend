@@ -16,8 +16,8 @@ import { faCartArrowDown, faUser } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../../service/cart/cart.service';
-import { ProductsListService } from '../../service/cart/products-list.service';
 
+import { TokenService } from '../../JWT/token.service';
 
 import {
   trigger,
@@ -60,24 +60,34 @@ export class NavbarComponent implements OnInit{
   public userIcon = faUser
   public productList = new BehaviorSubject<any>([])
 
+  public isLoggedIn: boolean = false;  // Variable para verificar si hay token
+
+
   constructor(
     private confirmationService: ConfirmationService,
-    private router: Router,
+    public router: Router,
     private sidebarService: SideBarService,
     private authService: AuthService,
 
+    private tokenService: TokenService,  // Inyectamos TokenService
+
+
     public cartModal: MatDialog,
     private cartService: CartService,
-    public productsListService: ProductsListService
   ) {
     this.sideBarItems = this.sidebarService.items;
 
-    this.cartService.getProduct().subscribe(res => {
-    this.totalItems = res.length
-    })
+    
+
   }
 
   ngOnInit(): void {
+
+    this.isLoggedIn = this.tokenService.getToken() !== null;  // Si hay token, se setea a true
+
+    this.cartService.cantidadProductos$.subscribe((cantidad) => {
+      this.totalItems = cantidad;  // Actualiza la cantidad de productos en el navbar
+    });
 
   }
 

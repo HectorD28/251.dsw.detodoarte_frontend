@@ -1,55 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" [@fadeInDown]>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="#">DeTodoArte</a>
 
-    <!-- Botón toggle aquí -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <!-- Botón toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-     
-          <!-- Menú izquierdo -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">  
-            <a class="nav-link " aria-current="page" href="#footer" (click)="scrollToFooter()">Conócenos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/pruebas">PRUEBAS</a>
-          </li>
-        </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#footer" (click)="scrollToFooter()">Conócenos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/pruebas">PRUEBAS</a>
+        </li>
+      </ul>
 
-            <!-- Open Cart button -->
-        <button class="btn btn-white text-success" matTooltip="Meu carrinho" (click)="openCart()">
-          <div class="badge bg-danger">{{ totalItems }}</div>
-        </button>
+      <!-- Open Cart button -->
+      <button class="btn btn-white text-success" matTooltip="Meu carrinho" (click)="openCart()">
+        <div class="badge bg-danger">{{ totalItems }}</div>
+      </button>
 
+      <!-- Menú derecho -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
-        <!-- Menú derecho -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-          <li class="nav-item">
-            <a class="nav-link" href="/trabaja-con-nosotros">Trabaja con nosotros!</a>
-          </li>
+        <!-- Mostrar menú solo si está logueado -->
+        <li *ngIf="isLoggedIn" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Técnicas De Arte
+          </a>
 
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Técnicas De Arte
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end bg-dark border-0 shadow-lg">
+          <ul class="dropdown-menu dropdown-menu-end bg-dark border-0 shadow-lg">
               <li><a class="dropdown-item text-white" href="#">Pintura</a></li>
               <li><a class="dropdown-item text-white" href="#">Escultura</a></li>
               <li><a class="dropdown-item text-white" href="#">Fotografía</a></li>
@@ -61,10 +43,19 @@
               <li><a class="dropdown-item text-white" href="#">Escenografía</a></li>
               <li><a class="dropdown-item text-white" href="#">Escultura en Madera</a></li>
             </ul>
-          </li>
+        </li>
+
+        <!-- Mostrar botón de inicio de sesión si no está logueado -->
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <button class="btn btn-primary" (click)="router.navigate(['/auth'])">Iniciar sesión</button>
+        </li>
+
+        <!-- Logout Button -->
+        <li *ngIf="isLoggedIn" class="nav-item">
+          
 
           <!-- Sidebar Items Integrados -->
-          <li class="nav-item dropdown">
+          
             <a
               class="nav-link dropdown-toggle d-flex align-items-center gap-2"
               href="#"
@@ -106,10 +97,9 @@
                 ></button>
               </li>
             </ul>
-          </li>
-        </ul>
-
+          
+        
+      </ul>
     </div>
   </div>
 </nav>
-

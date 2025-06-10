@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Importa CommonModule aquí
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
@@ -19,10 +19,11 @@ import { SideBarService } from '../../side-bar/service/side-bar.service';
 import { TokenService } from '../../JWT/token.service';
 import { finalize } from 'rxjs';
 import { Tooltip } from 'primeng/tooltip';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-auth-page',
-  imports: [CommonModule, ToastModule, RippleModule, FormsModule, ReactiveFormsModule, Tooltip],
+  imports: [CommonModule,NavbarComponent, ToastModule, RippleModule, FormsModule, ReactiveFormsModule, Tooltip],
   templateUrl: './auth-page.component.html',
   styleUrl: './auth-page.component.css'
 })

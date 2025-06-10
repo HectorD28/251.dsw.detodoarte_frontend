@@ -1,53 +1,63 @@
 <div class="container">
-  <h1 class="text-success" mat-dialog-title>Meu Carrinho </h1>
-  <hr>
+  <h2 class="text-2xl font-bold text-center mb-6">Orden de Pago</h2>
 
-  <div mat-dialog-content>
-    <ng-container>
-      <table class="table-responsive" >
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th colspan="2">Quantidade</th>
-            <th>Total</th>
-            <th>Remover</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img class="img-fluid img-thumbnail" width="100" height="100" src="assets/images/product1.jpg" alt="Produto 1"></td>
-            <td>Produto 1</td>
-            <td>R$ 50,00</td>
-            <td>2</td>
-            <td>
-              <button type="button" class="btn"></button>
-              <button type="button" class="btn"></button>
+  <!-- Mostrar el número de productos en el carrito solo si hay productos -->
+  <div *ngIf="productosSeleccionados.length > 0" class="mb-6 p-4 bg-gray-100 rounded-lg shadow-sm">
+    <p><strong>Número de productos en el carrito:</strong> {{ cartProductCount }}</p>
+    <p><strong>Número de Orden:</strong> {{ numeroOrden }}</p>
+    <p><strong>Fecha y Hora:</strong> {{ fechaOrden }}</p>
+  </div>
+
+  <!-- Tabla de productos -->
+  <p-table [value]="productosSeleccionados" dataKey="id_producto" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+            <th>Acciones</th> <!-- Columna de acciones -->
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-producto>
+        <tr>
+            <td>{{ producto.productoNombre }}</td>
+            <td class="text-center">{{ producto.cantidad }}</td>
+            <td class="text-center">S/ {{ producto.precioUnitario?.toFixed(2) }}</td>
+            <td class="text-center">S/ {{ producto.subtotal?.toFixed(2) }}</td>
+            <td class="text-center">
+                <p-button label="Eliminar" icon="pi pi-trash" class="p-button-danger" 
+                          (click)="eliminarProducto(producto)"></p-button>
             </td>
-            <td>R$ 100,00</td>
-            <td><button class="btn btn-sm btn-danger"></button></td>
-          </tr>
-          <tr>
-            <td colspan="5"></td>
-            <td><strong class="btn btn-sm btn-outline-secondary">Total: R$ 100,00</strong></td>
-            <td><button class="btn btn-sm btn-danger">Limpar Carrinho</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </ng-container>
+        </tr>
+    </ng-template>
 
-    <!-- When the cart is empty -->
-    <ng-container>
-      <div class="emptyCart d-flex flex-column align-items-center">
-        <img width="200" class="imgEmptyCart" src="./img/empty_cart.jpg" alt="Carrinho vazio">
-        <h3>Seu Carrinho está vazio!</h3>
-        <a class="btn btn-sm btn-success" href="/">Voltar para Loja</a>
-      </div>
-    </ng-container>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+          <td colspan="5" class="py-4 text-center text-gray-500">
+              <img src='./img/empty_cart.jpg' alt="Carrito vacío" class="img-fluid" style="max-width: 200px;">
+              <p>No hay productos en la orden.</p>
+          </td>
+      </tr>
+  </ng-template>
+  </p-table>
 
-    <div mat-dialog-actions >
-      <button class="btn btn-sm btn-secondary" mat-button mat-dialog-close>Fechar</button>
-    </div>
+  <!-- Totales -->
+  <div class="mt-6 p-4 bg-gray-100 rounded-lg shadow-sm text-right">
+    <p><strong>Subtotal:</strong> S/ {{ subtotalGeneral.toFixed(2) }}</p>
+    <p><strong>IGV (18%):</strong> S/ {{ igv.toFixed(2) }}</p>
+    <p class="font-bold text-lg"><strong>Total:</strong> S/ {{ total.toFixed(2) }}</p>
+  </div>
+
+  <!-- mensajes y confirmaciones -->
+  <p-confirmDialog></p-confirmDialog>
+
+  <!-- botones de accion: Solo se muestran si hay productos en el carrito -->
+  <div *ngIf="productosSeleccionados.length > 0" class="flex justify-center gap-4 mt-6">
+    <p-button label="Cancelar Orden" severity="danger" class="px-6 py-2" (click)="cancelarOrden()"></p-button>
+    <p-button label="Generar Orden de Pago" severity="success" class="px-6 py-2"
+              (click)="confirmarOrden()" [disabled]="productosSeleccionados.length === 0"></p-button>
   </div>
 </div>
+<p-toast></p-toast>

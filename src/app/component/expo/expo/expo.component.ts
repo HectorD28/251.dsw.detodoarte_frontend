@@ -4,7 +4,8 @@ import { IObraDeArteResponse } from '../../../model/obradearte-response';
 import Swal from 'sweetalert2'; // Importa SweetAlert2
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { OrdenService } from '../../../service/ventas/orden/orden.service'; // Asegúrate de importar el servicio de orden
+import { CartService } from '../../../service/cart/cart.service'; // Asegúrate de importar el servicio de carrito
 @Component({
   selector: 'app-expo',
   templateUrl: './expo.component.html',
@@ -16,7 +17,11 @@ export class ExpoComponent implements OnInit {
   obras: IObraDeArteResponse[] = []; // Variable para almacenar las obras de arte
   loading: boolean = false;  // Variable para mostrar el estado de carga
 
-  constructor(private obraDeArteService: ObraDeArteService) {}
+  constructor(
+    private obraDeArteService: ObraDeArteService,
+    private ordenService: OrdenService,
+    private cartService: CartService // Asegúrate de importar el servicio de carrito
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -55,4 +60,30 @@ export class ExpoComponent implements OnInit {
       text: 'Actualmente no hay obras de arte disponibles en la galería.',
     });
   }
+
+
+  agregarAlCarrito(idProducto: number, cantidad: number): void {
+    this.cartService.actualizarCantidadProductos(this.cartService.obtenerCantidadProductos()+1); // Actualizar la cantidad de productos en el carrito
+    this.ordenService.seleccionarProducto(idProducto, cantidad).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Producto agregado al carrito',
+          text: `La obra de arte ha sido agregada al carrito correctamente.`,
+        });
+      },
+      (error) => {
+        console.error('Error al agregar producto al carrito', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al agregar el producto al carrito. Intenta de nuevo.',
+        });
+      }
+    );
+
+
+
+  }
+
 }

@@ -1,4 +1,4 @@
 export interface ITecnicaResponse {
-  id: number;
-  nombre: string;
+ idTecnica: number;
+  nombreTecnica: string;
 }

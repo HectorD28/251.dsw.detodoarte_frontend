@@ -14,7 +14,7 @@ export class TecnicaService {
   constructor(private http: HttpClient) {}
 
   obtenerTodas(): Observable<ITecnicaResponse[]> {
-    return this.http.get<ITecnicaResponse[]>(this.API);
+    return this.http.get<ITecnicaResponse[]>(this.API+`/obtener`);
   }
 
   registrarTecnica(tecnica: ITecnicaRequest): Observable<ITecnicaResponse> {

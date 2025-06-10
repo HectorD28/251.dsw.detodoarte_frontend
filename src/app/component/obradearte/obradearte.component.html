@@ -31,7 +31,7 @@
       <label for="id_tecnica">Técnica *</label>
       <select id="id_tecnica" formControlName="id_tecnica" required>
         <option value="">-- Seleccione técnica --</option>
-        <option *ngFor="let tecnica of tecnicas" [value]="tecnica.id">{{ tecnica.nombre }}</option>
+        <option *ngFor="let tecnica of tecnicas" [value]="tecnica.idTecnica">{{ tecnica.nombreTecnica }}</option>
       </select>
       <div *ngIf="obraForm.get('id_tecnica')?.invalid && obraForm.get('id_tecnica')?.touched" class="error-message">
         Debes seleccionar una técnica.

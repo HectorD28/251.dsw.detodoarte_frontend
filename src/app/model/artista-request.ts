@@ -1,4 +1,4 @@
 export interface IArtistaRequest {
-    id_artista: number;
-    persona_id: number;
+    //id_artista: number;
+    personaId: number;
 } 
