@@ -1,36 +1,18 @@
-<div
-  class="relative flex h-full w-full flex-col items-center justify-center"
-  *ngIf="!isLoading"
->
-  <div
-    class="bg-image-1 absolute inset-0 -z-10 bg-[url('./img/slogan.jpg')] blur-sm"
-  ></div>
+<app-navbar></app-navbar>
 
-  <div
-    class="flex w-1/4 flex-col items-center justify-center gap-3 rounded-lg bg-white p-8 shadow-2xl"
-  >
+<div class="relative flex h-full w-full flex-col items-center justify-center" *ngIf="!isLoading">
+  <div class="bg-image-1 absolute inset-0 -z-10 bg-[url('./img/slogan.jpg')] blur-sm"></div>
+
+  <div class="flex w-1/4 flex-col items-center justify-center gap-3 rounded-lg bg-white p-8 shadow-2xl">
     <div class="flex h-full w-full flex-col items-center justify-center gap-3">
-      <img
-        src="./img/slogan.jpg"
-        alt=""
-        class="w-1/3"
-      />
+      <img src="./img/slogan.jpg" alt="" class="w-1/3" />
       <h1 class="text-lg font-bold">De Todo Arte</h1>
     </div>
 
-    <form
-      class="flex h-full w-full flex-col gap-5"
-      (ngSubmit)="onSignIn()"
-      [formGroup]="loginForm"
-    >
+    <form class="flex h-full w-full flex-col gap-5" (ngSubmit)="onSignIn()" [formGroup]="loginForm">
       <div class="flex w-full flex-col gap-1">
         <h1 class="cursor-default">Usuario</h1>
-        <input
-          class="input-style-1"
-          type="text"
-          placeholder="usuario"
-          formControlName="username"
-        />
+        <input class="input-style-1" type="text" placeholder="usuario" formControlName="username" />
       </div>
 
       <div class="flex w-full flex-col gap-2">
@@ -60,5 +42,14 @@
         <button class="button-style-2 w-full" type="submit">Ingresar</button>
       </div>
     </form>
+
+    <!-- Mensaje de recomendación para registrarse -->
+    <div class="mt-4 text-center">
+      <p class="text-sm text-gray-600">
+        ¿No tienes cuenta? 
+        <a href="/registrar-persona" class="text-blue-500 font-medium">Regístrate aquí</a>
+      </p>
+    </div>
+
   </div>
 </div>

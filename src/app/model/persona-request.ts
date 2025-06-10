@@ -1,13 +1,15 @@
     export interface IPersonaRequest {
-        persona_id: number;
         dni: string;
-        nombreCompleto: string;
-        apellidoPaterno: string;
-        apellidoMaterno: string;
-        direccion: string;
+        nombre_completo: string;
+        apellido_paterno: string;
+        apellido_materno: string;
+        direccion_residencia: string;
         sexo: string;
         telefono: string;
         correoElectronico: string;
         contrasena: string;
+        rol: string;
+        estado:boolean;
+        username: string;
         
     }

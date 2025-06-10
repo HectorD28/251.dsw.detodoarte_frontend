@@ -16,22 +16,24 @@ export class OrdenService {
   }
 
   seleccionarProducto(idProducto: number, cantidad: number): Observable<string> {
-    return this.http.post(`${this.BASE_URL}/api/ordenes/seleccionar?idProducto=${idProducto}&cantidad=${cantidad}`, {}, { responseType: 'text' });
+    console.log(`Seleccionando producto con ID: ${idProducto} y cantidad: ${cantidad}`);
+
+    return this.http.post(`${this.BASE_URL}/ordenes/seleccionar?idProducto=${idProducto}&cantidad=${cantidad}`, {}, { responseType: 'text' });
   }
 
   listarProductosSeleccionados(): Observable<ProductoOrden[]> {
-    return this.http.get<ProductoOrden[]>(`${this.BASE_URL}/api/ordenes/productos-seleccionados`);
+    return this.http.get<ProductoOrden[]>(`${this.BASE_URL}/ordenes/productos-seleccionados`);
   }
 
   confirmarOrden(orden: OrdenPago): Observable<OrdenPago> {
-    return this.http.post<OrdenPago>(`${this.BASE_URL}/api/ordenes/confirmar`, orden);
+    return this.http.post<OrdenPago>(`${this.BASE_URL}/ordenes/confirmar`, orden);
   }
 
   listarOrdenes(): Observable<OrdenPago[]> {
-    return this.http.get<OrdenPago[]>(`${this.BASE_URL}/api/ordenes`);
+    return this.http.get<OrdenPago[]>(`${this.BASE_URL}/ordenes`);
   }
 
   cancelarOrden(): Observable<string> {
-    return this.http.post(`${this.BASE_URL}/api/ordenes/cancelar`, {}, { responseType: 'text' });
+    return this.http.post(`${this.BASE_URL}/ordenes/cancelar`, {}, { responseType: 'text' });
   }
 }

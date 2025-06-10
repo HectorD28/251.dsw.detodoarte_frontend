@@ -2,7 +2,7 @@ import { PagosPagesComponent } from './component/pagos/pagos-pages/pagos-pages.c
 import { StockPageComponent } from './component/stock/stock-page/stock-page.component';
 import { OrdenPageComponent } from './component/orden-page/orden-page/orden-page.component';
 import { AgregarProductoComponent } from './component/agregar-producto/agregar-producto/agregar-producto.component';
-
+import { AuthPageComponent } from './component/auth/auth-page.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { AuthModule } from './component/auth/auth.module';
@@ -48,13 +48,15 @@ export const routes: Routes = [
     {
         path: 'obradearte', 
         component: ObradearteComponent},
-    { path: 'programar-exposicion', 
+
+    { 
+        path: 'programar-exposicion', 
         component: ProgramarExposicionComponent },
 
     
     {
         path: 'auth', 
-        loadChildren: () => AuthModule, },
+        component: AuthPageComponent },
 
     {
         path: 'pruebas',

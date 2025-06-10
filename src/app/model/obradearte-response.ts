@@ -9,7 +9,10 @@ export interface IObraDeArteResponse {
   tecnicaId: ITecnicaResponse;    // objeto completo técnica
   artistaId: IArtistaResponse;    // objeto completo artista
   precio: number;
+
   cantidadVisualizaciones: number;
   rutaImagen: string;
   stock: number;
+  estado_publicacion: string; // 'PUBLICADO' | 'NO_PUBLICADO'
+
 }

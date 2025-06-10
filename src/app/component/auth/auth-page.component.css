@@ -129,3 +129,15 @@ button.absolute.inset-y-0.right-0.flex.items-center.px-3.text-gray-500:hover {
     font-size: 1.1rem;
   }
 }
+
+
+/* Estilo para el enlace de registro */
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1d4ed8; /* Cambia a un azul más brillante al pasar el mouse */
+}

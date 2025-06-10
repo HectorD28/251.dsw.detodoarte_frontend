@@ -13,44 +13,32 @@ import { IArtistaResponse } from '../../model/artista-response';
 export class PersonaService {
 
   constructor(private http: HttpClient) { }
+
   obtenerTodasPersonas(): Observable<IPersonaResponse[]> {
     return this.http.get<IPersonaResponse[]>(`${BASE_URL}/personas`);
   }
 
+  detallePersonas(): Observable<IPersonaResponse[]> {
+    return this.http.get<IPersonaResponse[]>(`${BASE_URL}/personas/details`);
+  }
+
   registrarPersona(persona: IPersonaRequest): Observable<IPersonaResponse> {
     console.log(persona);
-    return this.http.post<IPersonaResponse>(`${BASE_URL}/personas`, persona);
+    return this.http.post<IPersonaResponse>(`${BASE_URL}/personas/register`, persona);
   }
   
-  eliminarPersona(persona: IPersonaRequest): Observable<IPersonaResponse> {
-    return this.http.delete<IPersonaResponse>(`${BASE_URL}/personas`, {
-      body: persona,
-    });
+  deleteCliente(id: number) {
+    return this.http.delete(`${BASE_URL}/cliente/${id}`);
   }
 
-  actualizarPersona(persona: IPersonaRequest): Observable<IPersonaResponse> {
-    return this.http.put<IPersonaResponse>(`${BASE_URL}/personas`, persona);
+  //metodo para obtener cliente por id
+  getCliente(id: number) {
+    return this.http.get<IPersonaResponse>(`${BASE_URL}/cliente/${id}`);
   }
 
-  obtenerTodasArtistas(): Observable<IArtistaResponse> {
-    return this.http.get<IArtistaResponse>(`${BASE_URL}/artistas`);
+    //metodo para modificar cliente
+  updateCliente(cliente: IPersonaRequest, id: number) {
+    return this.http.put(`${BASE_URL}/cliente/edit/${id}`, cliente);
   }
-
-  registrarArtista(artista: IArtistaRequest): Observable<IArtistaResponse> {
-    console.log(artista);
-    return this.http.post<IArtistaResponse>(`${BASE_URL}/artistas`, artista);
-  }
-  
-  eliminarArtista(artista: IArtistaRequest): Observable<IArtistaResponse> {
-    return this.http.delete<IArtistaResponse>(`${BASE_URL}/artistas`, {
-      body: artista,
-    });
-  }
-
-  actualizarArtista(artista: IArtistaRequest): Observable<IArtistaResponse> {
-    return this.http.put<IArtistaResponse>(`${BASE_URL}/artistas`, artista);
-  }
-
-
 
 }
