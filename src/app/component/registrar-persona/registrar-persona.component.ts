@@ -286,7 +286,7 @@ insertarPersona(): void {
                       tecnicaId: this.personaForm.get('tecnicaId')?.value
                     } as IEspecialistaRequest;    
                             
-                    this.especialistaService.registrarEspecialista(this.especialistaRequest).subscribe(
+                    this.especialistaService.crearEspecialista(this.especialistaRequest).subscribe(
                       (res) => {
                         Swal.fire({
                           icon: 'success',

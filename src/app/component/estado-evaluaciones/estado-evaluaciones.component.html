@@ -1,0 +1,32 @@
+<div class="evaluaciones-container">
+  <h2>Estado de las Evaluaciones</h2>
+  
+  <table class="evaluaciones-table">
+    <thead>
+      <tr>
+        <th>Obra</th>
+        <th>Estado Evaluación Artística</th>
+        <th>Estado Evaluación Económica</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obra of obras">
+        <td>{{ obra.titulo }}</td>
+        <td [ngClass]="{'approved': obra.estadoEvaluacionArtistica === 'Aprobada', 'rejected': obra.estadoEvaluacionArtistica === 'Rechazada', 'pending': obra.estadoEvaluacionArtistica === 'Pendiente'}">
+          {{ obra.estadoEvaluacionArtistica }}
+        </td>
+        <td [ngClass]="{'approved': obra.estadoEvaluacionEconomica === 'Aprobada', 'rejected': obra.estadoEvaluacionEconomica === 'Rechazada', 'pending': obra.estadoEvaluacionEconomica === 'Pendiente'}">
+          {{ obra.estadoEvaluacionEconomica }}
+        </td>
+        <td>
+          <button (click)="verDetalles(obra)">Ver Detalles</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Botón de redirección a la pantalla de Solicitar Exposición -->
+  <button (click)="navegarASolicitarExposicionPresencial()">Solicitar Exposición Presencial</button>
+  <button (click)="navegarASolicitarExposicionVirtual()">Solicitar Exposición Virtual</button>
+</div>

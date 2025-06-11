@@ -1,0 +1,41 @@
+<div class="create-artwork-container">
+  <h2>Crear una nueva obra</h2>
+
+  <!-- Formulario -->
+  <form class="artwork-form" [formGroup]="obraForm" (ngSubmit)="solicitarRevision()">
+    <div class="input-group">
+      <label for="titulo">Título de la Obra</label>
+      <input type="text" id="titulo" formControlName="titulo" placeholder="Título de la obra" required>
+    </div>
+
+    <div class="input-group">
+      <label for="fecha_realizacion">Fecha de Realización</label>
+      <input type="date" id="fecha_realizacion" formControlName="fecha_realizacion" required>
+    </div>
+
+    <div class="input-group">
+      <label for="dimensiones">Dimensiones</label>
+      <input type="text" id="dimensiones" formControlName="dimensiones" placeholder="Dimensiones de la obra" required>
+    </div>
+
+    <div class="input-group">
+      <label for="tecnica">Técnica</label>
+      <select id="tecnica" formControlName="id_tecnica" required>
+        <option value="">Seleccione una técnica</option>
+        <option *ngFor="let tecnica of tecnicas" [value]="tecnica.idTecnica">{{ tecnica.nombreTecnica }}</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" formControlName="precio" placeholder="Precio de la obra" required>
+    </div>
+
+    <div class="input-group">
+      <label for="imagen">Imagen</label>
+      <input type="file" id="imagen" formControlName="imagen" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Solicitar Revisión</button>
+  </form>
+</div>

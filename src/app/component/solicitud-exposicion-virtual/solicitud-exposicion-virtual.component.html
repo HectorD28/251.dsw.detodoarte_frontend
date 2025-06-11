@@ -1,0 +1,36 @@
+<div class="solicitud-container">
+  <h2>Crear Solicitud de Exposición Virtual</h2>
+
+  <!-- Formulario -->
+  <form class="solicitud-form" [formGroup]="solicitudVirtualForm" (ngSubmit)="solicitarExposicionVirtual()">
+    <!-- Fecha de Publicación -->
+    <div class="input-group">
+      <label for="fechaPublicacion">Fecha de Publicación</label>
+      <input type="date" id="fechaPublicacion" formControlName="fechaPublicacion" required>
+    </div>
+
+    <!-- Estado de Publicación -->
+    <div class="input-group">
+      <label for="estadoPublicacion">Estado de Publicación</label>
+      <select id="estadoPublicacion" formControlName="estadoPublicacion" required>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Publicado">Publicado</option>
+      </select>
+    </div>
+
+    <!-- URL de Publicación -->
+    <div class="input-group">
+      <label for="urlPublicacion">URL de Publicación</label>
+      <input type="text" id="urlPublicacion" formControlName="urlPublicacion" placeholder="URL de la exposición" required>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="input-group">
+      <label for="comentarios">Comentarios</label>
+      <textarea id="comentarios" formControlName="comentarios" placeholder="Comentarios de la exposición" required></textarea>
+    </div>
+
+    <!-- Botón de Solicitar Exposición -->
+    <button type="submit" class="submit-btn">Solicitar Exposición Virtual</button>
+  </form>
+</div>

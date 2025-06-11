@@ -1,0 +1,48 @@
+.evaluaciones-container {
+  padding: 20px;
+}
+
+.evaluaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.evaluaciones-table th, .evaluaciones-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.evaluaciones-table th {
+  background-color: #f4f4f4;
+}
+
+.evaluaciones-table td {
+  border: 1px solid #ddd;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #004c99;
+}
+
+/* Estilo para los estados de evaluación */
+.approved {
+  color: green;
+}
+
+.rejected {
+  color: red;
+}
+
+.pending {
+  color: orange;
+}

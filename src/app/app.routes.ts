@@ -5,15 +5,16 @@ import { AgregarProductoComponent } from './component/agregar-producto/agregar-p
 import { AuthPageComponent } from './component/auth/auth-page.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
+import { CrearObraComponent } from './component/crear-obra/crear-obra.component';
 import { AuthModule } from './component/auth/auth.module';
+import { EstadoEvaluacionesComponent } from './component/estado-evaluaciones/estado-evaluaciones.component';
 import { authGuard } from './auth/auth.guard';
 import { RegistrarPersonaComponent } from './component/registrar-persona/registrar-persona.component';
 import { PerfilComponent } from './component/perfil/perfil.component'; // Asegúrate de importar el componente correctamente
-import { SolicitudExposicionComponent } from './component/solicitud-exposicion/solicitud-exposicion.component';
+import { SolicitudExposicionPresencialComponent } from './component/solicitud-exposicion-presencial/solicitud-exposicion.component';
 import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/trabaja-con-nosotros.component';
-import { ObradearteComponent } from './component/obradearte/obradearte.component';
 import { ProgramarExposicionComponent } from './component/programar-exposicion/programar-exposicion.component';
-
+import { SolicitudExposicionVirtualComponent } from './component/solicitud-exposicion-virtual/solicitud-exposicion-virtual.component';
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
 
 
@@ -38,16 +39,17 @@ export const routes: Routes = [
         canActivate: [authGuard],},
 
     {
-        path: 'solicitud-exposicion', 
-        component: SolicitudExposicionComponent},
+        path: 'solicitud-exposicion-presencial', 
+        component: SolicitudExposicionPresencialComponent},
 
+    {
+        path: 'solicitud-exposicion-virtual', 
+        component: SolicitudExposicionVirtualComponent},
+    
     {
         path: 'trabaja-con-nosotros', 
         component: TrabajaConNosotrosComponent},
     
-    {
-        path: 'obradearte', 
-        component: ObradearteComponent},
 
     { 
         path: 'programar-exposicion', 
@@ -82,6 +84,14 @@ export const routes: Routes = [
         path: 'agregar-producto',
         component: AgregarProductoComponent,
         
+    },
+    {
+        path: 'crear-obra', 
+        component: CrearObraComponent,
+    },
+    {
+        path: 'estado-evaluaciones', 
+        component: EstadoEvaluacionesComponent,
     },
 
     

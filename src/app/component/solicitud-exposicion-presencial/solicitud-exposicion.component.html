@@ -1,0 +1,43 @@
+<div class="solicitud-container">
+  <h2>Crear Solicitud de Exposición Presencial</h2>
+
+  <!-- Formulario -->
+  <form class="solicitud-form" [formGroup]="solicitudPresencialForm" (ngSubmit)="solicitarExposicionPresencial()">
+    <!-- ID Artista -->
+    <div class="input-group">
+      <label for="idArtista">ID Artista</label>
+      <input type="number" id="idArtista" formControlName="idArtista" required>
+    </div>
+
+    <!-- Fecha de Emisión de Solicitud -->
+    <div class="input-group">
+      <label for="fechaEmisionSolicitud">Fecha de Emisión</label>
+      <input type="date" id="fechaEmisionSolicitud" formControlName="fechaEmisionSolicitud" required>
+    </div>
+
+    <!-- Estado de la Solicitud -->
+    <div class="input-group">
+      <label for="estadoSolicitud">Estado de la Solicitud</label>
+      <select id="estadoSolicitud" formControlName="estadoSolicitud" required>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Aprobada">Aprobada</option>
+        <option value="Rechazada">Rechazada</option>
+      </select>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="input-group">
+      <label for="comentarios">Comentarios</label>
+      <textarea id="comentarios" formControlName="comentarios" placeholder="Comentarios de la solicitud" required></textarea>
+    </div>
+
+    <!-- Fecha de Recepción de Solicitud -->
+    <div class="input-group">
+      <label for="fechaRecepcionSolicitud">Fecha de Recepción</label>
+      <input type="date" id="fechaRecepcionSolicitud" formControlName="fechaRecepcionSolicitud" required>
+    </div>
+
+    <!-- Botón de Solicitar Exposición -->
+    <button type="submit" class="submit-btn">Solicitar Exposición Presencial</button>
+  </form>
+</div>
