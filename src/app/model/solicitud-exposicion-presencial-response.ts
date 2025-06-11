@@ -4,7 +4,7 @@ export interface ISolicitudExposicionPresencialResponse{
     idSolicitudExposicionPresencial : number;
     idArtista: IArtistaResponse;
     fechaEmisionSolicitud: string;
-    EstadoSolicitud: string;
+    estadoSolicitud: string;
     comentarios: string;
     fechaRecepcionSolicitud: string;
 }

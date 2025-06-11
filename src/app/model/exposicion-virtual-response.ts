@@ -1,7 +1,7 @@
 export interface IExposicionVirtualResponse{
     idExposicionVirtual: number;
     fechaPublicacion: string;
-    esatdoPublicacion: string;
+    estadoPublicacion: string;
     urlPublicacion: string;
     comentarios: string;
 }

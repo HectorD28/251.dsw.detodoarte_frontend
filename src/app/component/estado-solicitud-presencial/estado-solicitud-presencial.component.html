@@ -1,0 +1,28 @@
+<div class="solicitud-container">
+  <h2>Estado de Solicitud de Exposición Presencial</h2>
+
+  <table class="estado-solicitud-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Fecha Emision</th>
+        <th>Estado solicitud</th>
+        <th>Fecha Recepcion Solicitud</th>
+        <th>Comentarios</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudesPresenciales">
+        <td>{{ solicitud.idSolicitudExposicionPresencial}}</td>
+        <td>{{ solicitud.fechaEmisionSolicitud | date }}</td>
+        <td>{{ solicitud.estadoSolicitud }}</td>
+        <td>{{ solicitud.fechaRecepcionSolicitud | date }}</td>
+        <td>{{ solicitud.comentarios }}</td>
+        <td>
+          <button (click)="verDetalles(solicitud)">Ver Detalles</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

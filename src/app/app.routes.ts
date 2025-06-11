@@ -16,8 +16,8 @@ import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/tr
 import { ProgramarExposicionComponent } from './component/programar-exposicion/programar-exposicion.component';
 import { SolicitudExposicionVirtualComponent } from './component/solicitud-exposicion-virtual/solicitud-exposicion-virtual.component';
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
-
-
+import { EstadoSolicitudPresencialComponent } from './component/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
+import { EstadoExposicionVirtualComponent } from './component/estado-exposicion-virtual/estado-exposicion-virtual.component';
 
 export const routes: Routes = [
     {
@@ -93,7 +93,14 @@ export const routes: Routes = [
         path: 'estado-evaluaciones', 
         component: EstadoEvaluacionesComponent,
     },
-
+    {
+        path: 'estado-solicitud-presencial', 
+        component: EstadoSolicitudPresencialComponent,
+    },
+    {
+        path: 'estado-exposicion-virtual', 
+        component: EstadoExposicionVirtualComponent,
+    },
     
 ];
 

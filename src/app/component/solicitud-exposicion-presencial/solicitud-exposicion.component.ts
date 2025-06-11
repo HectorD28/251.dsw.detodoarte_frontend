@@ -4,20 +4,22 @@ import { SolicitudExposicionPresencialService } from '../../service/ts/solicitud
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitud-exposicion-presencial',
   imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule],
-  templateUrl: './solicitud-exposicion.component.html',
-  styleUrls: ['./solicitud-exposicion.component.css']
+  templateUrl: './solicitud-exposicion-presencial.component.html',
+  styleUrls: ['./solicitud-exposicion-presencial.component.css']
 })
-export class SolicitudExposicionPresencialComponent implements OnInit {
+export class SolicitudExposicionPresencialComponent{
 
   solicitudPresencialForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private solicitudExposicionPresencialService: SolicitudExposicionPresencialService
+    private solicitudExposicionPresencialService: SolicitudExposicionPresencialService,
+    private router: Router
   ) {
     this.solicitudPresencialForm = this.fb.group({
       idArtista: ['', Validators.required],
@@ -40,7 +42,7 @@ export class SolicitudExposicionPresencialComponent implements OnInit {
     const SolicitudPresencial = {
       idArtista: this.solicitudPresencialForm.value.idArtista,
       fechaEmisionSolicitud: fechaActual,
-      EstadoSolicitud: this.solicitudPresencialForm.value.EstadoSolicitud,
+      estadoSolicitud: this.solicitudPresencialForm.value.estadoSolicitud,
       comentarios: this.solicitudPresencialForm.value.comentarios,
       fechaRecepcionSolicitud: this.solicitudPresencialForm.value.fechaRecepcionSolicitud
     }
@@ -48,7 +50,7 @@ export class SolicitudExposicionPresencialComponent implements OnInit {
     this.solicitudExposicionPresencialService.crearSolicitud(SolicitudPresencial).subscribe(
       (result: any) => {
         Swal.fire('Éxito', 'La solicitud de exposición fue creada.', 'success');
-        // Redirigir a la pantalla de Estado de Exposición
+        this.router.navigate(['/estado-solicitud-presencial']); // Redirigir a la pantalla de Estado de Evaluaciones
       },
       error => {
         Swal.fire('Error', 'Hubo un problema al crear la solicitud de exposición.', 'error');

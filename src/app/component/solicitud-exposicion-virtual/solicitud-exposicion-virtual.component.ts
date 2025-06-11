@@ -4,6 +4,7 @@ import { ExposicionVirtualService } from '../../service/ts/exposicion-virtual.se
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitud-exposicion-virtual',
@@ -11,13 +12,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
   templateUrl: './solicitud-exposicion-virtual.component.html',
   styleUrls: ['./solicitud-exposicion-virtual.component.css']
 })
-export class SolicitudExposicionVirtualComponent implements OnInit {
+export class SolicitudExposicionVirtualComponent {
 
   solicitudVirtualForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private exposicionVirtualService: ExposicionVirtualService
+    private exposicionVirtualService: ExposicionVirtualService,
+    private router: Router
   ) {
     this.solicitudVirtualForm = this.fb.group({
       fechaPublicacion: ['', Validators.required],
@@ -44,7 +46,7 @@ export class SolicitudExposicionVirtualComponent implements OnInit {
     this.exposicionVirtualService.crearExposicion(solicitudData).subscribe(
       (result: any) => {
         Swal.fire('Éxito', 'La solicitud de exposición virtual fue creada.', 'success');
-        // Redirigir a la pantalla de Estado de Exposición
+        this.router.navigate(['/estado-exposicion-virtual']); // Redirigir a la pantalla de Estado de Evaluaciones
       },
       error => {
         Swal.fire('Error', 'Hubo un problema al crear la solicitud de exposición virtual.', 'error');
