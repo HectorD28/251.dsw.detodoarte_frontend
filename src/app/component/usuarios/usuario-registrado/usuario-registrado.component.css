@@ -1,0 +1,19 @@
+.boton-circular {
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.botones-acciones {
+  display: flex;
+  flex-direction: row; /* Asegura que los botones estén en línea */
+  gap: 8px;            /* Espacio entre botones */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Opcional: centra los botones en la celda */
+}

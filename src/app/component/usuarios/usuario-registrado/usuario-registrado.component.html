@@ -1,0 +1,79 @@
+<div style="margin-bottom: 16px;">
+  <h2>Usuarios Registrados</h2>
+</div>
+<div style="margin-bottom: 16px;">
+  <input placeholder="Buscar por DNI" [(ngModel)]="filtroDni" style="margin-right: 8px;">
+  <button (click)="buscarPorDni()">Buscar</button>
+  <!-- Lista desplegable para roles -->
+  <select [(ngModel)]="filtroRol" (change)="buscarPorRol()" style="margin-left: 8px;">
+    <option value="">Todos los roles</option>
+    <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+  </select>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Nombre Completo -->
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.nombreCompleto }} </td>
+  </ng-container>
+
+  <!-- Apellido Paterno -->
+  <ng-container matColumnDef="apellidoPaterno">
+    <th mat-header-cell *matHeaderCellDef> Apellido Paterno </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.apellidoPaterno }} </td>
+  </ng-container>
+
+  <!-- Apellido Materno -->
+  <ng-container matColumnDef="apellidoMaterno">
+    <th mat-header-cell *matHeaderCellDef> Apellido Materno </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.apellidoMaterno }} </td>
+  </ng-container>
+
+  <!-- DNI -->
+  <ng-container matColumnDef="dni">
+    <th mat-header-cell *matHeaderCellDef> DNI </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.dni }} </td>
+  </ng-container>
+
+  <!-- Correo Electrónico -->
+  <ng-container matColumnDef="correoElectronico">
+    <th mat-header-cell *matHeaderCellDef> Correo Electrónico </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.correoElectronico }} </td>
+  </ng-container>
+
+  <!-- Rol -->
+  <ng-container matColumnDef="rol">
+    <th mat-header-cell *matHeaderCellDef> Rol </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.rol }} </td>
+  </ng-container>
+
+  <!-- Teléfono -->
+  <ng-container matColumnDef="telefono">
+    <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+    <td mat-cell *matCellDef="let usuario"> {{ usuario.telefono }} </td>
+  </ng-container>
+
+  <!-- Acciones -->
+  <ng-container matColumnDef="modificar">
+    <th mat-header-cell *matHeaderCellDef> Modificar </th>
+    <td mat-cell *matCellDef="let usuario">
+      <div class="botones-acciones">
+
+        <button mat-button color="primary" class="boton-circular" style="color: #fff; background-color: #1976d2;" (click)="actualizarUsuario(usuario)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button color="warn" class="boton-circular" style="color: #fff; background-color: #d32f2f;" (click)="eliminarUsuario(usuario)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Header y Rows -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[8, 10, 20]" showFirstLastButtons></mat-paginator>

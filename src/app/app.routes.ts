@@ -18,6 +18,7 @@ import { SolicitudExposicionVirtualComponent } from './component/solicitud-expos
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
 import { EstadoSolicitudPresencialComponent } from './component/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
 import { EstadoExposicionVirtualComponent } from './component/estado-exposicion-virtual/estado-exposicion-virtual.component';
+import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
 
 export const routes: Routes = [
     {
@@ -101,6 +102,10 @@ export const routes: Routes = [
         path: 'estado-exposicion-virtual', 
         component: EstadoExposicionVirtualComponent,
     },
-    
+    {
+        path: 'usuarios-registrados',
+        component: UsuarioRegistradoComponent,
+    },
+
 ];
 
