@@ -19,7 +19,7 @@ export class PagosService {
   }
 
   getListaPagosPendientes() {
-    return this.http.get<OrdenPago>(`${this.BASE_URL}/api/ordenes/pendientes`);
+    return this.http.get<OrdenPago>(`${this.BASE_URL}/ordenes/pendientes`);
   }
 
   postConfirmar(idCliente: number){
@@ -29,6 +29,8 @@ export class PagosService {
   postSeleccionar(idOrden: number): Observable<string> {
     return this.http.post(`${this.BASE_URL}/carrito/agregar/${idOrden}`, {}, { responseType: 'text' });
   }
+
+  
   postAgregarConsulta(precioConsulta: number){
     return this.http.post<number>(`${this.BASE_URL}/carrito/agregar-consulta/${precioConsulta}`,{},  );
   }
@@ -45,9 +47,9 @@ export class PagosService {
 
   }
   validarDNI(dni: string){
-    return this.http.get<number>(`${this.BASE_URL}/api/pagos/validar-documento/${dni}`);
+    return this.http.get<number>(`${this.BASE_URL}/pagos/validar-documento/${dni}`);
   }
   expirarOrdenPago(idOrden: number){
-    return this.http.post(`${this.BASE_URL}/api/ordenes/expirar/${idOrden}`,{},{responseType: 'text'});
+    return this.http.post(`${this.BASE_URL}/ordenes/expirar/${idOrden}`,{},{responseType: 'text'});
   }
 }

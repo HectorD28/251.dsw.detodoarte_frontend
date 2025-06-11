@@ -1,6 +1,6 @@
 export interface ProductoOrden {
-    idProducto: number;
-    titulo: string;
+    obraId: number;
+    productoNombre: string;
     cantidad: number;
     precioUnitario: number;
     subtotal: number;

@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +12,8 @@ import { AutoComplete } from 'primeng/autocomplete';
 import { MessagesService } from '../../../service/message/messages.service';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { Dialog } from 'primeng/dialog';
 
 @Component({
   selector: 'app-pagos-pages',

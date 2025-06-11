@@ -12,26 +12,32 @@ const COMMON_ITEMS: SidebarItem[] = [
     name: 'Perfil',
     description: 'Dirige al perfil del usuario',
     tooltip: 'Perfil',
-    icon: 'fas fa-home',
+    icon: 'fa-solid fa-circle-user',
     route: '/perfil',
   },
-
   {
     name: 'Inicio',
     description: 'Dirige a la página de inicio',
     tooltip: 'Inicio',
-    icon: 'fa-solid fa-share',
+    icon: 'fas fa-home',
     route: '/home',
   },
 
   {
-    name: 'Pruebas',
-    description: 'Dirige a la sección de pruebas',
-    tooltip: 'Pruebas',
-    icon: 'fa-solid fa-flask',
+    name: 'Compras',
+    description: 'Dirige a la sección de compras',
+    tooltip: 'Compras',
+    icon: 'fa-solid fa-wallet',
     route: '/pruebas',
   },
-  
+
+  {
+        name: 'Registrar Pagos',
+        description: 'Sección para gestionar los pagos',
+        tooltip: 'Pagos',
+        icon: 'fa fa-credit-card-alt',
+        route: '/pagos-page',
+      },
   
 ];
 
@@ -39,13 +45,7 @@ const COMMON_ITEMS: SidebarItem[] = [
 export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
     especialista: [
       ...COMMON_ITEMS,
-      {
-        name: 'Mantener Mascotas',
-        description: 'Dirige a la sección de Mantener mascotas',
-        tooltip: 'Mascotas',
-        icon: 'fas fa-paw',
-        route: '/mascotas',
-      },
+      
       {
         name: 'Pruebas',
         description: 'Dirige a la sección de pruebas',
@@ -53,38 +53,17 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa-solid fa-flask',
         route: '/pruebas',
       },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
+       
     ],
     usuario: [
       ...COMMON_ITEMS,
-      {
-        name: 'Mantener Clientes',
-        description: 'Sección para gestionar los datos de los clientes',
-        tooltip: 'Clientes',
-        icon: 'fa fa-user',
-        route: '/clientes',
-      },
-      {
-        name: 'Registrar Pagos',
-        description: 'Sección para gestionar los pagos',
-        tooltip: 'Pagos',
-        icon: 'fa fa-credit-card-alt',
-        route: '/pagos',
-      },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
+        
+
+
+
     ],
+
+
     artista: [
       ...COMMON_ITEMS,
       {
@@ -94,14 +73,10 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa fa-medkit',
         route: '/solicitud-exposicion',
       },
-        {
-      name:'pruebas',
-      description: 'Prueba de item',
-      tooltip: 'Prueba',
-      icon: 'fa-solid fa-bell',
-      route: '/pruebas',
-    },
+       
     ],
+
+    
     administrador: [
     ...COMMON_ITEMS,
     // Puedes agregar más ítems exclusivos para administrador aquí

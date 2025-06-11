@@ -1,3 +1,4 @@
+import { Producto } from './../../model/ventas/producto.model';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { faMinusSquare, faPlusSquare, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
@@ -223,30 +224,55 @@ calcularTotales() {
 
 
 
-  eliminarProducto(producto: ProductoOrden): void {
-    Swal.fire({
-      title: `¿Estás seguro de eliminar el producto ${producto.titulo}?`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, Eliminar',
-      cancelButtonText: 'No, Cancelar',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Eliminar el producto del carrito
-        this.productosSeleccionados = this.productosSeleccionados.filter(p => p.idProducto !== producto.idProducto);
-        this.calcularTotales(); // Volver a calcular los totales después de la eliminación
+    eliminarProductoDeLista(id_obra: number, producto:ProductoOrden): void {
+      
+      console.log(`🗑️ Intentando eliminar el producto ${producto.productoNombre}...`);
+      Swal.fire({
+        title: `¿Estás seguro de eliminar el producto ${id_obra}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, Eliminar',
+        cancelButtonText: 'No, Cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log(`🗑️ Eliminando producto ${id_obra}...`);
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Producto Eliminado',
-          text: `El producto ${producto.titulo} ha sido eliminado.`,
-          confirmButtonText: 'Aceptar',
-          confirmButtonColor: '#38a169',
-        });
-      }
-    });
-  }
+          this.productosSeleccionados = this.productosSeleccionados.filter(p => p.obraId !== id_obra);
+
+
+          this.ordenService.cancelarProducto(id_obra).subscribe({
+            next: (res) => {
+              console.log("✅ Orden cancelada:", res);
+
+              this.cartService.actualizarCantidadProductos(this.cartService.obtenerCantidadProductos()-1); // Actualizamos el contador de productos en el carrito
+              this.calcularTotales(); // Recalculamos los totales
+
+              
+
+              // Limpiar datos de la orden en localStorage
+              localStorage.removeItem(producto.obraId.toString());
+
+
+            },
+            error: (err) => {
+              
+            }
+          });;
+
+
+          // Mostrar mensaje de éxito
+          Swal.fire({
+            icon: 'success',
+            title: 'Producto Eliminado',
+            text: `El producto ${producto.tipo} ha sido eliminado de la lista.`,
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#38a169',
+          });
+        }
+      });
+    }
+
 
 
 
