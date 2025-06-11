@@ -8,6 +8,8 @@
         <th>Estado Evaluación Artística</th>
         <th>Estado Evaluación Económica</th>
         <th>Acción</th>
+        <th>Eliminar</th>
+        <th>Editar</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +23,12 @@
         </td>
         <td>
           <button (click)="verDetalles(obra)">Ver Detalles</button>
+        </td>
+        <td>
+          <button (click)="eliminarObra(obra)">Eliminar</button>
+        </td>
+        <td>
+          <button (click)="editarObra(obra)">Editar</button>
         </td>
       </tr>
     </tbody>

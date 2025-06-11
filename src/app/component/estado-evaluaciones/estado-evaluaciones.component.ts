@@ -61,4 +61,34 @@ export class EstadoEvaluacionesComponent {
   navegarASolicitarExposicionVirtual(): void {
     this.router.navigate(['/solicitud-exposicion-virtual']);
   }
+
+  // Eliminar una obra
+eliminarObra(obra: any): void {
+  console.log('ID de la obra a eliminar:', obra.idObra);  // Verifica si el ID es correcto
+  Swal.fire({
+    title: '¿Estás seguro de eliminar esta obra?',
+    showCancelButton: true,
+    cancelButtonText: 'No',
+    confirmButtonText: 'Sí',
+    icon: 'warning'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.obraDeArteService.eliminarObra(obra.idObra).subscribe(
+        () => {
+          this.obtenerEstadoEvaluaciones();  // Refrescar la lista después de eliminar
+          Swal.fire('¡Eliminado!', 'La obra ha sido eliminada correctamente.', 'success');
+        },
+        (error) => {
+          console.error('Error al eliminar la obra:', error);  // Muestra el error en la consola para depuración
+          Swal.fire('Error', 'Hubo un problema al eliminar la obra.', 'error');
+        }
+      );
+    }
+  });
+}
+
+  // Editar una obra
+  editarObra(obra: any): void {
+    this.router.navigate(['/editar-obra', obra.idObra]);  // Redirigir a la pantalla de edición
+  }
 }
