@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Fecha Publicacion</th>
+        <th>Fecha Publicación</th>
         <th>Estado Solicitud</th>
         <th>Comentarios</th>
         <th>Acción</th>
@@ -14,8 +14,8 @@
     <tbody>
       <tr *ngFor="let solicitud of solicitudesVirtuales">
         <td>{{ solicitud.idExposicionVirtual }}</td>
-        <td>{{ solicitud.fechaPublicacion | date}}</td>
-        <td>{{ solicitud.estadoPublicacion}}</td>
+        <td>{{ solicitud.fechaPublicacion | date }}</td>
+        <td>{{ solicitud.estadoPublicacion }}</td>
         <td>{{ solicitud.comentarios }}</td>
         <td>
           <button (click)="verDetalles(solicitud)">Ver Detalles</button>

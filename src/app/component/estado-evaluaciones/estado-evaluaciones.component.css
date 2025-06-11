@@ -1,48 +1,88 @@
 .evaluaciones-container {
-  padding: 20px;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.evaluaciones-container h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .evaluaciones-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .evaluaciones-table th, .evaluaciones-table td {
-  padding: 10px;
+  padding: 15px;
   text-align: center;
+  font-size: 16px;
 }
 
 .evaluaciones-table th {
-  background-color: #f4f4f4;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
 
 .evaluaciones-table td {
   border: 1px solid #ddd;
 }
 
-button {
-  padding: 8px 16px;
-  background-color: #0066cc;
+.evaluaciones-table td.approved {
+  color: green;
+  font-weight: bold;
+}
+
+.evaluaciones-table td.rejected {
+  color: red;
+  font-weight: bold;
+}
+
+.evaluaciones-table td.pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.evaluaciones-table tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  padding: 12px 24px;
+  background-color: #28a745;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #004c99;
+.action-buttons button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
-/* Estilo para los estados de evaluación */
-.approved {
-  color: green;
-}
-
-.rejected {
-  color: red;
-}
-
-.pending {
-  color: orange;
+.action-buttons button:active {
+  background-color: #1e7e34;
 }
