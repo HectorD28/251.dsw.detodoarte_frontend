@@ -20,10 +20,14 @@
         </li>
       </ul>
 
-      <!-- Open Cart button -->
-      <button class="btn btn-white text-success" matTooltip="Meu carrinho" (click)="openCart()">
-        <div class="badge bg-danger">{{ totalItems }}</div>
-      </button>
+     <!-- Open Cart button -->
+<button class="btn btn-white text-success" matTooltip="Meu carrinho" (click)="openCart()">
+  <div class="d-flex align-items-center">
+    <i class="fa-solid fa-cart-shopping"></i> <!-- Icono de carrito -->
+    <div class="badge bg-danger ms-2">{{ totalItems }}</div> <!-- Contador de elementos -->
+  </div>
+</button>
+
 
       <!-- Menú derecho -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">

@@ -21,6 +21,14 @@ export class OrdenService {
     return this.http.post(`${this.BASE_URL}/ordenes/seleccionar?idProducto=${idProducto}&cantidad=${cantidad}`, {}, { responseType: 'text' });
   }
 
+  cancelarProducto(idProducto: number){
+    console.log(`Cancelando producto con ID: ${idProducto}`);
+    return this.http.post(`${this.BASE_URL}/ordenes/cancelar/producto/${idProducto}`,{});
+  }
+
+
+
+
   listarProductosSeleccionados(): Observable<ProductoOrden[]> {
     return this.http.get<ProductoOrden[]>(`${this.BASE_URL}/ordenes/productos-seleccionados`);
   }

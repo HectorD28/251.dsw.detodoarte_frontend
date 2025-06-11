@@ -40,6 +40,12 @@ export class TokenService {
     return this.decodeToken()?.rol || null;
   }
 
+  getUserId(): number {
+    const decoded = this.decodeToken();
+    return decoded ? decoded.id : 0;
+    
+  }
+
   //Método encargado de remover el token del localstorage
   clearToken(): void {
     if(isPlatformBrowser(this.platformId)){

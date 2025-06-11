@@ -16,19 +16,29 @@
             <th>Cantidad</th>
             <th>Precio Unitario</th>
             <th>Subtotal</th>
+            <th>ID</th>
             <th>Acciones</th> <!-- Columna de acciones -->
         </tr>
     </ng-template>
 
-    <ng-template pTemplate="body" let-producto>
+    <ng-template pTemplate="body" let-producto let-index="rowIndex">
         <tr>
-            <td>{{ producto.productoNombre }}</td>
+            <td>{{ producto.producto_nombre}}</td>
             <td class="text-center">{{ producto.cantidad }}</td>
             <td class="text-center">S/ {{ producto.precioUnitario?.toFixed(2) }}</td>
             <td class="text-center">S/ {{ producto.subtotal?.toFixed(2) }}</td>
+            <td class="text-center">{{ producto.id_obra }}</td>
             <td class="text-center">
-                <p-button label="Eliminar" icon="pi pi-trash" class="p-button-danger" 
-                          (click)="eliminarProducto(producto)"></p-button>
+                <!-- Condicional para habilitar/deshabilitar el botón eliminar -->
+                <p-button *ngIf="productosSeleccionados.length > 1" 
+                          label="Eliminar" 
+                          icon="pi pi-trash" 
+                          class="p-button-danger" 
+                          (click)="eliminarProductoDeLista(producto.id_obra,producto)">
+                   <span class="sr-only">Eliminar producto</span>
+                </p-button>
+                <!-- Si solo hay un producto, mostrar un mensaje de que no se puede eliminar -->
+                <p *ngIf="productosSeleccionados.length === 1" class="text-gray-500">No se puede eliminar el último producto.</p>
             </td>
         </tr>
     </ng-template>
