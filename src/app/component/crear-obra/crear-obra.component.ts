@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TecnicaService } from '../../service/ts/tecnica.service'; // Servicio para obtener técnicas
-import { ObraDeArteService } from '../../service/ts/obradearte.service'; // Servicio para crear obra
+import { TecnicaService } from '../../service/ts/tecnica.service';
+import { ObraDeArteService } from '../../service/ts/obradearte.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ITecnicaResponse } from '../../model/tecnica-response';
@@ -26,19 +26,19 @@ export class CrearObraComponent implements OnInit {
   tecnicas: ITecnicaResponse[] = [];
   obras: IObraDeArteResponse[] = [];
   artistas: IArtistaResponse[] = [];
-  idPersona: number = 0; // Inicializa en 0 para ser asignado desde el token
-  idArtista: number = 0; // Inicializa en 0 para ser asignado después de obtener los datos
+  idPersona: number = 0;
+  idArtista: number = 0;
+  titulo: string = "";
 
   constructor(
     private tecnicaService: TecnicaService,
-    private obraDeArteService: ObraDeArteService, // Servicio para crear obra
+    private obraDeArteService: ObraDeArteService,
     private router: Router,
-    private tokenService: TokenService, // Inyectamos TokenService
-    private artistaService: ArtistaService, // Inyectamos ArtistaService
-    private evaluacionArtisticaService: EvaluacionArtisticaService, // Servicio para evaluaciones artísticas
-    private evaluacionEconomicaService: EvaluacionEconomicaService // Servicio para evaluaciones económicas
-  ) { 
-    // Inicialización del FormGroup dentro del constructor
+    private tokenService: TokenService,
+    private artistaService: ArtistaService,
+    private evaluacionArtisticaService: EvaluacionArtisticaService,
+    private evaluacionEconomicaService: EvaluacionEconomicaService
+  ) {
     this.obraForm = new FormGroup({
       titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
       fecha_realizacion: new FormControl('', [Validators.required]),
@@ -50,14 +50,11 @@ export class CrearObraComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTecnicas();
-    this.idPersona = this.tokenService.getUserId(); // Obtener el ID del artista del token
-    console.log('ID Persona:', this.idPersona); // Verificar que el ID se obtiene correctamente
-
-    // Ahora obtener el ID del Artista
+    this.idPersona = this.tokenService.getUserId();
+    console.log('ID Persona:', this.idPersona);
     this.getArtistaByIdPersona();
   }
 
-  // Obtener todas las técnicas
   getTecnicas(): void {
     this.tecnicaService.obtenerTodasTecnicas().subscribe({
       next: (data) => {
@@ -72,12 +69,12 @@ export class CrearObraComponent implements OnInit {
     });
   }
 
-  // Obtener todas las obras
   getObrasDeArte(): void {
     this.obraDeArteService.obtenerTodasObras().subscribe({
       next: (data) => {
         this.obras = data;
         console.log('Obras cargadas:', this.obras);
+        this.buscarObraPorTitulo(this.titulo);
       },
       error: (err) => {
         this.obras = [];
@@ -87,24 +84,17 @@ export class CrearObraComponent implements OnInit {
     });
   }
 
-  // Obtener el Artista por el idPersona que está en el Token
   getArtistaByIdPersona(): void {
     this.artistaService.obtenerTodosArtistas().subscribe({
       next: (artistas) => {
-        console.log('Artistas obtenidos:', artistas); // Verifica la estructura de los datos
-
-        // Extraemos los id_persona de los artistas y los almacenamos en un array
-        const idPersonas = artistas.map(a => a.persona ? a.persona.persona_id : null); // Verifica si `persona` existe antes de acceder
-
-        console.log('ID Personas extraídos:', idPersonas); // Verifica los ID de las personas
-
-        // Verificamos si el idPersona actual está en los idPersonas
+        console.log('Artistas obtenidos:', artistas);
+        const idPersonas = artistas.map(a => a.persona ? a.persona.persona_id : null);
+        console.log('ID Personas extraídos:', idPersonas);
         if (idPersonas.includes(this.idPersona)) {
-          // Si encontramos el idPersona, buscamos al artista correspondiente
-          const artista = artistas.find(a => a.persona?.persona_id === this.idPersona); // Aseguramos que `persona` exista
+          const artista = artistas.find(a => a.persona?.persona_id === this.idPersona);
           if (artista) {
-            this.idArtista = artista.idArtista; // Asignamos el idArtista
-            console.log('ID Artista Encontrado:', this.idArtista); // Verificar el ID Artista encontrado
+            this.idArtista = artista.idArtista;
+            console.log('ID Artista Encontrado:', this.idArtista);
           } else {
             console.error('No se encontró el artista para esta persona.');
           }
@@ -118,7 +108,6 @@ export class CrearObraComponent implements OnInit {
     });
   }
 
-  // Función para solicitar revisión de la obra
   solicitarRevision(): void {
     if (this.obraForm.invalid) {
       Swal.fire('Error', 'Por favor complete todos los campos correctamente.', 'error');
@@ -126,26 +115,26 @@ export class CrearObraComponent implements OnInit {
     }
 
     const fechaRealizacion = new Date(this.obraForm.value.fecha_realizacion);
-    const fechaFormateada = fechaRealizacion.toISOString().split('T')[0]; // Formato correcto: yyyy-MM-dd
+    const fechaFormateada = fechaRealizacion.toISOString().split('T')[0];
 
     const obraData = {
       titulo: this.obraForm.value.titulo,
-      fecha_realizacion: fechaFormateada, // Aseguramos que la fecha esté en el formato correcto
+      fecha_realizacion: fechaFormateada,
       dimensiones: this.obraForm.value.dimensiones,
       id_tecnica: this.obraForm.value.id_tecnica,
-      id_artista: this.idArtista,  // Asignado automáticamente desde el token
-      cantidad_visualizaciones: 0,  // Asignamos automáticamente 0
+      id_artista: this.idArtista,
+      cantidad_visualizaciones: 0,
+      precio: 0.0,
       ruta_imagen: this.obraForm.value.imagen,
       stock: 1,
     };
 
-    // Llamar al servicio para crear la obra
     this.obraDeArteService.crearObra(obraData).subscribe(
-      (result: any) => {     
+      async (result: any) => {
         console.log('Obra creada con ID:', result.titulo);
-        Swal.fire('Éxito', 'La Obra de Arte fue creada.', 'success'); // Una vez creada la obra, buscarla por el título para obtener su ID 
-        this.buscarObraPorTitulo(result.titulo);
-       // this.router.navigate(['/estado-evaluaciones']); // Redirigir a la pantalla de Estado de Evaluaciones
+        Swal.fire('Éxito', 'La Obra de Arte fue creada.', 'success');
+        this.titulo = result.titulo;
+        this.getObrasDeArte();
       },
       error => {
         console.error('Error al crear la obra:', error);
@@ -156,56 +145,37 @@ export class CrearObraComponent implements OnInit {
 
   async buscarObraPorTitulo(titulo: string): Promise<void> {
     try {
-      // Esperar 5 segundos antes de obtener las obras
-      setTimeout(() => {
-        this.getObrasDeArte(); // Llamamos al servicio para obtener las obras después de 5 segundos
-
-        // Luego de obtener las obras, esperamos otros 5 segundos antes de comparar el título
-        setTimeout(() => {
-          // Ahora que las obras están cargadas, realizamos la comparación
-          const obraEncontrada = this.obras.find(obra => {
-            console.log('Comparando:', obra.titulo, 'con', titulo); // Mostrar los títulos que se están comparando
-            return obra.titulo === titulo;
-          });
-
-          if (obraEncontrada) {
-            console.log('Obra encontrada:', obraEncontrada);
-
-            // Mostrar los detalles de la obra encontrada
-            console.log('ID de la obra:', obraEncontrada.obraId); // Mostrar el ID de la obra que se encontró
-            console.log('Título de la obra:', obraEncontrada.titulo); // Mostrar el título de la obra
-
-            // Crear las evaluaciones con el idObra encontrado
-            this.crearEvaluacionArtistica(obraEncontrada.obraId);
-            this.crearEvaluacionEconomica(obraEncontrada.obraId);
-
-            this.router.navigate(['/estado-evaluaciones']); // Redirigir a la pantalla de Estado de Evaluaciones
-          } else {
-            console.error('No se encontró la obra con el título proporcionado:', titulo);
-            Swal.fire('Error', 'No se pudo encontrar la obra con el título proporcionado.', 'error');
-          }
-        }, 5000); // Esperar otros 5 segundos antes de hacer la comparación
-      }, 5000); // Esperar 5 segundos antes de obtener las obras
+      const obraEncontrada = this.obras.find(obra => {
+        return obra.titulo === titulo;
+      });
+      if (obraEncontrada) {
+        console.log('Obra encontrada:', obraEncontrada);
+        console.log('ID de la obra:', obraEncontrada.obraId);
+        console.log('Título de la obra:', obraEncontrada.titulo);
+        this.crearEvaluacionArtistica(obraEncontrada.obraId);
+      } else {
+        console.error('No se encontró la obra con el título proporcionado:', titulo);
+        Swal.fire('Error', 'No se pudo encontrar la obra con el título proporcionado.', 'error');
+      }
     } catch (err) {
       console.error('Error al obtener las obras o crear las evaluaciones:', err);
       Swal.fire('Error', 'Hubo un problema al buscar la obra y crear las evaluaciones.', 'error');
     }
   }
 
-
-  // Crear Evaluación Artística
   crearEvaluacionArtistica(idObra: number): void {
     const evaluacionArtistica = {
       idObra: idObra,
       idEspecialista: this.getEspecialistaId(),
       fechaEvaluacion: '',
-      resultado: '',
+      resultado: 'PENDIENTE',
       motivoRechazo: ''
     };
-    
+
     this.evaluacionArtisticaService.crearEvaluacion(evaluacionArtistica).subscribe(
       (result: any) => {
         console.log('Evaluación artística creada:', result.idObra);
+        this.crearEvaluacionEconomica(idObra);
       },
       error => {
         console.error('Error al crear la evaluación artística:', error);
@@ -214,7 +184,6 @@ export class CrearObraComponent implements OnInit {
     );
   }
 
-  // Crear Evaluación Económica
   crearEvaluacionEconomica(idObra: number): void {
     const evaluacionEconomica = {
       idObra: idObra,
@@ -222,13 +191,14 @@ export class CrearObraComponent implements OnInit {
       precioVenta: 0,
       porcentajeGanancia: 0,
       fechaEvaluacion: '',
-      resultado: '',
+      resultado: 'PENDIENTE',
       motivoRechazo: ''
     };
 
     this.evaluacionEconomicaService.crearEvaluacion(evaluacionEconomica).subscribe(
       (result: any) => {
         console.log('Evaluación económica creada:', result.idObra);
+        this.router.navigate(['/estado-evaluaciones']);
       },
       error => {
         console.error('Error al crear la evaluación económica:', error);
@@ -237,10 +207,7 @@ export class CrearObraComponent implements OnInit {
     );
   }
 
-  // Obtener el ID del Especialista basado en la técnica
   getEspecialistaId(): number {
-    // Implementa la lógica para obtener el especialista basado en la técnica seleccionada
-    // Esto debería estar basado en la relación de la técnica seleccionada con los especialistas disponibles
-    return 3;  // Esto es un ejemplo, deberías implementar la lógica según tu aplicación
+    return 3;
   }
 }

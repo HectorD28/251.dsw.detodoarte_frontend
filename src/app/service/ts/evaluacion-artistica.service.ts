@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEvaluacionArtisticaRequest } from '../../model/evaluacion-artistica-request';  // Modelo de Request
-import { IEvaluacionArtisticaResponse } from '../../model/evaluacion-artistica-response';  // Modelo de Response
-import { BASE_URL } from '../../utils/constants';  // URL base
+import { IEvaluacionArtisticaRequest } from '../../model/evaluacion-artistica-request'; 
+import { IEvaluacionArtisticaResponse } from '../../model/evaluacion-artistica-response'; 
+import { BASE_URL } from '../../utils/constants';  
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +22,13 @@ export class EvaluacionArtisticaService {
     return this.http.post<IEvaluacionArtisticaResponse>(`${BASE_URL}/evaluaciones/artisticas/crear`, evaluacion);
   }
 
-  // Actualizar una evaluación artística
-  actualizarEvaluacion(id: number, evaluacion: IEvaluacionArtisticaRequest): Observable<IEvaluacionArtisticaResponse> {
-    return this.http.put<IEvaluacionArtisticaResponse>(`${BASE_URL}/evaluaciones/artisticas/${id}`, evaluacion);
+  // Actualizar una evaluación artística asociada a una obra específica
+  actualizarEvaluacion(idObra: number, evaluacion: IEvaluacionArtisticaRequest): Observable<IEvaluacionArtisticaResponse> {
+    return this.http.put<IEvaluacionArtisticaResponse>(`${BASE_URL}/evaluaciones/artisticas/obra/${idObra}`, evaluacion);
   }
 
-  // Eliminar una evaluación artística
-  eliminarEvaluacion(id: number): Observable<void> {
-    return this.http.delete<void>(`${BASE_URL}/evaluaciones/artisticas/${id}`);
+  // Eliminar una evaluación artística asociada a una obra específica
+  eliminarEvaluacion(idObra: number): Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/evaluaciones/artisticas/obra/${idObra}`);
   }
 }

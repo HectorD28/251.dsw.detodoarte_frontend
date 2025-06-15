@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEvaluacionEconomicaRequest } from '../../model/evaluacion-economica-request';  // Modelo de Request
-import { IEvaluacionEconomicaResponse } from '../../model/evaluacion-economica-response';  // Modelo de Response
-import { BASE_URL } from '../../utils/constants';  // URL base
+import { IEvaluacionEconomicaRequest } from '../../model/evaluacion-economica-request';  
+import { IEvaluacionEconomicaResponse } from '../../model/evaluacion-economica-response';  
+import { BASE_URL } from '../../utils/constants';  
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +22,13 @@ export class EvaluacionEconomicaService {
     return this.http.post<IEvaluacionEconomicaResponse>(`${BASE_URL}/evaluaciones/economicas/crear`, evaluacion);
   }
 
-  // Actualizar una evaluación económica
-  actualizarEvaluacion(id: number, evaluacion: IEvaluacionEconomicaRequest): Observable<IEvaluacionEconomicaResponse> {
-    return this.http.put<IEvaluacionEconomicaResponse>(`${BASE_URL}/evaluaciones/economicas/${id}`, evaluacion);
+  // Actualizar una evaluación económica asociada a una obra específica
+  actualizarEvaluacion(idObra: number, evaluacion: IEvaluacionEconomicaRequest): Observable<IEvaluacionEconomicaResponse> {
+    return this.http.put<IEvaluacionEconomicaResponse>(`${BASE_URL}/evaluaciones/economicas/obra/${idObra}`, evaluacion);
   }
 
-  // Eliminar una evaluación económica
-  eliminarEvaluacion(id: number): Observable<void> {
-    return this.http.delete<void>(`${BASE_URL}/evaluaciones/economicas/${id}`);
+  // Eliminar una evaluación económica asociada a una obra específica
+  eliminarEvaluacion(idObra: number): Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/evaluaciones/economicas/obra/${idObra}`);
   }
 }

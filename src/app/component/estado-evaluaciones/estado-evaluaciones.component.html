@@ -4,6 +4,7 @@
   <table class="evaluaciones-table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Obra</th>
         <th>Estado Evaluación Artística</th>
         <th>Estado Evaluación Económica</th>
@@ -13,22 +14,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let obra of obras">
+      <tr *ngFor="let obra of obras; let i = index">
+        <td>{{ obra.obraId }}</td>
         <td>{{ obra.titulo }}</td>
-        <td [ngClass]="{'approved': obra.estadoEvaluacionArtistica === 'Aprobada', 'rejected': obra.estadoEvaluacionArtistica === 'Rechazada', 'pending': obra.estadoEvaluacionArtistica === 'Pendiente'}">
-          {{ obra.estadoEvaluacionArtistica }}
-        </td>
-        <td [ngClass]="{'approved': obra.estadoEvaluacionEconomica === 'Aprobada', 'rejected': obra.estadoEvaluacionEconomica === 'Rechazada', 'pending': obra.estadoEvaluacionEconomica === 'Pendiente'}">
-          {{ obra.estadoEvaluacionEconomica }}
+        <td>{{ resultadoevaluacionesArtisticas[i] || 'Revisión Pendiente' }}</td>
+        <td>{{ resultadoevaluacionesEconomicas[i] || 'Revisión Pendiente' }}</td>
+        <td>
+          <button (click)="verDetalles(obra, i)">Ver Detalles</button>
         </td>
         <td>
-          <button (click)="verDetalles(obra)">Ver Detalles</button>
+          <button (click)="eliminarObra(obra.obraId)">Eliminar</button>
         </td>
         <td>
-          <button (click)="eliminarObra(obra)">Eliminar</button>
-        </td>
-        <td>
-          <button (click)="editarObra(obra)">Editar</button>
+          <button (click)="openEditModal(obra, editModal)">Editar</button> <!-- Abre el modal de edición -->
         </td>
       </tr>
     </tbody>
@@ -40,3 +38,55 @@
     <button (click)="navegarASolicitarExposicionVirtual()">Solicitar Exposición Virtual</button>
   </div>
 </div>
+
+<!-- Modal de edición: -->
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Edición de Obra de Arte</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form #editForm="ngForm">
+      <div *ngIf="obraSeleccionada">
+        <div class="form-group">
+          <label for="titulo">Título de la Obra</label>
+          <input type="text" class="form-control" [(ngModel)]="obraSeleccionada.titulo" name="titulo" required #titulo="ngModel">
+          <div *ngIf="titulo.invalid && titulo.touched" class="text-danger">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaRealizacion">Fecha de Realización</label>
+          <input type="date" class="form-control" [(ngModel)]="obraSeleccionada.fechaRealizacion" name="fechaRealizacion" required #fecha="ngModel">
+          <div *ngIf="fecha.invalid && fecha.touched" class="text-danger">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="dimensiones">Dimensiones</label>
+          <input type="text" class="form-control" [(ngModel)]="obraSeleccionada.dimensiones" name="dimensiones" required #dimensiones="ngModel">
+          <div *ngIf="dimensiones.invalid && dimensiones.touched" class="text-danger">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="tecnica">Técnica</label>
+          <select class="form-control" [(ngModel)]="obraSeleccionada.tecnicaId.idTecnica" name="tecnica" required #tecnica="ngModel">
+            <option *ngFor="let tecnica of tecnicasDisponibles" [value]="tecnica.idTecnica">{{ tecnica.nombreTecnica }}</option>
+          </select>
+          <div *ngIf="tecnica.invalid && tecnica.touched" class="text-danger">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="rutaImagen">Imagen (URL)</label>
+          <input type="text" class="form-control" [(ngModel)]="obraSeleccionada.rutaImagen" name="rutaImagen" required #rutaImagen="ngModel">
+          <div *ngIf="rutaImagen.invalid && rutaImagen.touched" class="text-danger">Este campo es obligatorio.</div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" [disabled]="editForm.invalid" (click)="guardarCambios(modal)">Guardar Cambios</button>
+  </div>
+</ng-template>
