@@ -86,3 +86,84 @@
 .action-buttons button:active {
   background-color: #1e7e34;
 }
+
+/* Modal */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #007bff;
+  color: white;
+  border-radius: 12px 12px 0 0;
+  border-bottom: none;
+  padding: 15px 20px;
+}
+
+.modal-header h4 {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Close button */
+.close {
+  color: #fff;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Form Input Styles */
+.modal-body .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-body .form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-body .form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.modal-body .form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button */
+.modal-footer button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-footer button:disabled {
+  background-color: #ccc;
+}
+
+.modal-footer button:hover {
+  background-color: #0056b3;
+}

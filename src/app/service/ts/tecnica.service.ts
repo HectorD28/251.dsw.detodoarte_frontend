@@ -22,6 +22,11 @@ export class TecnicaService {
     return this.http.get<ITecnicaResponse>(`${BASE_URL}/tecnicas/${id}`);
   }
 
+  // Método para obtener la técnica asociada a una obra por su ID
+  obtenerTecnicaPorObraId(obraId: number): Observable<ITecnicaResponse> {
+    return this.http.get<ITecnicaResponse>(`${BASE_URL}/tecnicas/obra/${obraId}`);
+  }
+
   // Método para crear una nueva técnica
   crearTecnica(tecnica: ITecnicaRequest): Observable<ITecnicaResponse> {
     return this.http.post<ITecnicaResponse>(`${BASE_URL}/tecnicas/crear`, tecnica);

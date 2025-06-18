@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { SolicitudExposicionPresencialService } from '../../service/ts/solicitud-exposicion-presencial.service';
+import { SolicitudExposicionPresencialService } from '../../../service/ts/solicitud-exposicion-presencial.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';

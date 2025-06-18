@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SolicitudExposicionPresencialService } from '../../service/ts/solicitud-exposicion-presencial.service';  // Servicio para solicitudes de exposición presencial
+import { SolicitudExposicionPresencialService } from '../../../service/ts/solicitud-exposicion-presencial.service';  // Servicio para solicitudes de exposición presencial
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ISolicitudExposicionPresencialResponse } from '../../model/solicitud-exposicion-presencial-response';
+import { ISolicitudExposicionPresencialResponse } from '../../../model/solicitud-exposicion-presencial-response';
 @Component({
   selector: 'app-estado-solicitud-presencial',
   imports: [CommonModule, ReactiveFormsModule, NgxPaginationModule],

@@ -40,6 +40,13 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
     especialista: [
       ...COMMON_ITEMS,
       
+      {
+        name: 'Pruebas',
+        description: 'Dirige a la sección de pruebas',
+        tooltip: 'Pruebas',
+        icon: 'fa-solid fa-flask',
+        route: '/pruebas',
+      },
        
     ],
     usuario: [
@@ -59,6 +66,13 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         tooltip: 'Exposición',
         icon: 'fa fa-medkit',
         route: '/solicitud-exposicion',
+      },
+      {
+        name: 'Subir Nueva Obra',
+        description: 'Sección para subir obra de arte',
+        tooltip: 'Nueva Obra de Arte',
+        icon: 'fa fa-medkit',
+        route: '/crear-obra',
       },
        
     ],

@@ -1,0 +1,51 @@
+<div *ngIf="5 > 0; else noSolicitudes">
+  <h3>Solicitudes de Evaluación de Obras</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Título de la Obra</th>
+        <th>Técnica</th>
+        <th>Fecha de Creación</th>
+        
+        <!-- Usamos colspan para agrupar las columnas de evaluación artística -->
+        <th colspan="3">Evaluación Artística</th>
+        
+        <!-- Usamos colspan para agrupar las columnas de evaluación económica -->
+        <th colspan="3">Evaluación Económica</th>
+      </tr>
+      <tr>
+        <!-- Aquí se definen las cabeceras específicas para cada sección -->
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Acción</th>
+        <th>Estado</th>
+        <th>Motivo Rechazo</th>
+        <th>Acción</th>
+        <th>Estado</th>
+        <th>Motivo Rechazo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudes">
+        <td>{{ solicitud.tituloObra }}</td>
+        <td>{{ solicitud.tecnica }}</td>
+        <td>{{ solicitud.fechaCreacion }}</td>
+        <td> 
+          <button (click)="revisarSolicitud(solicitud)">Revisar</button> 
+        </td>
+        <td>{{ solicitud.evaluacionArtistica || 'Pendiente b' }}</td>
+        <td>{{ solicitud.motivoRechazoArtistica || 'N/A b' }}</td>
+        <td> 
+          <button (click)="revisarSolicitud(solicitud)">Revisar</button> 
+        </td>
+        <td>{{ solicitud.evaluacionEconomica || 'Pendiente b' }}</td>
+        <td>{{ solicitud.motivoRechazoEconomica || 'N/A b' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noSolicitudes>
+  <p>No tienes solicitudes de revisión pendientes.</p>
+</ng-template>
