@@ -19,7 +19,7 @@ import { PruebasComponent } from './component/pruebas/pruebas.component';
 import { EstadoSolicitudPresencialComponent } from './component/ARTISTAS/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
 import { EstadoExposicionVirtualComponent } from './component/ARTISTAS/estado-exposicion-virtual/estado-exposicion-virtual.component';
 import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
-
+import { SolicitudesEvaluacionObraComponent } from './component/solicitudes-evaluacion-obra/solicitudes-evaluacion-obra.component';
 export const routes: Routes = [
     {
         path: '',
@@ -33,6 +33,10 @@ export const routes: Routes = [
     {
         path: 'registrar-persona',
         component:RegistrarPersonaComponent},
+
+    {
+        path: 'solicitudes-evaluacion-obra',
+        component:SolicitudesEvaluacionObraComponent},
 
     {
         path: 'perfil', 
@@ -61,7 +65,6 @@ export const routes: Routes = [
         path: 'auth', 
         component: AuthPageComponent },
 
-  
 
     {
         path: 'stock-page',

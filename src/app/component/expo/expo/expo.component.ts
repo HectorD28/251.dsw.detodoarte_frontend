@@ -6,16 +6,17 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { OrdenService } from '../../../service/ventas/orden/orden.service'; // Asegúrate de importar el servicio de orden
 import { CartService } from '../../../service/cart/cart.service'; // Asegúrate de importar el servicio de carrito
+
 @Component({
   selector: 'app-expo',
   templateUrl: './expo.component.html',
   styleUrls: ['./expo.component.css'],
-  imports :[CommonModule], // Asegúrate de importar CommonModule y BrowserModule
-  standalone: true,  
+  imports: [CommonModule], // Asegúrate de importar CommonModule y BrowserModule
+  standalone: true,
 })
 export class ExpoComponent implements OnInit {
   obras: IObraDeArteResponse[] = []; // Variable para almacenar las obras de arte
-  loading: boolean = false;  // Variable para mostrar el estado de carga
+  loading: boolean = false; // Variable para mostrar el estado de carga
 
   constructor(
     private obraDeArteService: ObraDeArteService,
@@ -31,17 +32,18 @@ export class ExpoComponent implements OnInit {
   obtenerObrasDeArte(): void {
     this.obraDeArteService.obtenerTodasObras().subscribe(
       (data: IObraDeArteResponse[]) => {
-        this.obras = data;  // Almacenar las obras de arte obtenidas
+        // Filtra las obras para mostrar solo las que tienen stock > 0
+        this.obras = data.filter(obra => obra.stock > 0);
         this.loading = false; // Detener la carga
 
-        // Mostrar una alerta si no se encuentran obras
+        // Mostrar una alerta si no hay obras con stock
         if (this.obras.length === 0) {
           this.mostrarAlertaSinObras();
         }
       },
       (error) => {
         console.error('Error al obtener las obras de arte', error);
-        this.loading = false;  // Detener la carga en caso de error
+        this.loading = false; // Detener la carga en caso de error
         // Mostrar alerta en caso de error de conexión
         Swal.fire({
           icon: 'error',
@@ -52,7 +54,7 @@ export class ExpoComponent implements OnInit {
     );
   }
 
-  // Función para mostrar una alerta cuando no hay obras de arte
+  // Función para mostrar una alerta cuando no hay obras de arte con stock
   mostrarAlertaSinObras(): void {
     Swal.fire({
       icon: 'info',
@@ -61,9 +63,8 @@ export class ExpoComponent implements OnInit {
     });
   }
 
-
   agregarAlCarrito(idProducto: number, cantidad: number): void {
-    this.cartService.actualizarCantidadProductos(this.cartService.obtenerCantidadProductos()+1); // Actualizar la cantidad de productos en el carrito
+    this.cartService.actualizarCantidadProductos(this.cartService.obtenerCantidadProductos() + 1); // Actualizar la cantidad de productos en el carrito
     this.ordenService.seleccionarProducto(idProducto, cantidad).subscribe(
       (response) => {
         Swal.fire({
@@ -81,9 +82,5 @@ export class ExpoComponent implements OnInit {
         });
       }
     );
-
-
-
   }
-
 }

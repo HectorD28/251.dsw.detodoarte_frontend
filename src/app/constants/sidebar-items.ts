@@ -47,6 +47,16 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa-solid fa-flask',
         route: '/pruebas',
       },
+
+      {
+        name: 'Solicitud de Evaluacion',
+        description: 'Dirige a la sección de pruebas',
+        tooltip: 'Pruebas',
+        icon: 'fa-solid fa-flask',
+        route: '/solicitudes-evaluacion-obra',
+      },
+
+
        
     ],
     usuario: [
