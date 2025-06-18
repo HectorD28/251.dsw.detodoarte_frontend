@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ExposicionVirtualService } from '../../service/ts/exposicion-virtual.service';
+import { ExposicionVirtualService } from '../../../service/ts/exposicion-virtual.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';

@@ -3,8 +3,8 @@ import { IEspecialistaResponse } from "./especialista-response";
 
 export interface IEvaluacionEconomicaResponse{
     idEvaluacionEconomica: number;
-    idObra: IObraDeArteResponse;
-    idEspecialista: IEspecialistaResponse;
+    obra: IObraDeArteResponse;
+    especialista: IEspecialistaResponse;
     precioVenta: number;
     porcentajeGanancia: number;
     fechaEvaluacion: string;

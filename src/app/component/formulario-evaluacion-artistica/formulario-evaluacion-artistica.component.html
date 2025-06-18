@@ -1,0 +1,29 @@
+<div class="container">
+  <h3>Evaluación de la Técnica</h3>
+  <form [formGroup]="evaluacionForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let criterio of criterios; let i = index" class="form-group">
+      <label>{{ criterio.nombre_criterio }}</label>
+      <div class="d-flex">
+        <label class="mr-2">Totalmente en desacuerdo</label>
+        <input type="radio" class="form-check-input" [formControlName]="criterio.idCriterioEvaluacionArtistica.toString()" value="1" />
+        
+        <label class="mr-2">No estoy de acuerdo</label>
+        <input type="radio" class="form-check-input" [formControlName]="criterio.idCriterioEvaluacionArtistica.toString()" value="2" />
+        
+        <label class="mr-2">Normal</label>
+        <input type="radio" class="form-check-input" [formControlName]="criterio.idCriterioEvaluacionArtistica.toString()" value="3" />
+        
+        <label class="mr-2">De acuerdo</label>
+        <input type="radio" class="form-check-input" [formControlName]="criterio.idCriterioEvaluacionArtistica.toString()" value="4" />
+        
+        <label class="mr-2">Totalmente de acuerdo</label>
+        <input type="radio" class="form-check-input" [formControlName]="criterio.idCriterioEvaluacionArtistica.toString()" value="5" />
+      </div>
+      <div *ngIf="evaluacionForm.get(criterio.idCriterioEvaluacionArtistica.toString())?.invalid && evaluacionForm.get(criterio.idCriterioEvaluacionArtistica.toString())?.touched">
+        <small class="text-danger">Este campo es obligatorio</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="evaluacionForm.invalid">Enviar</button>
+  </form>
+</div>

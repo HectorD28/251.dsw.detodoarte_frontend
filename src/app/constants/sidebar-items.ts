@@ -53,6 +53,13 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa-solid fa-flask',
         route: '/pruebas',
       },
+      {
+        name: 'Evaluaciones',
+        description: 'Dirige a la sección de evaluaciones de obra',
+        tooltip: 'Evaluaciones',
+        icon: 'fa-solid fa-flask',
+        route: '/solicitudes-evaluacion-obra',
+      },
        
     ],
     usuario: [
@@ -72,6 +79,13 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         tooltip: 'Exposición',
         icon: 'fa fa-medkit',
         route: '/solicitud-exposicion',
+      },
+      {
+        name: 'Subir Nueva Obra',
+        description: 'Sección para subir obra de arte',
+        tooltip: 'Nueva Obra de Arte',
+        icon: 'fa fa-medkit',
+        route: '/crear-obra',
       },
        
     ],

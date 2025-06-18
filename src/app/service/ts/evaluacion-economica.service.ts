@@ -31,4 +31,8 @@ export class EvaluacionEconomicaService {
   eliminarEvaluacion(idObra: number): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/evaluaciones/economicas/obra/${idObra}`);
   }
+    // Método para obtener todas las solicitudes de evaluación económica por idEspecialista
+  getEvaluacionesEconomicasPorEspecialista(idEspecialista: number): Observable<IEvaluacionEconomicaResponse[]> {
+    return this.http.get<IEvaluacionEconomicaResponse[]>(`${BASE_URL}/evaluaciones/economicas/todos/${idEspecialista}`);
+  }
 }

@@ -31,4 +31,8 @@ export class EvaluacionArtisticaService {
   eliminarEvaluacion(idObra: number): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/evaluaciones/artisticas/obra/${idObra}`);
   }
+
+  getEvaluacionesArtisticasPorEspecialista(idEspecialista: number): Observable<IEvaluacionArtisticaResponse[]> {
+    return this.http.get<IEvaluacionArtisticaResponse[]>(`${BASE_URL}/evaluaciones/artisticas/todos/${idEspecialista}`);
+  }
 }

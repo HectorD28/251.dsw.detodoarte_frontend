@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExposicionVirtualService } from '../../service/ts/exposicion-virtual.service';  // Servicio para exposiciones virtuales
+import { ExposicionVirtualService } from '../../../service/ts/exposicion-virtual.service';  // Servicio para exposiciones virtuales
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';

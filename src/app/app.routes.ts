@@ -5,21 +5,22 @@ import { AgregarProductoComponent } from './component/agregar-producto/agregar-p
 import { AuthPageComponent } from './component/auth/auth-page.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
-import { CrearObraComponent } from './component/crear-obra/crear-obra.component';
+import { CrearObraComponent } from './component/ARTISTAS/crear-obra/crear-obra.component';
 import { AuthModule } from './component/auth/auth.module';
-import { EstadoEvaluacionesComponent } from './component/estado-evaluaciones/estado-evaluaciones.component';
+import { EstadoEvaluacionesComponent } from './component/ARTISTAS/estado-evaluaciones/estado-evaluaciones.component';
 import { authGuard } from './auth/auth.guard';
 import { RegistrarPersonaComponent } from './component/registrar-persona/registrar-persona.component';
 import { PerfilComponent } from './component/perfil/perfil.component'; // Asegúrate de importar el componente correctamente
-import { SolicitudExposicionPresencialComponent } from './component/solicitud-exposicion-presencial/solicitud-exposicion.component';
+import { SolicitudExposicionPresencialComponent } from './component/ARTISTAS/solicitud-exposicion-presencial/solicitud-exposicion.component';
 import { TrabajaConNosotrosComponent } from './component/trabaja-con-nosotros/trabaja-con-nosotros.component';
 import { ProgramarExposicionComponent } from './component/programar-exposicion/programar-exposicion.component';
-import { SolicitudExposicionVirtualComponent } from './component/solicitud-exposicion-virtual/solicitud-exposicion-virtual.component';
+import { SolicitudExposicionVirtualComponent } from './component/ARTISTAS/solicitud-exposicion-virtual/solicitud-exposicion-virtual.component';
 import { PruebasComponent } from './component/pruebas/pruebas.component';   
-import { EstadoSolicitudPresencialComponent } from './component/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
-import { EstadoExposicionVirtualComponent } from './component/estado-exposicion-virtual/estado-exposicion-virtual.component';
+import { EstadoSolicitudPresencialComponent } from './component/ARTISTAS/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
+import { EstadoExposicionVirtualComponent } from './component/ARTISTAS/estado-exposicion-virtual/estado-exposicion-virtual.component';
 import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
-
+import { SolicitudesEvaluacionObraComponent } from './component/solicitudes-evaluacion-obra/solicitudes-evaluacion-obra.component';
+import { EvaluacionFormularioComponent } from './component/formulario-evaluacion-artistica/formulario-evaluacion-artistica.component';
 export const routes: Routes = [
     {
         path: '',
@@ -105,6 +106,14 @@ export const routes: Routes = [
     {
         path: 'usuarios-registrados',
         component: UsuarioRegistradoComponent,
+    },
+    {
+        path: 'solicitudes-evaluacion-obra',
+        component: SolicitudesEvaluacionObraComponent,
+    },
+    {
+        path: 'formulario-evaluacion-artistica',
+        component: EvaluacionFormularioComponent,
     },
 
 ];

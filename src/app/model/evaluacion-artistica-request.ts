@@ -4,4 +4,5 @@ export interface IEvaluacionArtisticaRequest{
     fechaEvaluacion: string;
     resultado: string;
     motivoRechazo: string;
+    puntajefinal: number;
 }

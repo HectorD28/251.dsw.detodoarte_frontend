@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ObraDeArteService } from '../../service/ts/obradearte.service';
+import { ObraDeArteService } from '../../../service/ts/obradearte.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { EvaluacionArtisticaService } from '../../service/ts/evaluacion-artistica.service';
-import { EvaluacionEconomicaService } from '../../service/ts/evaluacion-economica.service';
-import { IObraDeArteResponse } from '../../model/obradearte-response';
-import { ArtistaService } from '../../service/ts/artista.service';
-import { TokenService } from '../../JWT/token.service';
-import { ITecnicaResponse } from '../../model/tecnica-response';
-import { TecnicaService } from '../../service/ts/tecnica.service';
-import { IObraDeArteRequest } from '../../model/obradearte-request';
+import { EvaluacionArtisticaService } from '../../../service/ts/evaluacion-artistica.service';
+import { EvaluacionEconomicaService } from '../../../service/ts/evaluacion-economica.service';
+import { IObraDeArteResponse } from '../../../model/obradearte-response';
+import { ArtistaService } from '../../../service/ts/artista.service';
+import { TokenService } from '../../../JWT/token.service';
+import { ITecnicaResponse } from '../../../model/tecnica-response';
+import { TecnicaService } from '../../../service/ts/tecnica.service';
+import { IObraDeArteRequest } from '../../../model/obradearte-request';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
