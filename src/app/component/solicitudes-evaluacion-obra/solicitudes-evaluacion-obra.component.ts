@@ -144,6 +144,6 @@ getSolicitudesDeEvaluacion(): void {
   // Métodos para revisar, aprobar o rechazar
   revisarSolicitud(solicitud: any): void {
     console.log('Revisando solicitud de obra:', solicitud);
-    this.router.navigate(['/formulario-evluacion-artisitca']);
+    this.router.navigate(['/formulario-evaluacion-artistica']);
   }
 }

@@ -14,31 +14,31 @@ export class CriterioEvaluacionArtisticaService {
 
   // Crear un nuevo criterio
   createCriterioEvaluacionArtistica(request: ICriterioEvaluacionArtisticaRequest): Observable<ICriterioEvaluacionArtisticaResponse> {
-    return this.http.post<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-artisticos`, request);
+    return this.http.post<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-evaluacion-artisticos`, request);
   }
 
   // Obtener todos los criterios
   getAllCriteriosEvaluacionArtistica(): Observable<ICriterioEvaluacionArtisticaResponse[]> {
-    return this.http.get<ICriterioEvaluacionArtisticaResponse[]>(`${BASE_URL}/criterios-artisticos`);
+    return this.http.get<ICriterioEvaluacionArtisticaResponse[]>(`${BASE_URL}/criterios-evaluacion-artisticos`);
   }
 
   // Obtener un criterio por su ID
   getCriterioEvaluacionArtisticaById(id: number): Observable<ICriterioEvaluacionArtisticaResponse> {
-    return this.http.get<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-artisticos/${id}`);
+    return this.http.get<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-evaluacion-artisticos/${id}`);
   }
 
   // Obtener criterios de evaluación artística por ID de Técnica
   getCriteriosByTecnica(idTecnica: number): Observable<ICriterioEvaluacionArtisticaResponse[]> {
-    return this.http.get<ICriterioEvaluacionArtisticaResponse[]>(`${BASE_URL}/criterios-artisticos/tecnica/${idTecnica}`);
+    return this.http.get<ICriterioEvaluacionArtisticaResponse[]>(`${BASE_URL}/criterios-evaluacion-artisticos/tecnica/${idTecnica}`);
   }
 
   // Actualizar un criterio por ID
   updateCriterioEvaluacionArtistica(id: number, request: ICriterioEvaluacionArtisticaRequest): Observable<ICriterioEvaluacionArtisticaResponse> {
-    return this.http.put<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-artisticos/${id}`, request);
+    return this.http.put<ICriterioEvaluacionArtisticaResponse>(`${BASE_URL}/criterios-evaluacion-artisticos/${id}`, request);
   }
 
   // Eliminar un criterio por ID
   deleteCriterioEvaluacionArtistica(id: number): Observable<void> {
-    return this.http.delete<void>(`${BASE_URL}/criterios-artisticos/${id}`);
+    return this.http.delete<void>(`${BASE_URL}/criterios-evaluacion-artisticos/${id}`);
   }
 }

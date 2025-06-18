@@ -36,4 +36,8 @@ export class CriterioEvaluacionesArtisticasService {
   deleteCriterioEvaluacionesArtisticas(id: number): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/criterios-evaluaciones-artisticas/eliminar/${id}`);
   }
+
+  verificarCombinacion(idEvaluacionArtistica: number, idCriterioEvaluacionArtistica: number): Observable<boolean> {
+    return this.http.get<boolean>(`${BASE_URL}/verificar-combinacion/${idEvaluacionArtistica}/${idCriterioEvaluacionArtistica}`);
+  }
 }

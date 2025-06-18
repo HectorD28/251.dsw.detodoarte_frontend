@@ -1,0 +1,105 @@
+/* Estilo general */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5; /* Fondo claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* Título */
+h3 {
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 1px solid #ddd; /* Borde alrededor de la tabla */
+}
+
+/* Cabeceras de la tabla */
+th {
+  background-color: #005f73; /* Color de fondo azul suave */
+  color: white;
+  padding: 12px 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 1px solid #ddd; /* Borde para las cabeceras */
+}
+
+/* Celdas de la tabla */
+td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: #ffffff; /* Fondo blanco para las celdas */
+  color: #333;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Resaltado de la fila al pasar el mouse */
+tr:hover {
+  background-color: #e0fbfc; /* Color suave de hover */
+  cursor: pointer;
+}
+
+/* Estilo de los botones de acción */
+button {
+  background-color: #008b8b; /* Color de fondo verde-azulado */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #004f4f; /* Cambia el color cuando el mouse pasa */
+}
+
+/* Estilo para las filas de evaluación */
+th[colspan="5"] {
+  background-color: #028090; /* Color de fondo para las secciones de evaluación */
+  font-size: 1.2rem;
+}
+
+th[colspan="5"], td {
+  text-align: center;
+}
+
+/* Alternar color en filas */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
