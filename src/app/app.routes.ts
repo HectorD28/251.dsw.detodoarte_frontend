@@ -19,7 +19,7 @@ import { PruebasComponent } from './component/pruebas/pruebas.component';
 import { EstadoSolicitudPresencialComponent } from './component/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
 import { EstadoExposicionVirtualComponent } from './component/estado-exposicion-virtual/estado-exposicion-virtual.component';
 import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
-
+import {CartComponent} from './component/cart/cart.component';
 export const routes: Routes = [
     {
         path: '',
@@ -62,8 +62,8 @@ export const routes: Routes = [
         component: AuthPageComponent },
 
     {
-        path: 'pruebas',
-        component: PruebasComponent
+        path: 'orden',
+        component: CartComponent
     },
 
     {

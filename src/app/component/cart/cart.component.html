@@ -30,13 +30,11 @@
             <td class="text-center">{{ producto.id_obra }}</td>
             <td class="text-center">
                 <!-- Condicional para habilitar/deshabilitar el botón eliminar -->
-                <p-button *ngIf="productosSeleccionados.length > 1" 
-                          label="Eliminar" 
-                          icon="pi pi-trash" 
-                          class="p-button-danger" 
-                          (click)="eliminarProductoDeLista(producto.id_obra,producto)">
-                   <span class="sr-only">Eliminar producto</span>
-                </p-button>
+                <button *ngIf="productosSeleccionados.length > 1" 
+                        class="btn btn-danger" 
+                        (click)="eliminarProductoDeLista(producto.id_obra,producto)">
+                    Eliminar
+                </button>
                 <!-- Si solo hay un producto, mostrar un mensaje de que no se puede eliminar -->
                 <p *ngIf="productosSeleccionados.length === 1" class="text-gray-500">No se puede eliminar el último producto.</p>
             </td>
@@ -65,9 +63,14 @@
 
   <!-- botones de accion: Solo se muestran si hay productos en el carrito -->
   <div *ngIf="productosSeleccionados.length > 0" class="flex justify-center gap-4 mt-6">
-    <p-button label="Cancelar Orden" severity="danger" class="px-6 py-2" (click)="cancelarOrden()"></p-button>
-    <p-button label="Generar Orden de Pago" severity="success" class="px-6 py-2"
-              (click)="confirmarOrden()" [disabled]="productosSeleccionados.length === 0"></p-button>
+    <button class="btn btn-danger px-6 py-2" (click)="cancelarOrden()">
+      Cancelar Orden
+    </button>
+    <button class="btn btn-success px-6 py-2" 
+            (click)="confirmarOrden()" 
+            [disabled]="productosSeleccionados.length === 0">
+      Generar Orden de Pago
+    </button>
   </div>
 </div>
 <p-toast></p-toast>

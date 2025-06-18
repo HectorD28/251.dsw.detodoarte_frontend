@@ -1,49 +1,38 @@
-
-
-<div class="container">
-  
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Mi cuenta</h2>
-    <a routerLink="/home">Página principal</a> <!-- Usar routerLink para navegar dentro de Angular -->
-    <a routerLink="/mis-compras">Mis compras</a> <!-- Asegúrate de tener una ruta configurada para mis compras -->
-    <a routerLink="/mensajes">Mensajes</a>
-    <a routerLink="/favoritos">Favoritos</a>
-    <a routerLink="/configuracion">Configuración</a>
-    <a href="/solicitud-exposicion">Solicitar Exposición</a>
-    <a href="/usuarios-registrados">Usuarios</a>
-    <div class="privado">Presentación: Privado</div>
+<div class="profile-container">
+  <div class="profile-header">
+    <h1><p class="welcome-message">¡Bienvenido, {{ usuario?.username }}!</p></h1>
+    <!-- Mensaje de bienvenida -->
+    
   </div>
 
-  <!-- Content -->
-  <div class="content">
-    <h1>Bienvenido RICHARD JOUSE</h1>
-
-    <div class="section">
-      <label for="como-nos-entero">¿Cómo se enteró de nosotros?</label>
-      <select id="como-nos-entero" class="select-box">
-        <option value="seleccionar">Seleccionar</option>
-      </select>
-      <button class="btn">Enviar</button>
+  <div class="profile-content">
+    <div class="profile-img">
+      <img src="./img/perfil.webp" alt="Avatar" class="avatar">
+      <button class="change-avatar">Cambiar Avatar</button>
     </div>
 
-    <div class="section favorites">
-      <div class="card">
-        <h3>Mis favoritos</h3>
-        <p>¡Comienza a coleccionar arte y crea tus colecciones virtuales!</p>
+    <div class="profile-info">
+      <div class="profile-info-item">
+        <label for="username">Nombre de Usuario:</label>
+        <input type="text" id="username" placeholder="Juan Pérez" [value]="usuario?.username" readonly>
       </div>
-      <div class="card">
-        <h3>Artistas seguido</h3>
-        <p>¡Comienza a seguir a tus artistas favoritos!</p>
-      </div>
-    </div>
 
-    <div class="footer">
-      <p>Para ir más lejos</p>
-      <ul>
-        <li><a routerLink="/recomendar">Recomiéndanos a tus amigos y gane dinero!</a></li>
-        <li><a routerLink="/vender">Vender en ArtMajeur</a></li>
-      </ul>
+      <div class="profile-info-item">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" placeholder="juan.perez@email.com" [value]="usuario?.correoElectronico" readonly>
+      </div>
+
+      <div class="profile-info-item">
+        <label for="address">Dirección:</label>
+        <textarea id="address" placeholder="123 Calle Ejemplo, Ciudad, País" [value]="usuario?.direccion" readonly></textarea>
+      </div>
+
+      <div class="profile-info-item">
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="phone" placeholder="123-456-7890" [value]="usuario?.telefono" readonly>
+      </div>
+
+      
     </div>
   </div>
 </div>

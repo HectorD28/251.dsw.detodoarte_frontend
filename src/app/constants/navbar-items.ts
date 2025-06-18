@@ -7,13 +7,7 @@ export interface NavbarItem {
 }
 
 const COMMON_ITEMS: NavbarItem[] = [
-  {
-    name: 'Pruebas',
-    description: 'Dirige a la sección de pruebas',
-    tooltip: 'Pruebas',
-    icon: 'fa-solid fa-flask',
-    route: '/pruebas',
-  },
+  
   
 ];
 

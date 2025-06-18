@@ -1,110 +1,119 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+/* Estilo general */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f7fafc;
+  border-radius: 10px;
 }
 
-.container {
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.welcome-message {
+  font-size: 1.1rem;
+  color: #4CAF50;
+  margin-top: 0.5rem;
+}
+
+/* Estilos de la imagen del perfil */
+.profile-img {
   display: flex;
-  flex-direction: row;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #333;
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.change-avatar {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
   color: white;
-  padding: 20px;
-}
-
-.sidebar h2 {
-  margin-top: 0;
-}
-
-.sidebar a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-.sidebar a:hover {
-  background-color: #555;
+.change-avatar:hover {
+  background-color: #45a049;
 }
 
-.content {
-  flex: 1;
-  padding: 20px;
-  background-color: white;
+/* Estilo para los campos del perfil */
+.profile-info {
+  display: grid;
+  gap: 1.5rem;
 }
 
-.content h1 {
-  font-size: 24px;
-  margin-top: 0;
-}
-
-.content .section {
-  margin-bottom: 20px;
-}
-
-.content .section label {
-  font-weight: bold;
-}
-
-.content .favorites, .content .artists {
+.profile-info-item {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
 }
 
-.card {
-  background-color: #f1f1f1;
-  padding: 20px;
-  border-radius: 5px;
-  flex: 1;
+.profile-info-item label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-.footer {
-  padding: 20px;
-  background-color: #333;
-  color: white;
-  text-align: center;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.select-box {
-  margin-bottom: 10px;
-  padding: 10px;
+.profile-info-item input,
+.profile-info-item textarea {
+  padding: 0.75rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  font-size: 1rem;
   width: 100%;
 }
 
-.btn {
-  padding: 10px 15px;
-  background-color: #333;
+.profile-info-item input[readonly],
+.profile-info-item textarea[readonly] {
+  background-color: #eaeaea;
+  color: #555;
+  cursor: not-allowed;
+}
+
+/* Botón de guardar cambios */
+.save-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  cursor: pointer;
+  border-radius: 8px;
+  cursor: not-allowed;
+  font-weight: bold;
+  width: 100%;
+  opacity: 0.6;
 }
 
-.btn:hover {
-  background-color: #555;
+.save-btn:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
 }
 
-.privado {
-  background-color: #ff4d4d;
-  padding: 5px 10px;
-  color: white;
-  border-radius: 3px;
-  font-size: 12px;
+/* Estilos para campos de dirección */
+textarea {
+  height: 100px;
+  resize: none;
+  font-size: 1rem;
+  background-color: #f1f1f1;
+}
+
+textarea[readonly] {
+  color: #555;
 }

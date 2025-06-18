@@ -14,6 +14,7 @@ import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pagos-pages',
@@ -27,7 +28,6 @@ import { Dialog } from 'primeng/dialog';
     TableModule,
     FormsModule,
     DividerModule,
-    InputNumber,
     AutoComplete,
     DialogModule,
   ],
@@ -64,7 +64,7 @@ export class PagosPagesComponent implements OnInit, OnDestroy {
     });
   }
 
-  buscar(event: any) {
+  buscar(event: any):void {
     const query = event.query.toLowerCase();
     this.items = this.ordenes
       .filter((orden) => orden.idOrden.toString().includes(query))
@@ -187,59 +187,28 @@ export class PagosPagesComponent implements OnInit, OnDestroy {
     this.dniError = !dniPattern.test(this.dni);
   }
 
-  confirmarPago() {
-    this.pagosService.validarDNI(this.dni).subscribe({
-      next: (data: number) => {
-        this.pagosService.postConfirmar(data).subscribe({
-          next: (data: any) => {
-            this.messagesService.successMessage(
-              'Pago confirmado',
-              'El pago ha sido confirmado con éxito',
-            );
-            this.pagosService.getListaPagosPendientes().subscribe({
-              next: (data: any) => {
-                this.ordenes = data;
-                this.items = data.map((pago: any) => ({ idOrden: pago.idOrden }));
-              },
-              error: (err) => {
-                console.error('Error al cargar órdenes de pago', err);
-              },
-            });
-            this.id = undefined;
-            this.recargarCarrito();
-            
-            this.visiblePagar = false;
-          },
-          error: (err) => {
-            this.messagesService.errorMessage(
-              'Error',
-              'No se ha podido confirmar el pago',
-            );
-          },
-        });
-      },
-      error: (err) => {
-        this.messagesService.errorMessage(
-          'Error',
-          'No se ha podido validar el DNI',
-        );
-      },
+confirmarPago() {
+  if (!this.dni || this.dniError) {
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: 'Por favor, ingresa un DNI válido.',
     });
+    return;
   }
 
-  expirarorden() {
-    if (this.id !== undefined) {
-      this.pagosService.expirarOrdenPago(this.id).subscribe({
+  this.pagosService.validarDNI(this.dni).subscribe({
+    next: (data: number) => {
+      this.pagosService.postConfirmar(data).subscribe({
         next: (data: any) => {
-          this.messagesService.successMessage(
-            'Orden expirada',
-            'La orden ha sido cancelada con éxito',
-          );
-          this.pagosService.deleteSeleccionar().subscribe({
-            next: (data: string) => {
-              console.log(data);
-            },
+          // Muestra un mensaje de éxito
+          Swal.fire({
+            icon: 'success',
+            title: '¡Pago Confirmado!',
+            text: 'El pago ha sido confirmado con éxito. La compra se ha realizado.',
           });
+
+          // Actualiza las órdenes y productos
           this.pagosService.getListaPagosPendientes().subscribe({
             next: (data: any) => {
               this.ordenes = data;
@@ -249,19 +218,77 @@ export class PagosPagesComponent implements OnInit, OnDestroy {
               console.error('Error al cargar órdenes de pago', err);
             },
           });
-          this.recargarCarrito();
+
+          // Restablecer el ID y recargar el carrito
           this.id = undefined;
+          this.recargarCarrito();
+
+          // Cierra el modal
+          this.visiblePagar = false;
         },
-        error: (err: any) => {
+        error: (err) => {
           this.messagesService.errorMessage(
             'Error',
-            'No se ha podido expirar la orden',
+            'No se ha podido confirmar el pago',
           );
         },
       });
-      
-    }
+    },
+    error: (err) => {
+      this.messagesService.errorMessage(
+        'Error',
+        'No se ha podido validar el DNI',
+      );
+    },
+  });
+}
+
+
+
+
+expirarorden() {
+  if (this.id !== undefined) {
+    // Si id no es undefined, puedes llamar al servicio.
+    this.pagosService.expirarOrdenPago(this.id).subscribe({
+      next: (data: any) => {
+        this.messagesService.successMessage(
+          'Orden expirada',
+          'La orden ha sido cancelada con éxito',
+        );
+        this.pagosService.deleteSeleccionar().subscribe({
+          next: (data: string) => {
+            console.log(data);
+          },
+        });
+        this.pagosService.getListaPagosPendientes().subscribe({
+          next: (data: any) => {
+            this.ordenes = data;
+            this.items = data.map((pago: any) => ({ idOrden: pago.idOrden }));
+          },
+          error: (err) => {
+            console.error('Error al cargar órdenes de pago', err);
+          },
+        });
+        this.recargarCarrito();
+        this.id = undefined;
+      },
+      error: (err: any) => {
+        this.messagesService.errorMessage(
+          'Error',
+          'No se ha podido expirar la orden',
+        );
+      },
+    });
+  } else {
+    // Si id es undefined, muestra un mensaje de error o realiza una acción apropiada.
+    this.messagesService.errorMessage(
+      'Error',
+      'No se ha seleccionado ninguna orden',
+    );
   }
+}
+
+
   
   // Nuevo método para limpiar consultas
   limpiarConsultas(): void {

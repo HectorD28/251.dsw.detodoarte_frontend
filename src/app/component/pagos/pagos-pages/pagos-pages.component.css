@@ -12,7 +12,6 @@
   padding: 1rem;
 }
 
-
 .bg-gray-100 {
   background-color: #f7fafc;
 }
@@ -46,7 +45,6 @@
 .bg-white {
   background-color: #ffffff;
 }
-
 
 .rounded {
   border-radius: 0.375rem;
@@ -93,191 +91,102 @@
   color: #4a5568;
 }
 
-
-
-.p-autocomplete input {
+.p-inputtext,
+.p-inputnumber {
   width: 100%;
-}
-
-.p-button {
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.375rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 1rem;
+  transition: border-color 0.3s;
 }
 
-.p-button[severity="danger"] {
-  background-color: #e53e3e;
-  color: #ffffff;
-}
-
-.p-button[severity="success"] {
-  background-color: #48bb78;
-  color: #ffffff;
-}
-
-.p-button[disabled] {
-  background-color: #cbd5e0;
-  color: #a0aec0;
-  cursor: not-allowed;
-}
-
-.w-28 {
-  width: 7rem;
+.p-inputtext:focus,
+.p-inputnumber:focus {
+  border-color: #4CAF50; /* Color cuando está enfocado */
 }
 
 /* Tabla */
-.p-table {
+table {
   width: 100%;
+  border-collapse: collapse;
   margin-top: 1.5rem;
 }
 
-.p-table th {
-  text-align: left;
-  padding: 0.75rem;
-  font-weight: bold;
-  background-color: #f3f4f6;
-}
-
-.p-table td {
-  padding: 0.75rem;
-}
-
-
-.p-table .p-paginator {
-  justify-content: center;
-}
-
-.p-table .p-paginator .p-paginator-pages {
-  margin-top: 1rem;
-}
-
-/* Confirmar pago */
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.text-green-600 {
-  color: #38a169;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-/* Modal Confirmación */
-.p-dialog {
-  position: fixed; /* Fijar el diálogo en la pantalla */
-  top: 50%; /* Centrar verticalmente */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translate(-50%, -50%); /* Ajustar la posición para que quede completamente centrado */
-  z-index: 9999; /* Asegurarse de que el diálogo se muestre por encima de otros elementos */
-  width: 80vw; /* Ajustar el ancho del diálogo */
-  height: auto; /* Ajustar la altura según el contenido */
-}
-
-.custom-dialog .p-dialog-content {
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo translúcido oscuro */
-  border-radius: 15px; /* Bordes redondeados */
-  padding: 20px; /* Espaciado interior */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más visible */
-}
-
-.custom-dialog .p-dialog-header {
-  background-color: #4CAF50; /* Fondo verde para el encabezado */
-  color: white; /* Texto blanco */
-  border-radius: 15px 15px 0 0; /* Bordes redondeados en la parte superior */
-}
-
-/* Fondo oscuro para la página cuando el diálogo está visible */
-body {
-  overflow: hidden; /* Evitar que el fondo sea desplazable cuando el diálogo esté abierto */
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-  z-index: 9998; /* Colocarlo debajo del diálogo */
-}
-
-/* Estilo para el botón de confirmar pago */
-.confirm-button {
-  background-color: #4CAF50; /* Verde para confirmar */
-  color: white;
-  border-radius: 8px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-}
-
-.confirm-button:hover {
-  background-color: #45a049; /* Cambio de color en hover */
-}
-
-/* Estilo para la tabla dentro del diálogo */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.table th, .table td {
+table th, table td {
   padding: 12px;
   text-align: left;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border-bottom: 2px solid #ddd;
 }
 
-.table th {
-  background-color: #f4f4f4;
+table th {
+  background-color: #f5f5f5;
   font-weight: bold;
 }
 
-.table tr:nth-child(even) {
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+table tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* Estilo para los campos de entrada */
-.input-field {
-  padding: 10px;
+table tbody tr:hover {
+  background-color: #f7f7f7;
+}
+
+/* Botones */
+button {
+  padding: 10px 20px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
 }
 
-.dniError {
-  color: #e53e3e;
-  font-size: 0.875rem;
+button:hover {
+  background-color: #45a049; /* Cambio de color al pasar el ratón */
 }
 
+.bg-green-500 {
+  background-color: #4CAF50;
+  color: white;
+}
 
-/* Estilos generales de la ventana emergente */
+.bg-green-500:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Modal */
 .custom-modal {
-  position: fixed; /* Fija el modal en la pantalla */
-  top: 50%; /* Centrado verticalmente */
-  left: 50%; /* Centrado horizontalmente */
-  transform: translate(-50%, -50%); /* Ajusta el modal para centrarlo completamente */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Asegurarse de que el modal tenga el z-index más bajo */
   background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
-  width: 80vw; /* Ancho del modal */
-  height: auto; /* Ajusta la altura automáticamente */
-  z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
-  border-radius: 8px;
-  overflow: hidden;
+  width: 80vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
 }
 
-/* Estilo del contenido dentro del modal */
+/* Contenido del Modal */
 .modal-content {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+  width: 100%;
+  max-width: 600px;
+  z-index: 10001; /* Asegurarse de que el contenido esté por encima del fondo oscuro */
 }
 
-/* Estilo del encabezado */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -299,38 +208,31 @@ body::before {
   color: #333;
 }
 
-/* Estilos de la tabla */
-.table {
+/* Fondo oscuro cuando el modal se muestra */
+body {
+  overflow: hidden; 
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-top: 15px;
-  border-collapse: collapse;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  z-index: 9998; /* Colocarlo debajo del modal */
 }
 
-.table th, .table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.table th {
-  background-color: #f4f4f4;
-}
-
-.table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Botón de Confirmar pago */
+/* Estilo para los botones */
 .confirm-button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 20px;
-  border: none;
   border-radius: 8px;
-  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
   font-weight: bold;
-  display: inline-flex;
-  align-items: center;
+  width: 100%;
 }
 
 .confirm-button:hover {
@@ -340,4 +242,37 @@ body::before {
 .confirm-button:disabled {
   background-color: #cbd5e0;
   cursor: not-allowed;
+}
+
+/* Estilos de los campos de entrada */
+.input-field {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+}
+
+.dniError {
+  color: #e53e3e;
+  font-size: 0.875rem;
+}
+
+/* Estilo para los iconos */
+.fa-shopping-cart, .fa-check {
+  margin-right: 8px;
+}
+
+/* Estilo para el botón de cerrar del modal */
+.close-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Ajustes para SweetAlert */
+.swal2-popup {
+  z-index: 10002 !important; /* Asegurarse de que SweetAlert esté encima del modal */
 }

@@ -28,17 +28,17 @@ export class PersonaService {
   }
   
   deleteCliente(id: number) {
-    return this.http.delete(`${BASE_URL}/cliente/${id}`);
+    return this.http.delete(`${BASE_URL}/personas/${id}`);
   }
 
   //metodo para obtener cliente por id
   getCliente(id: number) {
-    return this.http.get<IPersonaResponse>(`${BASE_URL}/cliente/${id}`);
+    return this.http.get<IPersonaResponse>(`${BASE_URL}/personas/${id}`);
   }
 
     //metodo para modificar cliente
   updateCliente(cliente: IPersonaRequest, id: number) {
-    return this.http.put(`${BASE_URL}/cliente/edit/${id}`, cliente);
+    return this.http.put(`${BASE_URL}/personas/edit/${id}`, cliente);
   }
 
 }
