@@ -53,6 +53,7 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa-solid fa-flask',
         route: '/pruebas',
       },
+<<<<<<< HEAD
       {
         name: 'Evaluaciones',
         description: 'Dirige a la sección de evaluaciones de obra',
@@ -60,6 +61,18 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         icon: 'fa-solid fa-flask',
         route: '/solicitudes-evaluacion-obra',
       },
+=======
+
+      {
+        name: 'Solicitud de Evaluacion',
+        description: 'Dirige a la sección de pruebas',
+        tooltip: 'Pruebas',
+        icon: 'fa-solid fa-flask',
+        route: '/solicitudes-evaluacion-obra',
+      },
+
+
+>>>>>>> 9229ae363f3f34c51d48d4699cd36ff7fe1d7006
        
     ],
     usuario: [

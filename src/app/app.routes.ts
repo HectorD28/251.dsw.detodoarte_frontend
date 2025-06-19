@@ -20,7 +20,10 @@ import { EstadoSolicitudPresencialComponent } from './component/ARTISTAS/estado-
 import { EstadoExposicionVirtualComponent } from './component/ARTISTAS/estado-exposicion-virtual/estado-exposicion-virtual.component';
 import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
 import { SolicitudesEvaluacionObraComponent } from './component/solicitudes-evaluacion-obra/solicitudes-evaluacion-obra.component';
+<<<<<<< HEAD
 import { EvaluacionFormularioComponent } from './component/formulario-evaluacion-artistica/formulario-evaluacion-artistica.component';
+=======
+>>>>>>> 9229ae363f3f34c51d48d4699cd36ff7fe1d7006
 export const routes: Routes = [
     {
         path: '',
@@ -34,6 +37,10 @@ export const routes: Routes = [
     {
         path: 'registrar-persona',
         component:RegistrarPersonaComponent},
+
+    {
+        path: 'solicitudes-evaluacion-obra',
+        component:SolicitudesEvaluacionObraComponent},
 
     {
         path: 'perfil', 
@@ -62,10 +69,13 @@ export const routes: Routes = [
         path: 'auth', 
         component: AuthPageComponent },
 
+<<<<<<< HEAD
     {
         path: 'pruebas',
         component: PruebasComponent
     },
+=======
+>>>>>>> 9229ae363f3f34c51d48d4699cd36ff7fe1d7006
 
     {
         path: 'stock-page',
