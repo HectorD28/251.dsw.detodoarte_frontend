@@ -10,6 +10,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { IEvaluacionArtisticaResponse } from '../../model/evaluacion-artistica-response';
 import { IEvaluacionEconomicaResponse } from '../../model/evaluacion-economica-response';
 import { Router } from '@angular/router';
+import { CriterioEvaluacionArtisticaService } from '../../service/ts/criterio-evaluacion-artistica.service';
+import { CriterioEvaluacionesArtisticasService } from '../../service/ts/criterio-evaluaciones-artisticas.service';
 
 @Component({
   selector: 'app-solicitudes-evaluacion-obra',
@@ -25,10 +27,13 @@ export class SolicitudesEvaluacionObraComponent implements OnInit {
   idEspecialista: number = 0;
   EvaluacionesArtisticasEspecialista: IEvaluacionArtisticaResponse[] = [];
   EvaluacionesEconomicasEspecialista: IEvaluacionEconomicaResponse[] = [];
+  tecnicaId: number=0;
 
 
   constructor(
     private especialistaService: EspecialistaService,
+    private criterioEvaluacionArtisticaService: CriterioEvaluacionArtisticaService,
+    private criterioEvaluacionesArtisticasService: CriterioEvaluacionesArtisticasService,
     private router: Router,
     private tokenService: TokenService,
     private evaluacionArtisticaService: EvaluacionArtisticaService,
@@ -69,6 +74,8 @@ ObtenerEvaluacionesEconomicasPorEspecialista(idEspecialista: number): void {
   });
 }
 
+
+
   // Obtener el especialista por el ID de la persona
   getEspecialistaByIdPersona(): void {
     this.especialistaService.obtenerTodosEspecialistas().subscribe({
@@ -78,6 +85,7 @@ ObtenerEvaluacionesEconomicasPorEspecialista(idEspecialista: number): void {
           const especialista = especialistas.find(e => e.persona?.persona_id === this.idPersona);
           if (especialista) {
             this.idEspecialista = especialista.idEspecialista;
+            this.tecnicaId = especialista.tecnica.idTecnica;
             this.ObtenerEvaluacionesArtisticasPorEspecialista(this.idEspecialista)
           }
         }

@@ -33,9 +33,8 @@ export class AppComponent {
       .subscribe((event) => {
         const currentUrl = (event as NavigationEnd).urlAfterRedirects;
 
-        const navbarRoutes = ['/perfil', '/home','/auth','/orden', '/pagos-page', '/pruebas'];
-
-        this.showNavbar = navbarRoutes.some((route) => currentUrl.startsWith(route));
+        // Mostrar navbar SOLO en /home
+        this.showNavbar = currentUrl === '/home','/auth';
 
         // Mostrar sidebar SOLO en rutas de perfil y similares
         const sidebarRoutes = ['/perfil', '/obradearte', '/solicitud-exposicion','/pruebas'];

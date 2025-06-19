@@ -19,7 +19,8 @@ import { PruebasComponent } from './component/pruebas/pruebas.component';
 import { EstadoSolicitudPresencialComponent } from './component/ARTISTAS/estado-solicitud-presencial/estado-solicitud-presencial.component'; 
 import { EstadoExposicionVirtualComponent } from './component/ARTISTAS/estado-exposicion-virtual/estado-exposicion-virtual.component';
 import { UsuarioRegistradoComponent } from './component/usuarios/usuario-registrado/usuario-registrado.component';
-
+import { SolicitudesEvaluacionObraComponent } from './component/solicitudes-evaluacion-obra/solicitudes-evaluacion-obra.component';
+import { EvaluacionFormularioComponent } from './component/formulario-evaluacion-artistica/formulario-evaluacion-artistica.component';
 export const routes: Routes = [
     {
         path: '',
@@ -61,7 +62,10 @@ export const routes: Routes = [
         path: 'auth', 
         component: AuthPageComponent },
 
-  
+    {
+        path: 'pruebas',
+        component: PruebasComponent
+    },
 
     {
         path: 'stock-page',
@@ -103,7 +107,14 @@ export const routes: Routes = [
         path: 'usuarios-registrados',
         component: UsuarioRegistradoComponent,
     },
-
+    {
+        path: 'solicitudes-evaluacion-obra',
+        component: SolicitudesEvaluacionObraComponent,
+    },
+    {
+        path: 'formulario-evaluacion-artistica',
+        component: EvaluacionFormularioComponent,
+    },
 
 ];
 

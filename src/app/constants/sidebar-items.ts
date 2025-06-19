@@ -23,10 +23,16 @@ const COMMON_ITEMS: SidebarItem[] = [
     route: '/home',
   },
 
-  
+  {
+    name: 'Compras',
+    description: 'Dirige a la sección de compras',
+    tooltip: 'Compras',
+    icon: 'fa-solid fa-wallet',
+    route: '/pruebas',
+  },
 
   {
-        name: 'Realizar Pagos',
+        name: 'Registrar Pagos',
         description: 'Sección para gestionar los pagos',
         tooltip: 'Pagos',
         icon: 'fa fa-credit-card-alt',
@@ -46,6 +52,13 @@ export const SIDEBAR_ITEMS: { [role: string]: SidebarItem[] } = {
         tooltip: 'Pruebas',
         icon: 'fa-solid fa-flask',
         route: '/pruebas',
+      },
+      {
+        name: 'Evaluaciones',
+        description: 'Dirige a la sección de evaluaciones de obra',
+        tooltip: 'Evaluaciones',
+        icon: 'fa-solid fa-flask',
+        route: '/solicitudes-evaluacion-obra',
       },
        
     ],
